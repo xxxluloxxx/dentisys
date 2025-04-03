@@ -17,7 +17,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "fichas_odontologicas")
+@Table(name = "fichas_medicas")
 public class FichaOdontologica {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

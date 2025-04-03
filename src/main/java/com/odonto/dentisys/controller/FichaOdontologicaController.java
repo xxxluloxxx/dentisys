@@ -20,7 +20,7 @@ import com.odonto.dentisys.model.FichaOdontologica;
 import com.odonto.dentisys.service.FichaOdontologicaService;
 
 @RestController
-@RequestMapping("/api/fichas-odontologicas")
+@RequestMapping("/api/fichas-medicas")
 public class FichaOdontologicaController {
 
     @Autowired
