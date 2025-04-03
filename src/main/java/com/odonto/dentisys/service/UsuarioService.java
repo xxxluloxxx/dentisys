@@ -78,4 +78,9 @@ public class UsuarioService {
     public boolean existsByNumeroDocumento(String numeroDocumento) {
         return usuarioRepository.existsByNumeroDocumento(numeroDocumento);
     }
+
+    @Transactional(readOnly = true)
+    public Optional<Usuario> findByEmailAndPassword(String email, String password) {
+        return usuarioRepository.findByEmailAndPassword(email, password);
+    }
 }

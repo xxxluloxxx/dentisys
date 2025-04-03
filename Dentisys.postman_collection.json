@@ -2214,6 +2214,37 @@
                         },
                         "description": "Elimina un usuario por su ID"
                     }
+                },
+                {
+                    "name": "Autenticar usuario",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/usuarios/auth?email=usuario@ejemplo.com&password=contraseña123",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "usuarios",
+                                "auth"
+                            ],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "usuario@ejemplo.com",
+                                    "description": "Email del usuario"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "contraseña123",
+                                    "description": "Contraseña del usuario"
+                                }
+                            ]
+                        },
+                        "description": "Autentica un usuario por email y contraseña"
+                    }
                 }
             ]
         }
