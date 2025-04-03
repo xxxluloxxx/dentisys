@@ -13,13 +13,13 @@ COPY .mvn .mvn
 COPY pom.xml .
 
 # Descargar dependencias (esto se cachea si el pom.xml no cambia)
-RUN --mount=type=cache,target=/root/.m2 ./mvnw dependency:go-offline
+RUN --mount=type=cache,id=maven-deps,target=/root/.m2 ./mvnw dependency:go-offline
 
 # Ahora copiar el código fuente
 COPY src src
 
 # Construir la aplicación
-RUN --mount=type=cache,target=/root/.m2 ./mvnw clean package -DskipTests
+RUN --mount=type=cache,id=maven-build,target=/root/.m2 ./mvnw clean package -DskipTests
 
 # Etapa de ejecución
 FROM eclipse-temurin:21-jre-alpine
