@@ -1,0 +1,102 @@
+// Modelo de base de datos para sistema de restaurante
+
+// Tabla General para Parámetros del Sistema
+Table general {
+  id serial [primary key]
+  parametro varchar(50) [not null, unique]
+  valor varchar(255) [not null]
+  descripcion text
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+// Tabla de Mesas
+Table mesas {
+  id_mesa integer [primary key]
+  numero_mesa integer [not null]
+  capacidad integer [not null]
+  estado varchar(20) [not null] // disponible, ocupada, reservada
+  ubicacion varchar(50)
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+// Tabla de Meseros
+Table meseros {
+  id_mesero integer [primary key]
+  nombre varchar(100) [not null]
+  apellido varchar(100) [not null]
+  dni varchar(20) [not null, unique]
+  telefono varchar(20)
+  estado varchar(20) [not null] // activo, inactivo
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+// Tabla de Categorías de Productos
+Table categorias {
+  id_categoria integer [primary key]
+  nombre varchar(50) [not null]
+  descripcion text
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+// Tabla de Productos
+Table productos {
+  id_producto integer [primary key]
+  id_categoria integer [ref: > categorias.id_categoria]
+  nombre varchar(100) [not null]
+  descripcion text
+  precio decimal(10,2) [not null]
+  disponible boolean [default: true]
+  imagen_url varchar(255)
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+// Tabla de Pedidos
+Table pedidos {
+  id_pedido integer [primary key]
+  id_mesa integer [ref: > mesas.id_mesa]
+  id_mesero integer [ref: > meseros.id_mesero]
+  estado varchar(20) [not null] // pendiente, en_preparacion, listo, entregado, cancelado
+  fecha_pedido timestamp [default: `now()`]
+  total decimal(10,2) [not null]
+  observaciones text
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+// Tabla de Detalles de Pedido
+Table detalles_pedido {
+  id_detalle integer [primary key]
+  id_pedido integer [ref: > pedidos.id_pedido]
+  id_producto integer [ref: > productos.id_producto]
+  cantidad integer [not null]
+  precio_unitario decimal(10,2) [not null]
+  subtotal decimal(10,2) [not null]
+  observaciones text
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+// Tabla de Reservas
+Table reservas {
+  id_reserva integer [primary key]
+  id_mesa integer [ref: > mesas.id_mesa]
+  nombre_cliente varchar(100) [not null]
+  telefono varchar(20)
+  fecha_reserva timestamp [not null]
+  hora_reserva time [not null]
+  numero_personas integer [not null]
+  estado varchar(20) [not null] // confirmada, cancelada, completada
+  observaciones text
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+// Índices para mejorar el rendimiento
+Index idx_mesas_numero ON mesas(numero_mesa);
+Index idx_pedidos_fecha ON pedidos(fecha_pedido);
+Index idx_reservas_fecha ON reservas(fecha_reserva); 
