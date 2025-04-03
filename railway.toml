@@ -6,5 +6,5 @@ dockerfilePath = "./Dockerfile"
 startCommand = "java -jar app.jar"
 healthcheckPath = "/actuator/health"
 healthcheckTimeout = 100
-restartPolicyType = "on_failure"
+restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 3 
