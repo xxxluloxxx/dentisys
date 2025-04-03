@@ -1,8 +1,6 @@
 package com.odonto.dentisys.model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,37 +16,45 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "citas")
-public class Cita {
+@Table(name = "usuarios")
+public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "paciente_id", nullable = false, columnDefinition = "int4")
-    private Paciente paciente;
+    @Column(name = "numero_documento", unique = true, nullable = false)
+    private String numeroDocumento;
 
-    @ManyToOne
-    @JoinColumn(name = "medico_id", nullable = false)
-    private Medico medico;
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
 
-    @Column(name = "fecha_cita", nullable = false)
-    private LocalDate fechaCita;
+    @Column(name = "apellido", nullable = false)
+    private String apellido;
 
-    @Column(name = "hora_cita", nullable = false)
-    private LocalTime horaCita;
+    @Column(name = "email", unique = true, nullable = false)
+    private String email;
 
-    @Column(name = "estado", nullable = false, length = 20)
-    private String estado;
+    @Column(name = "password", nullable = false)
+    private String password;
 
-    @Column(name = "observaciones", columnDefinition = "text")
-    private String observaciones;
+    @Column(name = "telefono", nullable = false)
+    private String telefono;
+
+    @Column(name = "estado")
+    private Boolean estado = true;
+
+    @Column(name = "ultimo_acceso")
+    private LocalDateTime ultimoAcceso;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "rol_id")
+    private Rol rol;
 
     @PrePersist
     protected void onCreate() {

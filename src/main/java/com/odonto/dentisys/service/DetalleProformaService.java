@@ -22,7 +22,7 @@ public class DetalleProformaService {
     }
 
     @Transactional(readOnly = true)
-    public DetalleProforma findById(Integer id) {
+    public DetalleProforma findById(Long id) {
         return detalleProformaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Detalle de proforma no encontrado con ID: " + id));
     }
@@ -33,7 +33,7 @@ public class DetalleProformaService {
     }
 
     @Transactional
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
         detalleProformaRepository.deleteById(id);
     }
 

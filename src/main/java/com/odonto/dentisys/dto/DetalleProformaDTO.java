@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class DetalleProformaDTO {
-    private Integer id;
-    private Integer productoId;
+    private Long id;
+    private Long productoId;
     private String productoNombre;
     private Integer cantidad;
     private Double precioUnitario;

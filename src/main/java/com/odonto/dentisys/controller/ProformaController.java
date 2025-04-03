@@ -44,19 +44,19 @@ public class ProformaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProformaDTO> getProformaById(@PathVariable Integer id) {
+    public ResponseEntity<ProformaDTO> getProformaById(@PathVariable Long id) {
         return ResponseEntity.ok(proformaMapper.toDTO(proformaService.findById(id)));
     }
 
     @GetMapping("/paciente/{pacienteId}")
-    public ResponseEntity<List<ProformaDTO>> getProformasByPaciente(@PathVariable Integer pacienteId) {
+    public ResponseEntity<List<ProformaDTO>> getProformasByPaciente(@PathVariable Long pacienteId) {
         Paciente paciente = new Paciente();
         paciente.setId(pacienteId);
         return ResponseEntity.ok(proformaMapper.toDTOList(proformaService.findByPaciente(paciente)));
     }
 
     @GetMapping("/medico/{medicoId}")
-    public ResponseEntity<List<ProformaDTO>> getProformasByMedico(@PathVariable Integer medicoId) {
+    public ResponseEntity<List<ProformaDTO>> getProformasByMedico(@PathVariable Long medicoId) {
         Medico medico = new Medico();
         medico.setId(medicoId);
         return ResponseEntity.ok(proformaMapper.toDTOList(proformaService.findByMedico(medico)));
@@ -81,19 +81,19 @@ public class ProformaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProformaDTO> updateProforma(@PathVariable Integer id, @RequestBody Proforma proforma) {
+    public ResponseEntity<ProformaDTO> updateProforma(@PathVariable Long id, @RequestBody Proforma proforma) {
         proforma.setId(id);
         return ResponseEntity.ok(proformaMapper.toDTO(proformaService.save(proforma)));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteProforma(@PathVariable Integer id) {
+    public ResponseEntity<Void> deleteProforma(@PathVariable Long id) {
         proformaService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{id}/detalles")
-    public ResponseEntity<ProformaDetalleDTO> getProformaConDetalles(@PathVariable Integer id) {
+    public ResponseEntity<ProformaDetalleDTO> getProformaConDetalles(@PathVariable Long id) {
         Proforma proforma = proformaService.findById(id);
         return ResponseEntity.ok(proformaDetalleMapper.toDTO(proforma));
     }

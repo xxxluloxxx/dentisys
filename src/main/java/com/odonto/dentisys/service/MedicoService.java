@@ -22,17 +22,17 @@ public class MedicoService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<Medico> findById(Integer id) {
+    public Optional<Medico> findById(Long id) {
         return medicoRepository.findById(id);
     }
 
     @Transactional
     public Medico save(Medico medico) {
         if (medico.getId() == null) {
-            if (medicoRepository.existsByNumeroDocumento(medico.getNumeroDocumento())) {
+            if (medicoRepository.existsByUsuario_NumeroDocumento(medico.getNumeroDocumento())) {
                 throw new RuntimeException("Ya existe un médico con ese número de documento");
             }
-            if (medicoRepository.existsByEmail(medico.getEmail())) {
+            if (medicoRepository.existsByUsuario_Email(medico.getEmail())) {
                 throw new RuntimeException("Ya existe un médico con ese email");
             }
         }
@@ -40,7 +40,7 @@ public class MedicoService {
     }
 
     @Transactional
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
         medicoRepository.deleteById(id);
     }
 

@@ -22,7 +22,7 @@ public class PacienteService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<Paciente> findById(Integer id) {
+    public Optional<Paciente> findById(Long id) {
         return pacienteRepository.findById(id);
     }
 
@@ -35,7 +35,7 @@ public class PacienteService {
     }
 
     @Transactional
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
         pacienteRepository.deleteById(id);
     }
 

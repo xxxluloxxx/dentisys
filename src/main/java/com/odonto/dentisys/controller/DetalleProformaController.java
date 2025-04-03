@@ -30,12 +30,12 @@ public class DetalleProformaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DetalleProforma> getDetalleProformaById(@PathVariable Integer id) {
+    public ResponseEntity<DetalleProforma> getDetalleProformaById(@PathVariable Long id) {
         return ResponseEntity.ok(detalleProformaService.findById(id));
     }
 
     @GetMapping("/proforma/{proformaId}")
-    public ResponseEntity<List<DetalleProforma>> getDetallesByProforma(@PathVariable Integer proformaId) {
+    public ResponseEntity<List<DetalleProforma>> getDetallesByProforma(@PathVariable Long proformaId) {
         Proforma proforma = new Proforma();
         proforma.setId(proformaId);
         return ResponseEntity.ok(detalleProformaService.findByProforma(proforma));
@@ -47,14 +47,14 @@ public class DetalleProformaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<DetalleProforma> updateDetalleProforma(@PathVariable Integer id,
+    public ResponseEntity<DetalleProforma> updateDetalleProforma(@PathVariable Long id,
             @RequestBody DetalleProforma detalleProforma) {
         detalleProforma.setId(id);
         return ResponseEntity.ok(detalleProformaService.save(detalleProforma));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteDetalleProforma(@PathVariable Integer id) {
+    public ResponseEntity<Void> deleteDetalleProforma(@PathVariable Long id) {
         detalleProformaService.deleteById(id);
         return ResponseEntity.noContent().build();
     }

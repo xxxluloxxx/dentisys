@@ -33,7 +33,7 @@ public class CitaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CitaDTO> findById(@PathVariable Integer id) {
+    public ResponseEntity<CitaDTO> findById(@PathVariable Long id) {
         return citaService.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -78,7 +78,7 @@ public class CitaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Cita> update(@PathVariable Integer id, @RequestBody Cita cita) {
+    public ResponseEntity<Cita> update(@PathVariable Long id, @RequestBody Cita cita) {
         System.out.println("Datos recibidos en update: " + cita);
         System.out.println("Hora recibida: " + cita.getHoraCita());
         return citaService.findCitaById(id)
@@ -90,7 +90,7 @@ public class CitaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         return citaService.findById(id)
                 .map(cita -> {
                     citaService.deleteById(id);

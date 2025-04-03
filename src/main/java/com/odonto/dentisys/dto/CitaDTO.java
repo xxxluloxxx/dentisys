@@ -7,10 +7,10 @@ import lombok.Data;
 
 @Data
 public class CitaDTO {
-    private Integer id;
-    private Integer pacienteId;
+    private Long id;
+    private Long pacienteId;
     private String pacienteNombre;
-    private Integer medicoId;
+    private Long medicoId;
     private String medicoNombre;
     private LocalDate fechaCita;
     private LocalTime horaCita;

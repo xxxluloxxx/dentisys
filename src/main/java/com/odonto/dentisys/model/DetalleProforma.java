@@ -20,7 +20,7 @@ import lombok.Data;
 public class DetalleProforma {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "proforma_id", nullable = false)

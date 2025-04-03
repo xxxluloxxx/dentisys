@@ -685,7 +685,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"codigo\": \"PROD001\",\n    \"nombre\": \"Producto de prueba\",\n    \"descripcion\": \"Descripción del producto\",\n    \"precio\": 100.00,\n    \"stock\": 10,\n    \"stockMinimo\": 5,\n    \"categoria\": \"MATERIALES\",\n    \"estado\": true\n}"
+                            "raw": "{\n    \"nombre\": \"Producto de prueba\",\n    \"descripcion\": \"Descripción del producto\",\n    \"precio\": 100.00,\n    \"categoria\": \"MATERIALES\",\n    \"estado\": true\n}"
                         },
                         "url": {
                             "raw": "{{base_url}}/api/productos",
@@ -712,7 +712,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"codigo\": \"PROD001\",\n    \"nombre\": \"Producto de prueba actualizado\",\n    \"descripcion\": \"Descripción actualizada del producto\",\n    \"precio\": 120.00,\n    \"stock\": 15,\n    \"stockMinimo\": 5,\n    \"categoria\": \"MATERIALES\",\n    \"estado\": true\n}"
+                            "raw": "{\n    \"nombre\": \"Producto de prueba actualizado\",\n    \"descripcion\": \"Descripción actualizada del producto\",\n    \"precio\": 120.00,\n    \"categoria\": \"MATERIALES\",\n    \"estado\": true\n}"
                         },
                         "url": {
                             "raw": "{{base_url}}/api/productos/1",
@@ -1689,6 +1689,530 @@
                             ]
                         },
                         "description": "Elimina una imagen específica"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Roles",
+            "item": [
+                {
+                    "name": "Obtener todos los roles",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/roles",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "roles"
+                            ]
+                        },
+                        "description": "Obtiene todos los roles registrados"
+                    }
+                },
+                {
+                    "name": "Obtener rol por ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/roles/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "roles",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene un rol específico por su ID"
+                    }
+                },
+                {
+                    "name": "Crear nuevo rol",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nombre\": \"ADMIN\",\n    \"descripcion\": \"Administrador del sistema\",\n    \"estado\": true\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/roles",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "roles"
+                            ]
+                        },
+                        "description": "Crea un nuevo rol"
+                    }
+                },
+                {
+                    "name": "Actualizar rol",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nombre\": \"ADMIN\",\n    \"descripcion\": \"Administrador del sistema - Actualizado\",\n    \"estado\": true\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/roles/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "roles",
+                                "1"
+                            ]
+                        },
+                        "description": "Actualiza un rol existente"
+                    }
+                },
+                {
+                    "name": "Eliminar rol",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/roles/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "roles",
+                                "1"
+                            ]
+                        },
+                        "description": "Elimina un rol por su ID"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Permisos",
+            "item": [
+                {
+                    "name": "Obtener todos los permisos",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/permisos",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "permisos"
+                            ]
+                        },
+                        "description": "Obtiene todos los permisos registrados"
+                    }
+                },
+                {
+                    "name": "Obtener permiso por ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/permisos/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "permisos",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene un permiso específico por su ID"
+                    }
+                },
+                {
+                    "name": "Crear nuevo permiso",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nombre\": \"CREAR_USUARIO\",\n    \"descripcion\": \"Permite crear usuarios\",\n    \"estado\": true\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/permisos",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "permisos"
+                            ]
+                        },
+                        "description": "Crea un nuevo permiso"
+                    }
+                },
+                {
+                    "name": "Actualizar permiso",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nombre\": \"CREAR_USUARIO\",\n    \"descripcion\": \"Permite crear usuarios - Actualizado\",\n    \"estado\": true\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/permisos/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "permisos",
+                                "1"
+                            ]
+                        },
+                        "description": "Actualiza un permiso existente"
+                    }
+                },
+                {
+                    "name": "Eliminar permiso",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/permisos/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "permisos",
+                                "1"
+                            ]
+                        },
+                        "description": "Elimina un permiso por su ID"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Roles-Permisos",
+            "item": [
+                {
+                    "name": "Obtener todas las asignaciones",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/roles-permisos",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "roles-permisos"
+                            ]
+                        },
+                        "description": "Obtiene todas las asignaciones de permisos a roles"
+                    }
+                },
+                {
+                    "name": "Obtener asignación por ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/roles-permisos/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "roles-permisos",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene una asignación específica por su ID"
+                    }
+                },
+                {
+                    "name": "Obtener permisos por rol",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/roles-permisos/rol/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "roles-permisos",
+                                "rol",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene todos los permisos asignados a un rol específico"
+                    }
+                },
+                {
+                    "name": "Crear nueva asignación",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"rolId\": 1,\n    \"permisoId\": 1\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/roles-permisos",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "roles-permisos"
+                            ]
+                        },
+                        "description": "Crea una nueva asignación de permiso a rol"
+                    }
+                },
+                {
+                    "name": "Actualizar asignación",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"rolId\": 1,\n    \"permisoId\": 2\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/roles-permisos/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "roles-permisos",
+                                "1"
+                            ]
+                        },
+                        "description": "Actualiza una asignación existente"
+                    }
+                },
+                {
+                    "name": "Eliminar asignación",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/roles-permisos/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "roles-permisos",
+                                "1"
+                            ]
+                        },
+                        "description": "Elimina una asignación por su ID"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Usuarios",
+            "item": [
+                {
+                    "name": "Obtener todos los usuarios",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/usuarios",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "usuarios"
+                            ]
+                        },
+                        "description": "Obtiene todos los usuarios registrados"
+                    }
+                },
+                {
+                    "name": "Obtener usuario por ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/usuarios/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "usuarios",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene un usuario específico por su ID"
+                    }
+                },
+                {
+                    "name": "Obtener usuario por email",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/usuarios/email/usuario@ejemplo.com",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "usuarios",
+                                "email",
+                                "usuario@ejemplo.com"
+                            ]
+                        },
+                        "description": "Obtiene un usuario por su email"
+                    }
+                },
+                {
+                    "name": "Obtener usuario por número de documento",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/usuarios/documento/12345678",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "usuarios",
+                                "documento",
+                                "12345678"
+                            ]
+                        },
+                        "description": "Obtiene un usuario por su número de documento"
+                    }
+                },
+                {
+                    "name": "Crear nuevo usuario",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"numeroDocumento\": \"12345678\",\n    \"nombre\": \"Juan\",\n    \"apellido\": \"Pérez\",\n    \"email\": \"juan.perez@ejemplo.com\",\n    \"password\": \"contraseña123\",\n    \"telefono\": \"123456789\",\n    \"estado\": true,\n    \"rolId\": 1\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/usuarios",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "usuarios"
+                            ]
+                        },
+                        "description": "Crea un nuevo usuario"
+                    }
+                },
+                {
+                    "name": "Actualizar usuario",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"numeroDocumento\": \"12345678\",\n    \"nombre\": \"Juan\",\n    \"apellido\": \"Pérez\",\n    \"email\": \"juan.perez@ejemplo.com\",\n    \"password\": \"contraseña123\",\n    \"telefono\": \"123456789\",\n    \"estado\": true,\n    \"rolId\": 1\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/usuarios/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "usuarios",
+                                "1"
+                            ]
+                        },
+                        "description": "Actualiza un usuario existente"
+                    }
+                },
+                {
+                    "name": "Eliminar usuario",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/usuarios/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "usuarios",
+                                "1"
+                            ]
+                        },
+                        "description": "Elimina un usuario por su ID"
                     }
                 }
             ]

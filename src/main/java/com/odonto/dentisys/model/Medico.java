@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -18,30 +20,13 @@ import lombok.Data;
 public class Medico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    @Column(name = "tipo_documento", nullable = false, length = 20)
-    private String tipoDocumento;
+    @OneToOne
+    @JoinColumn(name = "usuario_id", nullable = false, unique = true)
+    private Usuario usuario;
 
-    @Column(name = "numero_documento", unique = true, nullable = false, length = 20)
-    private String numeroDocumento;
-
-    @Column(name = "nombre", nullable = false, length = 100)
-    private String nombre;
-
-    @Column(name = "apellido", nullable = false, length = 100)
-    private String apellido;
-
-    @Column(name = "email", unique = true, nullable = false, length = 100)
-    private String email;
-
-    @Column(name = "password", nullable = false, length = 255)
-    private String password;
-
-    @Column(name = "telefono", nullable = false, length = 20)
-    private String telefono;
-
-    @Column(name = "especialidad", nullable = false, length = 100)
+    @Column(name = "especialidad", nullable = false)
     private String especialidad;
 
     @Column(name = "created_at")
@@ -59,5 +44,22 @@ public class Medico {
     @PreUpdate
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
+    }
+
+    // Métodos para acceder a los datos del usuario
+    public String getNombre() {
+        return usuario != null ? usuario.getNombre() : null;
+    }
+
+    public String getApellido() {
+        return usuario != null ? usuario.getApellido() : null;
+    }
+
+    public String getNumeroDocumento() {
+        return usuario != null ? usuario.getNumeroDocumento() : null;
+    }
+
+    public String getEmail() {
+        return usuario != null ? usuario.getEmail() : null;
     }
 }

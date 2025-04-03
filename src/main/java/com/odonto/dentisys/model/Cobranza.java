@@ -21,15 +21,11 @@ import lombok.Data;
 public class Cobranza {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "proforma_id", nullable = false, columnDefinition = "BIGINT")
     private Proforma proforma;
-
-    @ManyToOne
-    @JoinColumn(name = "paciente_id", nullable = false)
-    private Paciente paciente;
 
     @Column(name = "fecha_pago", nullable = false)
     private LocalDate fechaPago;
@@ -39,9 +35,6 @@ public class Cobranza {
 
     @Column(name = "metodo_pago", nullable = false, length = 50)
     private String metodoPago;
-
-    @Column(name = "abono_total", nullable = false)
-    private Boolean abonoTotal;
 
     @Column(name = "estado", nullable = false, length = 20)
     private String estado;
@@ -61,9 +54,6 @@ public class Cobranza {
         updatedAt = LocalDateTime.now();
         if (fechaPago == null) {
             fechaPago = LocalDate.now();
-        }
-        if (abonoTotal == null) {
-            abonoTotal = false;
         }
     }
 

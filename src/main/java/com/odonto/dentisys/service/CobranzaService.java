@@ -11,6 +11,7 @@ import com.odonto.dentisys.model.Cobranza;
 import com.odonto.dentisys.model.Paciente;
 import com.odonto.dentisys.model.Proforma;
 import com.odonto.dentisys.repository.CobranzaRepository;
+import com.odonto.dentisys.repository.ProformaRepository;
 
 @Service
 public class CobranzaService {
@@ -18,13 +19,16 @@ public class CobranzaService {
     @Autowired
     private CobranzaRepository cobranzaRepository;
 
+    @Autowired
+    private ProformaRepository proformaRepository;
+
     @Transactional(readOnly = true)
     public List<Cobranza> findAll() {
         return cobranzaRepository.findAll();
     }
 
     @Transactional(readOnly = true)
-    public Cobranza findById(Integer id) {
+    public Cobranza findById(Long id) {
         return cobranzaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cobranza no encontrada con ID: " + id));
     }
@@ -38,13 +42,8 @@ public class CobranzaService {
     }
 
     @Transactional
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
         cobranzaRepository.deleteById(id);
-    }
-
-    @Transactional(readOnly = true)
-    public List<Cobranza> findByPaciente(Paciente paciente) {
-        return cobranzaRepository.findByPaciente(paciente);
     }
 
     @Transactional(readOnly = true)
@@ -63,7 +62,21 @@ public class CobranzaService {
     }
 
     @Transactional(readOnly = true)
+    public List<Cobranza> findByPaciente(Paciente paciente) {
+        List<Proforma> proformas = proformaRepository.findByPaciente(paciente);
+        return cobranzaRepository.findByProformaIn(proformas);
+    }
+
+    @Transactional(readOnly = true)
     public List<Cobranza> findByPacienteAndEstado(Paciente paciente, String estado) {
-        return cobranzaRepository.findByPacienteAndEstado(paciente, estado);
+        List<Proforma> proformas = proformaRepository.findByPaciente(paciente);
+        return cobranzaRepository.findByProformaInAndEstado(proformas, estado);
+    }
+
+    @Transactional
+    public Cobranza update(Long id, Cobranza cobranza) {
+        Cobranza existingCobranza = findById(id);
+        cobranza.setId(id);
+        return cobranzaRepository.save(cobranza);
     }
 }

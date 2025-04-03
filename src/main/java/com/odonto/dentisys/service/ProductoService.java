@@ -22,20 +22,17 @@ public class ProductoService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<Producto> findById(Integer id) {
+    public Optional<Producto> findById(Long id) {
         return productoRepository.findById(id);
     }
 
     @Transactional
     public Producto save(Producto producto) {
-        if (producto.getId() == null && productoRepository.existsByCodigo(producto.getCodigo())) {
-            throw new RuntimeException("Ya existe un producto con ese código");
-        }
         return productoRepository.save(producto);
     }
 
     @Transactional
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
         productoRepository.deleteById(id);
     }
 

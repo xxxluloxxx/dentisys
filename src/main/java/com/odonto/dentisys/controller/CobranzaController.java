@@ -34,19 +34,19 @@ public class CobranzaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Cobranza> getCobranzaById(@PathVariable Integer id) {
+    public ResponseEntity<Cobranza> getCobranzaById(@PathVariable Long id) {
         return ResponseEntity.ok(cobranzaService.findById(id));
     }
 
     @GetMapping("/paciente/{pacienteId}")
-    public ResponseEntity<List<Cobranza>> getCobranzasByPaciente(@PathVariable Integer pacienteId) {
+    public ResponseEntity<List<Cobranza>> getCobranzasByPaciente(@PathVariable Long pacienteId) {
         Paciente paciente = new Paciente();
         paciente.setId(pacienteId);
         return ResponseEntity.ok(cobranzaService.findByPaciente(paciente));
     }
 
     @GetMapping("/proforma/{proformaId}")
-    public ResponseEntity<List<Cobranza>> getCobranzasByProforma(@PathVariable Integer proformaId) {
+    public ResponseEntity<List<Cobranza>> getCobranzasByProforma(@PathVariable Long proformaId) {
         Proforma proforma = new Proforma();
         proforma.setId(proformaId);
         return ResponseEntity.ok(cobranzaService.findByProforma(proforma));
@@ -66,7 +66,7 @@ public class CobranzaController {
 
     @GetMapping("/paciente/{pacienteId}/estado/{estado}")
     public ResponseEntity<List<Cobranza>> getCobranzasByPacienteAndEstado(
-            @PathVariable Integer pacienteId,
+            @PathVariable Long pacienteId,
             @PathVariable String estado) {
         Paciente paciente = new Paciente();
         paciente.setId(pacienteId);
@@ -79,13 +79,12 @@ public class CobranzaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Cobranza> updateCobranza(@PathVariable Integer id, @RequestBody Cobranza cobranza) {
-        cobranza.setId(id);
-        return ResponseEntity.ok(cobranzaService.save(cobranza));
+    public ResponseEntity<Cobranza> updateCobranza(@PathVariable Long id, @RequestBody Cobranza cobranza) {
+        return ResponseEntity.ok(cobranzaService.update(id, cobranza));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCobranza(@PathVariable Integer id) {
+    public ResponseEntity<Void> deleteCobranza(@PathVariable Long id) {
         cobranzaService.deleteById(id);
         return ResponseEntity.noContent().build();
     }

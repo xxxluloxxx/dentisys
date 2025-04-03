@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.odonto.dentisys.model.Cita;
 
 @Repository
-public interface CitaRepository extends JpaRepository<Cita, Integer> {
+public interface CitaRepository extends JpaRepository<Cita, Long> {
     List<Cita> findByPacienteId(Long pacienteId);
 
     List<Cita> findByMedicoId(Long medicoId);

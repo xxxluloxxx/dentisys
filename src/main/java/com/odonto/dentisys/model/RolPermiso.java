@@ -1,8 +1,6 @@
 package com.odonto.dentisys.model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,31 +16,19 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "citas")
-public class Cita {
+@Table(name = "roles_permisos")
+public class RolPermiso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "paciente_id", nullable = false, columnDefinition = "int4")
-    private Paciente paciente;
+    @JoinColumn(name = "rol_id", nullable = false)
+    private Rol rol;
 
     @ManyToOne
-    @JoinColumn(name = "medico_id", nullable = false)
-    private Medico medico;
-
-    @Column(name = "fecha_cita", nullable = false)
-    private LocalDate fechaCita;
-
-    @Column(name = "hora_cita", nullable = false)
-    private LocalTime horaCita;
-
-    @Column(name = "estado", nullable = false, length = 20)
-    private String estado;
-
-    @Column(name = "observaciones", columnDefinition = "text")
-    private String observaciones;
+    @JoinColumn(name = "permiso_id", nullable = false)
+    private Permiso permiso;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

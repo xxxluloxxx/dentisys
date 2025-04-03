@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 import com.odonto.dentisys.model.Medico;
 
 @Repository
-public interface MedicoRepository extends JpaRepository<Medico, Integer> {
-    boolean existsByNumeroDocumento(String numeroDocumento);
+public interface MedicoRepository extends JpaRepository<Medico, Long> {
+    boolean existsByUsuario_NumeroDocumento(String numeroDocumento);
 
-    boolean existsByEmail(String email);
+    boolean existsByUsuario_Email(String email);
 }

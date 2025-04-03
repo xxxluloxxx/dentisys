@@ -24,7 +24,7 @@ public class ProformaService {
     }
 
     @Transactional(readOnly = true)
-    public Proforma findById(Integer id) {
+    public Proforma findById(Long id) {
         return proformaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Proforma no encontrada con ID: " + id));
     }
@@ -41,7 +41,7 @@ public class ProformaService {
     }
 
     @Transactional
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
         proformaRepository.deleteById(id);
     }
 

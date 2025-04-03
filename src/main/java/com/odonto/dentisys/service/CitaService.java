@@ -27,13 +27,13 @@ public class CitaService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<CitaDTO> findById(Integer id) {
+    public Optional<CitaDTO> findById(Long id) {
         return citaRepository.findById(id)
                 .map(this::convertToDTO);
     }
 
     @Transactional(readOnly = true)
-    public Optional<Cita> findCitaById(Integer id) {
+    public Optional<Cita> findCitaById(Long id) {
         return citaRepository.findById(id);
     }
 
@@ -50,7 +50,7 @@ public class CitaService {
     }
 
     @Transactional
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
         citaRepository.deleteById(id);
     }
 
