@@ -62,4 +62,8 @@ public class Medico {
     public String getEmail() {
         return usuario != null ? usuario.getEmail() : null;
     }
+
+    public String getTelefono() {
+        return usuario != null ? usuario.getTelefono() : null;
+    }
 }
