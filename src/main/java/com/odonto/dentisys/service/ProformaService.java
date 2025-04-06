@@ -31,12 +31,6 @@ public class ProformaService {
 
     @Transactional
     public Proforma save(Proforma proforma) {
-        if (proforma.getSubtotal() < 0 || proforma.getIva() < 0 || proforma.getTotal() < 0) {
-            throw new RuntimeException("Los montos no pueden ser negativos");
-        }
-        if (proforma.getTotal() != (proforma.getSubtotal() + proforma.getIva())) {
-            throw new RuntimeException("El total debe ser igual a la suma del subtotal y el IVA");
-        }
         return proformaRepository.save(proforma);
     }
 
