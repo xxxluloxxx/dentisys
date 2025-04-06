@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.odonto.dentisys.dto.ProformaCompletaDTO;
 import com.odonto.dentisys.dto.ProformaDTO;
 import com.odonto.dentisys.dto.ProformaDetalleDTO;
+import com.odonto.dentisys.mapper.ProformaCompletaMapper;
 import com.odonto.dentisys.mapper.ProformaDetalleMapper;
 import com.odonto.dentisys.mapper.ProformaMapper;
 import com.odonto.dentisys.model.Medico;
@@ -38,14 +40,17 @@ public class ProformaController {
     @Autowired
     private ProformaDetalleMapper proformaDetalleMapper;
 
+    @Autowired
+    private ProformaCompletaMapper proformaCompletaMapper;
+
     @GetMapping
     public ResponseEntity<List<ProformaDTO>> getAllProformas() {
         return ResponseEntity.ok(proformaMapper.toDTOList(proformaService.findAll()));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProformaDTO> getProformaById(@PathVariable Long id) {
-        return ResponseEntity.ok(proformaMapper.toDTO(proformaService.findById(id)));
+    public ResponseEntity<ProformaCompletaDTO> getProformaById(@PathVariable Long id) {
+        return ResponseEntity.ok(proformaCompletaMapper.toDTO(proformaService.findById(id)));
     }
 
     @GetMapping("/paciente/{pacienteId}")
