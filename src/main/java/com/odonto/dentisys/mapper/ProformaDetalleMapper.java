@@ -1,9 +1,11 @@
 package com.odonto.dentisys.mapper;
 
+import java.time.ZoneId;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
+import com.odonto.dentisys.config.TimeZoneConfig;
 import com.odonto.dentisys.dto.DetalleProformaDTO;
 import com.odonto.dentisys.dto.ProformaDetalleDTO;
 import com.odonto.dentisys.model.DetalleProforma;
@@ -28,7 +30,8 @@ public class ProformaDetalleMapper {
         dto.setTotal(proforma.getTotal());
         dto.setEstado(proforma.getEstado());
         dto.setObservaciones(proforma.getObservaciones());
-        dto.setCreatedAt(proforma.getCreatedAt());
+        dto.setCreatedAt(
+                proforma.getCreatedAt().withZoneSameInstant(ZoneId.of(TimeZoneConfig.ZONA_ECUADOR)).toLocalDateTime());
 
         if (proforma.getDetalles() != null) {
             dto.setDetalles(proforma.getDetalles().stream()

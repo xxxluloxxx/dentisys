@@ -1,7 +1,7 @@
 package com.odonto.dentisys.dto;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 import lombok.Data;
 
@@ -18,6 +18,6 @@ public class ProformaDTO {
     private Double total;
     private String estado;
     private String observaciones;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private ZonedDateTime createdAt;
+    private ZonedDateTime updatedAt;
 }
