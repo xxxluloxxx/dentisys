@@ -1,6 +1,6 @@
 package com.odonto.dentisys.repository;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,7 +16,7 @@ public interface ProformaRepository extends JpaRepository<Proforma, Long> {
 
     List<Proforma> findByMedico(Medico medico);
 
-    List<Proforma> findByFechaEmisionBetween(LocalDate fechaInicio, LocalDate fechaFin);
+    List<Proforma> findByCreatedAtBetween(LocalDateTime fechaInicio, LocalDateTime fechaFin);
 
     List<Proforma> findByEstado(String estado);
 }

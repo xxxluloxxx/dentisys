@@ -40,7 +40,6 @@ public class ProformaCompletaMapper {
         dto.setPacienteNombre(proformaDTO.getPacienteNombre());
         dto.setMedicoId(proformaDTO.getMedicoId());
         dto.setMedicoNombre(proformaDTO.getMedicoNombre());
-        dto.setFechaEmision(proformaDTO.getFechaEmision());
         dto.setSubtotal(proformaDTO.getSubtotal());
         dto.setIva(proformaDTO.getIva());
         dto.setDescuento(proformaDTO.getDescuento());

@@ -22,7 +22,6 @@ public class ProformaMapper {
         dto.setPacienteNombre(proforma.getPaciente().getNombre() + " " + proforma.getPaciente().getApellido());
         dto.setMedicoId(proforma.getMedico().getId());
         dto.setMedicoNombre(proforma.getMedico().getNombre() + " " + proforma.getMedico().getApellido());
-        dto.setFechaEmision(proforma.getFechaEmision());
         dto.setSubtotal(proforma.getSubtotal());
         dto.setIva(proforma.getIva());
         dto.setDescuento(proforma.getDescuento());

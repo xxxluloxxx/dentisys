@@ -13,7 +13,6 @@ public class ProformaCompletaDTO {
     private String pacienteNombre;
     private Long medicoId;
     private String medicoNombre;
-    private LocalDate fechaEmision;
     private Double subtotal;
     private Double iva;
     private Double descuento;

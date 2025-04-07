@@ -1,6 +1,5 @@
 package com.odonto.dentisys.dto;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import lombok.Data;
@@ -12,7 +11,6 @@ public class ProformaDTO {
     private String pacienteNombre;
     private Long medicoId;
     private String medicoNombre;
-    private LocalDate fechaEmision;
     private Double subtotal;
     private Double iva;
     private Double descuento;

@@ -1,6 +1,7 @@
 package com.odonto.dentisys.service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,8 +51,8 @@ public class ProformaService {
     }
 
     @Transactional(readOnly = true)
-    public List<Proforma> findByFechaEmisionBetween(LocalDate fechaInicio, LocalDate fechaFin) {
-        return proformaRepository.findByFechaEmisionBetween(fechaInicio, fechaFin);
+    public List<Proforma> findByCreatedAtBetween(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
+        return proformaRepository.findByCreatedAtBetween(fechaInicio, fechaFin);
     }
 
     @Transactional(readOnly = true)

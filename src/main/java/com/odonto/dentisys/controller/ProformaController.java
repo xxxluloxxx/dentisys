@@ -71,8 +71,12 @@ public class ProformaController {
     public ResponseEntity<List<ProformaDTO>> getProformasByFechaEmision(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaInicio,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaFin) {
+        java.time.LocalDateTime fechaInicioDateTime = fechaInicio.atStartOfDay();
+        java.time.LocalDateTime fechaFinDateTime = fechaFin.atTime(23, 59, 59);
+
         return ResponseEntity
-                .ok(proformaMapper.toDTOList(proformaService.findByFechaEmisionBetween(fechaInicio, fechaFin)));
+                .ok(proformaMapper
+                        .toDTOList(proformaService.findByCreatedAtBetween(fechaInicioDateTime, fechaFinDateTime)));
     }
 
     @GetMapping("/estado/{estado}")

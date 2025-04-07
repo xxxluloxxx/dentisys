@@ -1,11 +1,7 @@
 package com.odonto.dentisys.model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.List;
-
-import com.odonto.dentisys.config.TimeZoneConfig;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,9 +31,6 @@ public class Proforma {
     @ManyToOne
     @JoinColumn(name = "medico_id", nullable = false)
     private Medico medico;
-
-    @Column(name = "fecha_emision")
-    private LocalDate fechaEmision;
 
     @Column(name = "subtotal", nullable = false, columnDefinition = "numeric")
     private Double subtotal;
@@ -70,10 +63,6 @@ public class Proforma {
     protected void onCreate() {
         createdAt = LocalDateTime.now();
         updatedAt = LocalDateTime.now();
-        if (fechaEmision == null) {
-            ZoneId zonaEcuador = ZoneId.of(TimeZoneConfig.ZONA_ECUADOR);
-            fechaEmision = LocalDate.now(zonaEcuador);
-        }
     }
 
     @PreUpdate
