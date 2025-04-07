@@ -169,7 +169,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"proforma\": {\n        \"id\": 1\n    },\n    \"paciente\": {\n        \"id\": 1\n    },\n    \"fechaPago\": \"2024-03-20\",\n    \"monto\": 100.00,\n    \"metodoPago\": \"EFECTIVO\",\n    \"abonoTotal\": true,\n    \"estado\": \"COMPLETADO\",\n    \"observaciones\": \"Pago completo realizado\"\n}"
+                            "raw": "{\n    \"proforma\": {\n        \"id\": 1\n    },\n    \"fechaPago\": \"2024-03-20\",\n    \"monto\": 100.00,\n    \"metodoPago\": \"EFECTIVO\",\n    \"estado\": \"COMPLETADO\",\n    \"observaciones\": \"Pago completo realizado\"\n}"
                         },
                         "url": {
                             "raw": "{{base_url}}/api/cobranzas",
@@ -196,7 +196,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"proforma\": {\n        \"id\": 1\n    },\n    \"paciente\": {\n        \"id\": 1\n    },\n    \"fechaPago\": \"2024-03-20\",\n    \"monto\": 100.00,\n    \"metodoPago\": \"EFECTIVO\",\n    \"abonoTotal\": true,\n    \"estado\": \"COMPLETADO\",\n    \"observaciones\": \"Pago completo realizado - Actualizado\"\n}"
+                            "raw": "{\n    \"proforma\": {\n        \"id\": 1\n    },\n    \"fechaPago\": \"2024-03-20\",\n    \"monto\": 100.00,\n    \"metodoPago\": \"EFECTIVO\",\n    \"estado\": \"COMPLETADO\",\n    \"observaciones\": \"Pago completo realizado - Actualizado\"\n}"
                         },
                         "url": {
                             "raw": "{{base_url}}/api/cobranzas/1",
@@ -450,26 +450,6 @@
                     }
                 },
                 {
-                    "name": "Obtener proformas por estado",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/proformas/estado/PENDIENTE",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "proformas",
-                                "estado",
-                                "PENDIENTE"
-                            ]
-                        },
-                        "description": "Obtiene las proformas por estado específico"
-                    }
-                },
-                {
                     "name": "Obtener proformas por rango de fechas",
                     "request": {
                         "method": "GET",
@@ -499,6 +479,26 @@
                     }
                 },
                 {
+                    "name": "Obtener proformas por estado",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/proformas/estado/PENDIENTE",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "proformas",
+                                "estado",
+                                "PENDIENTE"
+                            ]
+                        },
+                        "description": "Obtiene las proformas por estado específico"
+                    }
+                },
+                {
                     "name": "Crear nueva proforma",
                     "request": {
                         "method": "POST",
@@ -510,7 +510,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"paciente\": {\n        \"id\": 1\n    },\n    \"medico\": {\n        \"id\": 1\n    },\n    \"fechaEmision\": \"2024-03-20\",\n    \"fechaVencimiento\": \"2024-04-20\",\n    \"subtotal\": 500.00,\n    \"iva\": 90.00,\n    \"total\": 590.00,\n    \"estado\": \"PENDIENTE\",\n    \"observaciones\": \"Proforma para tratamiento dental\"\n}"
+                            "raw": "{\n    \"paciente\": {\n        \"id\": 1\n    },\n    \"medico\": {\n        \"id\": 1\n    },\n    \"fechaEmision\": \"2024-03-20\",\n    \"subtotal\": 100.00,\n    \"iva\": 12.00,\n    \"total\": 112.00,\n    \"estado\": \"PENDIENTE\",\n    \"observaciones\": \"Nueva proforma\"\n}"
                         },
                         "url": {
                             "raw": "{{base_url}}/api/proformas",
@@ -537,7 +537,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"paciente\": {\n        \"id\": 1\n    },\n    \"medico\": {\n        \"id\": 1\n    },\n    \"fechaEmision\": \"2024-03-20\",\n    \"fechaVencimiento\": \"2024-04-20\",\n    \"subtotal\": 600.00,\n    \"iva\": 108.00,\n    \"total\": 708.00,\n    \"estado\": \"PENDIENTE\",\n    \"observaciones\": \"Proforma actualizada para tratamiento dental\"\n}"
+                            "raw": "{\n    \"paciente\": {\n        \"id\": 1\n    },\n    \"medico\": {\n        \"id\": 1\n    },\n    \"fechaEmision\": \"2024-03-20\",\n    \"subtotal\": 100.00,\n    \"iva\": 12.00,\n    \"total\": 112.00,\n    \"estado\": \"PENDIENTE\",\n    \"observaciones\": \"Proforma actualizada\"\n}"
                         },
                         "url": {
                             "raw": "{{base_url}}/api/proformas/1",
@@ -573,6 +573,26 @@
                     }
                 },
                 {
+                    "name": "Obtener proforma con detalles",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/proformas/1/detalles",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "proformas",
+                                "1",
+                                "detalles"
+                            ]
+                        },
+                        "description": "Obtiene una proforma específica con sus detalles"
+                    }
+                },
+                {
                     "name": "Obtener todas las proformas con detalles",
                     "request": {
                         "method": "GET",
@@ -588,93 +608,166 @@
                                 "detalles"
                             ]
                         },
-                        "description": "Obtiene todas las proformas con sus detalles completos"
+                        "description": "Obtiene todas las proformas con sus detalles"
                     }
                 }
             ]
         },
         {
-            "name": "Productos",
+            "name": "Gráficas",
             "item": [
                 {
-                    "name": "Obtener todos los productos",
+                    "name": "Obtener estadísticas de proformas",
                     "request": {
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "{{base_url}}/api/productos",
+                            "raw": "{{base_url}}/api/graficas/estadisticas-proformas",
                             "host": [
                                 "{{base_url}}"
                             ],
                             "path": [
                                 "api",
-                                "productos"
+                                "graficas",
+                                "estadisticas-proformas"
                             ]
                         },
-                        "description": "Obtiene todos los productos"
+                        "description": "Obtiene estadísticas generales de las proformas"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Cuentas",
+            "item": [
+                {
+                    "name": "Obtener todas las cuentas",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/cuentas",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "cuentas"
+                            ]
+                        },
+                        "description": "Obtiene todas las cuentas registradas"
                     }
                 },
                 {
-                    "name": "Obtener producto por ID",
+                    "name": "Obtener cuenta por ID",
                     "request": {
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "{{base_url}}/api/productos/1",
+                            "raw": "{{base_url}}/api/cuentas/1",
                             "host": [
                                 "{{base_url}}"
                             ],
                             "path": [
                                 "api",
-                                "productos",
+                                "cuentas",
                                 "1"
                             ]
                         },
-                        "description": "Obtiene un producto específico por su ID"
+                        "description": "Obtiene una cuenta específica por su ID"
                     }
                 },
                 {
-                    "name": "Obtener productos por categoría",
+                    "name": "Obtener cuentas por categoría",
                     "request": {
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "{{base_url}}/api/productos/categoria/MATERIALES",
+                            "raw": "{{base_url}}/api/cuentas/categoria/1",
                             "host": [
                                 "{{base_url}}"
                             ],
                             "path": [
                                 "api",
-                                "productos",
+                                "cuentas",
                                 "categoria",
-                                "MATERIALES"
+                                "1"
                             ]
                         },
-                        "description": "Obtiene productos por categoría específica"
+                        "description": "Obtiene todas las cuentas de una categoría específica"
                     }
                 },
                 {
-                    "name": "Obtener productos por estado",
+                    "name": "Obtener cuentas por cobranza",
                     "request": {
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "{{base_url}}/api/productos/estado/true",
+                            "raw": "{{base_url}}/api/cuentas/cobranza/1",
                             "host": [
                                 "{{base_url}}"
                             ],
                             "path": [
                                 "api",
-                                "productos",
+                                "cuentas",
+                                "cobranza",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene todas las cuentas de una cobranza específica"
+                    }
+                },
+                {
+                    "name": "Obtener cuentas por rango de fechas",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/cuentas/fecha?fechaInicio=2024-01-01&fechaFin=2024-12-31",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "cuentas",
+                                "fecha"
+                            ],
+                            "query": [
+                                {
+                                    "key": "fechaInicio",
+                                    "value": "2024-01-01"
+                                },
+                                {
+                                    "key": "fechaFin",
+                                    "value": "2024-12-31"
+                                }
+                            ]
+                        },
+                        "description": "Obtiene las cuentas dentro de un rango de fechas"
+                    }
+                },
+                {
+                    "name": "Obtener cuentas por estado",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/cuentas/estado/true",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "cuentas",
                                 "estado",
                                 "true"
                             ]
                         },
-                        "description": "Obtiene productos por estado (activo/inactivo)"
+                        "description": "Obtiene las cuentas por estado específico"
                     }
                 },
                 {
-                    "name": "Crear nuevo producto",
+                    "name": "Crear nueva cuenta",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -685,23 +778,23 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"nombre\": \"Producto de prueba\",\n    \"descripcion\": \"Descripción del producto\",\n    \"precio\": 100.00,\n    \"categoria\": \"MATERIALES\",\n    \"estado\": true\n}"
+                            "raw": "{\n    \"descripcion\": \"Ejemplo de cuenta\",\n    \"monto\": 1000.00,\n    \"fechaMovimiento\": \"2024-03-20\",\n    \"estado\": true,\n    \"categoriaId\": 1,\n    \"cobranzaId\": 1\n}"
                         },
                         "url": {
-                            "raw": "{{base_url}}/api/productos",
+                            "raw": "{{base_url}}/api/cuentas",
                             "host": [
                                 "{{base_url}}"
                             ],
                             "path": [
                                 "api",
-                                "productos"
+                                "cuentas"
                             ]
                         },
-                        "description": "Crea un nuevo producto"
+                        "description": "Crea una nueva cuenta"
                     }
                 },
                 {
-                    "name": "Actualizar producto",
+                    "name": "Actualizar cuenta",
                     "request": {
                         "method": "PUT",
                         "header": [
@@ -712,1538 +805,39 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"nombre\": \"Producto de prueba actualizado\",\n    \"descripcion\": \"Descripción actualizada del producto\",\n    \"precio\": 120.00,\n    \"categoria\": \"MATERIALES\",\n    \"estado\": true\n}"
+                            "raw": "{\n    \"descripcion\": \"Cuenta actualizada\",\n    \"monto\": 1500.00,\n    \"fechaMovimiento\": \"2024-03-20\",\n    \"estado\": true,\n    \"categoriaId\": 1,\n    \"cobranzaId\": 1\n}"
                         },
                         "url": {
-                            "raw": "{{base_url}}/api/productos/1",
+                            "raw": "{{base_url}}/api/cuentas/1",
                             "host": [
                                 "{{base_url}}"
                             ],
                             "path": [
                                 "api",
-                                "productos",
+                                "cuentas",
                                 "1"
                             ]
                         },
-                        "description": "Actualiza un producto existente"
+                        "description": "Actualiza una cuenta existente"
                     }
                 },
                 {
-                    "name": "Eliminar producto",
+                    "name": "Eliminar cuenta",
                     "request": {
                         "method": "DELETE",
                         "header": [],
                         "url": {
-                            "raw": "{{base_url}}/api/productos/1",
+                            "raw": "{{base_url}}/api/cuentas/1",
                             "host": [
                                 "{{base_url}}"
                             ],
                             "path": [
                                 "api",
-                                "productos",
+                                "cuentas",
                                 "1"
                             ]
                         },
-                        "description": "Elimina un producto por su ID"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Médicos",
-            "item": [
-                {
-                    "name": "Obtener todos los médicos",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/medicos",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "medicos"
-                            ]
-                        },
-                        "description": "Obtiene todos los médicos registrados"
-                    }
-                },
-                {
-                    "name": "Obtener médico por ID",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/medicos/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "medicos",
-                                "1"
-                            ]
-                        },
-                        "description": "Obtiene un médico específico por su ID"
-                    }
-                },
-                {
-                    "name": "Obtener médicos por especialidad",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/medicos/especialidad/ORTODONCIA",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "medicos",
-                                "especialidad",
-                                "ORTODONCIA"
-                            ]
-                        },
-                        "description": "Obtiene médicos por especialidad específica"
-                    }
-                },
-                {
-                    "name": "Obtener médicos por estado",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/medicos/estado/true",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "medicos",
-                                "estado",
-                                "true"
-                            ]
-                        },
-                        "description": "Obtiene médicos por estado (activo/inactivo)"
-                    }
-                },
-                {
-                    "name": "Crear nuevo médico",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"nombre\": \"Dr. Juan Pérez\",\n    \"apellido\": \"Pérez\",\n    \"dni\": \"12345678\",\n    \"email\": \"juan.perez@dentisys.com\",\n    \"telefono\": \"555-1234\",\n    \"especialidad\": \"ORTODONCIA\",\n    \"estado\": true\n}"
-                        },
-                        "url": {
-                            "raw": "{{base_url}}/api/medicos",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "medicos"
-                            ]
-                        },
-                        "description": "Crea un nuevo médico"
-                    }
-                },
-                {
-                    "name": "Actualizar médico",
-                    "request": {
-                        "method": "PUT",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"nombre\": \"Dr. Juan Pérez\",\n    \"apellido\": \"Pérez\",\n    \"dni\": \"12345678\",\n    \"email\": \"juan.perez.actualizado@dentisys.com\",\n    \"telefono\": \"555-5678\",\n    \"especialidad\": \"ORTODONCIA\",\n    \"estado\": true\n}"
-                        },
-                        "url": {
-                            "raw": "{{base_url}}/api/medicos/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "medicos",
-                                "1"
-                            ]
-                        },
-                        "description": "Actualiza un médico existente"
-                    }
-                },
-                {
-                    "name": "Eliminar médico",
-                    "request": {
-                        "method": "DELETE",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/medicos/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "medicos",
-                                "1"
-                            ]
-                        },
-                        "description": "Elimina un médico por su ID"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Pacientes",
-            "item": [
-                {
-                    "name": "Obtener todos los pacientes",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/pacientes",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "pacientes"
-                            ]
-                        },
-                        "description": "Obtiene todos los pacientes registrados"
-                    }
-                },
-                {
-                    "name": "Obtener paciente por ID",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/pacientes/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "pacientes",
-                                "1"
-                            ]
-                        },
-                        "description": "Obtiene un paciente específico por su ID"
-                    }
-                },
-                {
-                    "name": "Obtener pacientes por tipo de documento",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/pacientes/tipo-documento/DNI",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "pacientes",
-                                "tipo-documento",
-                                "DNI"
-                            ]
-                        },
-                        "description": "Obtiene pacientes por tipo de documento"
-                    }
-                },
-                {
-                    "name": "Obtener pacientes por estado",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/pacientes/estado/true",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "pacientes",
-                                "estado",
-                                "true"
-                            ]
-                        },
-                        "description": "Obtiene pacientes por estado (activo/inactivo)"
-                    }
-                },
-                {
-                    "name": "Crear nuevo paciente",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"nombre\": \"María\",\n    \"apellido\": \"González\",\n    \"tipoDocumento\": \"DNI\",\n    \"numeroDocumento\": \"87654321\",\n    \"fechaNacimiento\": \"1990-01-01\",\n    \"genero\": \"FEMENINO\",\n    \"email\": \"maria.gonzalez@email.com\",\n    \"telefono\": \"555-4321\",\n    \"direccion\": \"Av. Principal 123\",\n    \"estado\": true\n}"
-                        },
-                        "url": {
-                            "raw": "{{base_url}}/api/pacientes",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "pacientes"
-                            ]
-                        },
-                        "description": "Crea un nuevo paciente"
-                    }
-                },
-                {
-                    "name": "Actualizar paciente",
-                    "request": {
-                        "method": "PUT",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"nombre\": \"María\",\n    \"apellido\": \"González\",\n    \"tipoDocumento\": \"DNI\",\n    \"numeroDocumento\": \"87654321\",\n    \"fechaNacimiento\": \"1990-01-01\",\n    \"genero\": \"FEMENINO\",\n    \"email\": \"maria.gonzalez.actualizado@email.com\",\n    \"telefono\": \"555-8765\",\n    \"direccion\": \"Av. Principal 456\",\n    \"estado\": true\n}"
-                        },
-                        "url": {
-                            "raw": "{{base_url}}/api/pacientes/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "pacientes",
-                                "1"
-                            ]
-                        },
-                        "description": "Actualiza un paciente existente"
-                    }
-                },
-                {
-                    "name": "Eliminar paciente",
-                    "request": {
-                        "method": "DELETE",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/pacientes/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "pacientes",
-                                "1"
-                            ]
-                        },
-                        "description": "Elimina un paciente por su ID"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Fichas Odontológicas",
-            "item": [
-                {
-                    "name": "Obtener todas las fichas",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/fichas-odontologicas",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "fichas-odontologicas"
-                            ]
-                        },
-                        "description": "Obtiene todas las fichas odontológicas registradas"
-                    }
-                },
-                {
-                    "name": "Obtener ficha por ID",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/fichas-odontologicas/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "fichas-odontologicas",
-                                "1"
-                            ]
-                        },
-                        "description": "Obtiene una ficha odontológica específica por su ID"
-                    }
-                },
-                {
-                    "name": "Obtener fichas por paciente",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/fichas-odontologicas/paciente/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "fichas-odontologicas",
-                                "paciente",
-                                "1"
-                            ]
-                        },
-                        "description": "Obtiene todas las fichas odontológicas de un paciente específico"
-                    }
-                },
-                {
-                    "name": "Obtener fichas por médico",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/fichas-odontologicas/medico/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "fichas-odontologicas",
-                                "medico",
-                                "1"
-                            ]
-                        },
-                        "description": "Obtiene todas las fichas odontológicas de un médico específico"
-                    }
-                },
-                {
-                    "name": "Crear nueva ficha",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"paciente\": {\n        \"id\": 1\n    },\n    \"medico\": {\n        \"id\": 1\n    },\n    \"fechaConsulta\": \"2024-03-20\",\n    \"motivoConsulta\": \"Dolor en muela\",\n    \"diagnostico\": \"Caries dental\",\n    \"tratamiento\": \"Empaste dental\",\n    \"observaciones\": \"Paciente presenta sensibilidad en la zona\",\n    \"estado\": \"ACTIVA\"\n}"
-                        },
-                        "url": {
-                            "raw": "{{base_url}}/api/fichas-odontologicas",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "fichas-odontologicas"
-                            ]
-                        },
-                        "description": "Crea una nueva ficha odontológica"
-                    }
-                },
-                {
-                    "name": "Actualizar ficha",
-                    "request": {
-                        "method": "PUT",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"paciente\": {\n        \"id\": 1\n    },\n    \"medico\": {\n        \"id\": 1\n    },\n    \"fechaConsulta\": \"2024-03-20\",\n    \"motivoConsulta\": \"Dolor en muela\",\n    \"diagnostico\": \"Caries dental\",\n    \"tratamiento\": \"Empaste dental y limpieza\",\n    \"observaciones\": \"Paciente presenta sensibilidad en la zona - Requiere seguimiento\",\n    \"estado\": \"ACTIVA\"\n}"
-                        },
-                        "url": {
-                            "raw": "{{base_url}}/api/fichas-odontologicas/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "fichas-odontologicas",
-                                "1"
-                            ]
-                        },
-                        "description": "Actualiza una ficha odontológica existente"
-                    }
-                },
-                {
-                    "name": "Eliminar ficha",
-                    "request": {
-                        "method": "DELETE",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/fichas-odontologicas/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "fichas-odontologicas",
-                                "1"
-                            ]
-                        },
-                        "description": "Elimina una ficha odontológica por su ID"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Citas",
-            "item": [
-                {
-                    "name": "Obtener todas las citas",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/citas",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "citas"
-                            ]
-                        },
-                        "description": "Obtiene todas las citas registradas"
-                    }
-                },
-                {
-                    "name": "Obtener cita por ID",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/citas/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "citas",
-                                "1"
-                            ]
-                        },
-                        "description": "Obtiene una cita específica por su ID"
-                    }
-                },
-                {
-                    "name": "Obtener citas por paciente",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/citas/paciente/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "citas",
-                                "paciente",
-                                "1"
-                            ]
-                        },
-                        "description": "Obtiene todas las citas de un paciente específico"
-                    }
-                },
-                {
-                    "name": "Obtener citas por médico",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/citas/medico/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "citas",
-                                "medico",
-                                "1"
-                            ]
-                        },
-                        "description": "Obtiene todas las citas de un médico específico"
-                    }
-                },
-                {
-                    "name": "Obtener citas por fecha",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/citas/fecha/2024-03-20",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "citas",
-                                "fecha",
-                                "2024-03-20"
-                            ]
-                        },
-                        "description": "Obtiene todas las citas para una fecha específica"
-                    }
-                },
-                {
-                    "name": "Obtener citas por estado",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/citas/estado/PENDIENTE",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "citas",
-                                "estado",
-                                "PENDIENTE"
-                            ]
-                        },
-                        "description": "Obtiene las citas por estado específico"
-                    }
-                },
-                {
-                    "name": "Crear nueva cita",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"paciente\": {\n        \"id\": 1\n    },\n    \"medico\": {\n        \"id\": 1\n    },\n    \"fechaHora\": \"2024-03-20T10:00:00\",\n    \"duracion\": 30,\n    \"tipoCita\": \"CONSULTA\",\n    \"estado\": \"PENDIENTE\",\n    \"observaciones\": \"Primera consulta de rutina\"\n}"
-                        },
-                        "url": {
-                            "raw": "{{base_url}}/api/citas",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "citas"
-                            ]
-                        },
-                        "description": "Crea una nueva cita"
-                    }
-                },
-                {
-                    "name": "Actualizar cita",
-                    "request": {
-                        "method": "PUT",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"paciente\": {\n        \"id\": 1\n    },\n    \"medico\": {\n        \"id\": 1\n    },\n    \"fechaHora\": \"2024-03-20T11:00:00\",\n    \"duracion\": 30,\n    \"tipoCita\": \"CONSULTA\",\n    \"estado\": \"CONFIRMADA\",\n    \"observaciones\": \"Primera consulta de rutina - Confirmada\"\n}"
-                        },
-                        "url": {
-                            "raw": "{{base_url}}/api/citas/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "citas",
-                                "1"
-                            ]
-                        },
-                        "description": "Actualiza una cita existente"
-                    }
-                },
-                {
-                    "name": "Eliminar cita",
-                    "request": {
-                        "method": "DELETE",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/citas/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "citas",
-                                "1"
-                            ]
-                        },
-                        "description": "Elimina una cita por su ID"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Agenda",
-            "item": [
-                {
-                    "name": "Obtener agenda por médico",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/agenda/medico/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "agenda",
-                                "medico",
-                                "1"
-                            ]
-                        },
-                        "description": "Obtiene la agenda completa de un médico"
-                    }
-                },
-                {
-                    "name": "Obtener agenda por médico y fecha",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/agenda/medico/1/fecha/2024-03-20",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "agenda",
-                                "medico",
-                                "1",
-                                "fecha",
-                                "2024-03-20"
-                            ]
-                        },
-                        "description": "Obtiene la agenda de un médico para una fecha específica"
-                    }
-                },
-                {
-                    "name": "Obtener horarios disponibles",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/agenda/horarios-disponibles?medicoId=1&fecha=2024-03-20",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "agenda",
-                                "horarios-disponibles"
-                            ],
-                            "query": [
-                                {
-                                    "key": "medicoId",
-                                    "value": "1"
-                                },
-                                {
-                                    "key": "fecha",
-                                    "value": "2024-03-20"
-                                }
-                            ]
-                        },
-                        "description": "Obtiene los horarios disponibles para un médico en una fecha específica"
-                    }
-                },
-                {
-                    "name": "Obtener conflictos de horario",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/agenda/conflictos?medicoId=1&fecha=2024-03-20",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "agenda",
-                                "conflictos"
-                            ],
-                            "query": [
-                                {
-                                    "key": "medicoId",
-                                    "value": "1"
-                                },
-                                {
-                                    "key": "fecha",
-                                    "value": "2024-03-20"
-                                }
-                            ]
-                        },
-                        "description": "Obtiene los conflictos de horario para un médico en una fecha específica"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Variables de Entorno",
-            "item": [
-                {
-                    "name": "Configuración Local",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}",
-                            "host": [
-                                "{{base_url}}"
-                            ]
-                        },
-                        "description": "Configuración para ambiente local"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Imágenes de Fichas",
-            "item": [
-                {
-                    "name": "Obtener todas las imágenes",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/imagenes-fichas",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "imagenes-fichas"
-                            ]
-                        },
-                        "description": "Obtiene todas las imágenes registradas"
-                    }
-                },
-                {
-                    "name": "Obtener imagen por ID",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/imagenes-fichas/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "imagenes-fichas",
-                                "1"
-                            ]
-                        },
-                        "description": "Obtiene una imagen específica por su ID"
-                    }
-                },
-                {
-                    "name": "Obtener imágenes por ficha",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/imagenes-fichas/ficha/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "imagenes-fichas",
-                                "ficha",
-                                "1"
-                            ]
-                        },
-                        "description": "Obtiene todas las imágenes de una ficha específica"
-                    }
-                },
-                {
-                    "name": "Obtener imágenes por tipo",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/imagenes-fichas/tipo/Radiografía",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "imagenes-fichas",
-                                "tipo",
-                                "Radiografía"
-                            ]
-                        },
-                        "description": "Obtiene todas las imágenes de un tipo específico"
-                    }
-                },
-                {
-                    "name": "Crear nueva imagen",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"fichaId\": 1,\n    \"nombre\": \"Radiografía frontal\",\n    \"imagenBase64\": \"data:image/jpeg;base64,/9j/4AAQSkZJRg...\",\n    \"tipoImagen\": \"Radiografía\",\n    \"descripcion\": \"Radiografía frontal del paciente\"\n}"
-                        },
-                        "url": {
-                            "raw": "{{base_url}}/api/imagenes-fichas",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "imagenes-fichas"
-                            ]
-                        },
-                        "description": "Crea una nueva imagen asociada a una ficha"
-                    }
-                },
-                {
-                    "name": "Actualizar imagen",
-                    "request": {
-                        "method": "PUT",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"fichaId\": 1,\n    \"nombre\": \"Radiografía frontal actualizada\",\n    \"imagenBase64\": \"data:image/jpeg;base64,/9j/4AAQSkZJRg...\",\n    \"tipoImagen\": \"Radiografía\",\n    \"descripcion\": \"Radiografía frontal del paciente actualizada\"\n}"
-                        },
-                        "url": {
-                            "raw": "{{base_url}}/api/imagenes-fichas/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "imagenes-fichas",
-                                "1"
-                            ]
-                        },
-                        "description": "Actualiza una imagen existente"
-                    }
-                },
-                {
-                    "name": "Eliminar imagen",
-                    "request": {
-                        "method": "DELETE",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/imagenes-fichas/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "imagenes-fichas",
-                                "1"
-                            ]
-                        },
-                        "description": "Elimina una imagen específica"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Roles",
-            "item": [
-                {
-                    "name": "Obtener todos los roles",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/roles",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "roles"
-                            ]
-                        },
-                        "description": "Obtiene todos los roles registrados"
-                    }
-                },
-                {
-                    "name": "Obtener rol por ID",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/roles/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "roles",
-                                "1"
-                            ]
-                        },
-                        "description": "Obtiene un rol específico por su ID"
-                    }
-                },
-                {
-                    "name": "Crear nuevo rol",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"nombre\": \"ADMIN\",\n    \"descripcion\": \"Administrador del sistema\",\n    \"estado\": true\n}"
-                        },
-                        "url": {
-                            "raw": "{{base_url}}/api/roles",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "roles"
-                            ]
-                        },
-                        "description": "Crea un nuevo rol"
-                    }
-                },
-                {
-                    "name": "Actualizar rol",
-                    "request": {
-                        "method": "PUT",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"nombre\": \"ADMIN\",\n    \"descripcion\": \"Administrador del sistema - Actualizado\",\n    \"estado\": true\n}"
-                        },
-                        "url": {
-                            "raw": "{{base_url}}/api/roles/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "roles",
-                                "1"
-                            ]
-                        },
-                        "description": "Actualiza un rol existente"
-                    }
-                },
-                {
-                    "name": "Eliminar rol",
-                    "request": {
-                        "method": "DELETE",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/roles/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "roles",
-                                "1"
-                            ]
-                        },
-                        "description": "Elimina un rol por su ID"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Permisos",
-            "item": [
-                {
-                    "name": "Obtener todos los permisos",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/permisos",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "permisos"
-                            ]
-                        },
-                        "description": "Obtiene todos los permisos registrados"
-                    }
-                },
-                {
-                    "name": "Obtener permiso por ID",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/permisos/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "permisos",
-                                "1"
-                            ]
-                        },
-                        "description": "Obtiene un permiso específico por su ID"
-                    }
-                },
-                {
-                    "name": "Crear nuevo permiso",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"nombre\": \"CREAR_USUARIO\",\n    \"descripcion\": \"Permite crear usuarios\",\n    \"estado\": true\n}"
-                        },
-                        "url": {
-                            "raw": "{{base_url}}/api/permisos",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "permisos"
-                            ]
-                        },
-                        "description": "Crea un nuevo permiso"
-                    }
-                },
-                {
-                    "name": "Actualizar permiso",
-                    "request": {
-                        "method": "PUT",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"nombre\": \"CREAR_USUARIO\",\n    \"descripcion\": \"Permite crear usuarios - Actualizado\",\n    \"estado\": true\n}"
-                        },
-                        "url": {
-                            "raw": "{{base_url}}/api/permisos/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "permisos",
-                                "1"
-                            ]
-                        },
-                        "description": "Actualiza un permiso existente"
-                    }
-                },
-                {
-                    "name": "Eliminar permiso",
-                    "request": {
-                        "method": "DELETE",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/permisos/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "permisos",
-                                "1"
-                            ]
-                        },
-                        "description": "Elimina un permiso por su ID"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Roles-Permisos",
-            "item": [
-                {
-                    "name": "Obtener todas las asignaciones",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/roles-permisos",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "roles-permisos"
-                            ]
-                        },
-                        "description": "Obtiene todas las asignaciones de permisos a roles"
-                    }
-                },
-                {
-                    "name": "Obtener asignación por ID",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/roles-permisos/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "roles-permisos",
-                                "1"
-                            ]
-                        },
-                        "description": "Obtiene una asignación específica por su ID"
-                    }
-                },
-                {
-                    "name": "Obtener permisos por rol",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/roles-permisos/rol/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "roles-permisos",
-                                "rol",
-                                "1"
-                            ]
-                        },
-                        "description": "Obtiene todos los permisos asignados a un rol específico"
-                    }
-                },
-                {
-                    "name": "Crear nueva asignación",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"rolId\": 1,\n    \"permisoId\": 1\n}"
-                        },
-                        "url": {
-                            "raw": "{{base_url}}/api/roles-permisos",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "roles-permisos"
-                            ]
-                        },
-                        "description": "Crea una nueva asignación de permiso a rol"
-                    }
-                },
-                {
-                    "name": "Actualizar asignación",
-                    "request": {
-                        "method": "PUT",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"rolId\": 1,\n    \"permisoId\": 2\n}"
-                        },
-                        "url": {
-                            "raw": "{{base_url}}/api/roles-permisos/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "roles-permisos",
-                                "1"
-                            ]
-                        },
-                        "description": "Actualiza una asignación existente"
-                    }
-                },
-                {
-                    "name": "Eliminar asignación",
-                    "request": {
-                        "method": "DELETE",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/roles-permisos/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "roles-permisos",
-                                "1"
-                            ]
-                        },
-                        "description": "Elimina una asignación por su ID"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Usuarios",
-            "item": [
-                {
-                    "name": "Obtener todos los usuarios",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/usuarios",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "usuarios"
-                            ]
-                        },
-                        "description": "Obtiene todos los usuarios registrados"
-                    }
-                },
-                {
-                    "name": "Obtener usuario por ID",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/usuarios/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "usuarios",
-                                "1"
-                            ]
-                        },
-                        "description": "Obtiene un usuario específico por su ID"
-                    }
-                },
-                {
-                    "name": "Obtener usuario por email",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/usuarios/email/usuario@ejemplo.com",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "usuarios",
-                                "email",
-                                "usuario@ejemplo.com"
-                            ]
-                        },
-                        "description": "Obtiene un usuario por su email"
-                    }
-                },
-                {
-                    "name": "Obtener usuario por número de documento",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/usuarios/documento/12345678",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "usuarios",
-                                "documento",
-                                "12345678"
-                            ]
-                        },
-                        "description": "Obtiene un usuario por su número de documento"
-                    }
-                },
-                {
-                    "name": "Crear nuevo usuario",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"numeroDocumento\": \"12345678\",\n    \"nombre\": \"Juan\",\n    \"apellido\": \"Pérez\",\n    \"email\": \"juan.perez@ejemplo.com\",\n    \"password\": \"contraseña123\",\n    \"telefono\": \"123456789\",\n    \"estado\": true,\n    \"rolId\": 1\n}"
-                        },
-                        "url": {
-                            "raw": "{{base_url}}/api/usuarios",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "usuarios"
-                            ]
-                        },
-                        "description": "Crea un nuevo usuario"
-                    }
-                },
-                {
-                    "name": "Actualizar usuario",
-                    "request": {
-                        "method": "PUT",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"numeroDocumento\": \"12345678\",\n    \"nombre\": \"Juan\",\n    \"apellido\": \"Pérez\",\n    \"email\": \"juan.perez@ejemplo.com\",\n    \"password\": \"contraseña123\",\n    \"telefono\": \"123456789\",\n    \"estado\": true,\n    \"rolId\": 1\n}"
-                        },
-                        "url": {
-                            "raw": "{{base_url}}/api/usuarios/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "usuarios",
-                                "1"
-                            ]
-                        },
-                        "description": "Actualiza un usuario existente"
-                    }
-                },
-                {
-                    "name": "Eliminar usuario",
-                    "request": {
-                        "method": "DELETE",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/usuarios/1",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "usuarios",
-                                "1"
-                            ]
-                        },
-                        "description": "Elimina un usuario por su ID"
-                    }
-                },
-                {
-                    "name": "Autenticar usuario",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/usuarios/auth?email=usuario@ejemplo.com&password=contraseña123",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "usuarios",
-                                "auth"
-                            ],
-                            "query": [
-                                {
-                                    "key": "email",
-                                    "value": "usuario@ejemplo.com",
-                                    "description": "Email del usuario"
-                                },
-                                {
-                                    "key": "password",
-                                    "value": "contraseña123",
-                                    "description": "Contraseña del usuario"
-                                }
-                            ]
-                        },
-                        "description": "Autentica un usuario por email y contraseña"
+                        "description": "Elimina una cuenta por su ID"
                     }
                 }
             ]
