@@ -1,7 +1,7 @@
 package com.odonto.dentisys.dto;
 
 import java.time.LocalDate;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import lombok.Data;
@@ -20,8 +20,8 @@ public class ProformaCompletaDTO {
     private Double total;
     private String estado;
     private String observaciones;
-    private ZonedDateTime createdAt;
-    private ZonedDateTime updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     private List<DetalleProformaDTO> detalles;
     private List<CobranzaDTO> cobranzas;
 }

@@ -1,5 +1,6 @@
 package com.odonto.dentisys.dto;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -12,10 +13,10 @@ public class ProformaDetalleDTO {
     private String pacienteNombre;
     private Long medicoId;
     private String medicoNombre;
-    private Double subtotal;
-    private Double iva;
-    private Double descuento;
-    private Double total;
+    private BigDecimal subtotal;
+    private BigDecimal iva;
+    private BigDecimal descuento;
+    private BigDecimal total;
     private String estado;
     private String observaciones;
     private LocalDateTime createdAt;
