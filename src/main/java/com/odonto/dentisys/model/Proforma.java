@@ -46,6 +46,9 @@ public class Proforma extends BaseEntity {
     @Column(name = "iva", nullable = false, columnDefinition = "numeric")
     private Double iva;
 
+    @Column(name = "descuento", nullable = false, columnDefinition = "numeric")
+    private Double descuento;
+
     @Column(name = "total", nullable = false, columnDefinition = "numeric")
     private Double total;
 

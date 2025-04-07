@@ -43,6 +43,7 @@ public class ProformaCompletaMapper {
         dto.setFechaEmision(proformaDTO.getFechaEmision());
         dto.setSubtotal(proformaDTO.getSubtotal());
         dto.setIva(proformaDTO.getIva());
+        dto.setDescuento(proformaDTO.getDescuento());
         dto.setTotal(proformaDTO.getTotal());
         dto.setEstado(proformaDTO.getEstado());
         dto.setObservaciones(proformaDTO.getObservaciones());

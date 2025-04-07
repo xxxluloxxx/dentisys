@@ -16,6 +16,7 @@ public class ProformaCompletaDTO {
     private LocalDate fechaEmision;
     private Double subtotal;
     private Double iva;
+    private Double descuento;
     private Double total;
     private String estado;
     private String observaciones;

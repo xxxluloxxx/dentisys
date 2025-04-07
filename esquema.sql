@@ -124,6 +124,7 @@ CREATE TABLE proformas (
     medico_id INTEGER NOT NULL REFERENCES medicos(id) ON DELETE CASCADE,
     subtotal DECIMAL(10,2) NOT NULL CHECK (subtotal >= 0),
     iva DECIMAL(10,2) NOT NULL CHECK (iva >= 0),
+    descuento DECIMAL(10,2) NOT NULL DEFAULT 0 CHECK (descuento >= 0),
     total DECIMAL(10,2) NOT NULL CHECK (total >= 0),
     estado VARCHAR(20) NOT NULL,
     observaciones TEXT,
@@ -163,19 +164,6 @@ CREATE TABLE categorias (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Tabla de Cuentas (Ingresos/Egresos)
-CREATE TABLE cuentas (
-    id SERIAL PRIMARY KEY,
-    tipo VARCHAR(20) NOT NULL,
-    categoria_id INTEGER NOT NULL REFERENCES categorias(id) ON DELETE RESTRICT,
-    monto DECIMAL(10,2) NOT NULL CHECK (monto >= 0),
-    fecha_movimiento DATE NOT NULL,
-    descripcion TEXT,
-    estado BOOLEAN DEFAULT true,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
 -- Tabla de Cobranzas
 CREATE TABLE cobranzas (
     id SERIAL PRIMARY KEY,
@@ -185,6 +173,19 @@ CREATE TABLE cobranzas (
     metodo_pago VARCHAR(50) NOT NULL,
     estado VARCHAR(20) NOT NULL,
     observaciones TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabla de Cuentas (Ingresos/Egresos)
+CREATE TABLE cuentas (
+    id SERIAL PRIMARY KEY,
+    categoria_id INTEGER NOT NULL REFERENCES categorias(id) ON DELETE RESTRICT,
+    cobranza_id INTEGER REFERENCES cobranzas(id) ON DELETE SET NULL,
+    monto DECIMAL(10,2) NOT NULL CHECK (monto >= 0),
+    fecha_movimiento DATE NOT NULL,
+    descripcion TEXT,
+    estado BOOLEAN DEFAULT true,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -199,7 +200,6 @@ CREATE INDEX idx_proformas_estado ON proformas(estado);
 CREATE INDEX idx_cobranzas_fecha_pago ON cobranzas(fecha_pago);
 CREATE INDEX idx_cobranzas_estado ON cobranzas(estado);
 CREATE INDEX idx_cuentas_fecha ON cuentas(fecha_movimiento);
-CREATE INDEX idx_cuentas_tipo ON cuentas(tipo);
 CREATE INDEX idx_cuentas_categoria ON cuentas(categoria_id);
 CREATE INDEX idx_categorias_nombre ON categorias(nombre);
 

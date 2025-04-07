@@ -38,9 +38,9 @@ INSERT INTO roles_permisos (rol_id, permiso_id) VALUES
 
 -- Insertar usuarios
 INSERT INTO usuarios (numero_documento, nombre, apellido, email, password, telefono, rol_id) VALUES
-('1234567890', 'Juan', 'Pérez', 'juan.perez@dentisys.com', '$2a$10$XOPbrlUPQdwdJUpSrIF6X.LbE14qsMmKGhM1A8W9E9vpo9qX9K6G', '0991234567', 1),
-('0987654321', 'María', 'González', 'maria.gonzalez@dentisys.com', '$2a$10$XOPbrlUPQdwdJUpSrIF6X.LbE14qsMmKGhM1A8W9E9vpo9qX9K6G', '0997654321', 2),
-('1122334455', 'Carlos', 'Rodríguez', 'carlos.rodriguez@dentisys.com', '$2a$10$XOPbrlUPQdwdJUpSrIF6X.LbE14qsMmKGhM1A8W9E9vpo9qX9K6G', '0991112223', 2),
+('1234567890', 'Paul', 'Arias', 'jordi.arias19@gmail.com', '123', '0991234567', 1),
+('0987654321', 'Fernando', 'Arias', 'fernando.arias@dentisys.com', '123', '0997654321', 2),
+('1122334455', 'Romel', 'Guachizaca', 'romel.guachizaca@dentisys.com', '123', '0991112223', 2),
 ('5544332211', 'Ana', 'Martínez', 'ana.martinez@dentisys.com', '$2a$10$XOPbrlUPQdwdJUpSrIF6X.LbE14qsMmKGhM1A8W9E9vpo9qX9K6G', '0993334445', 3),
 ('6677889900', 'Pedro', 'Sánchez', 'pedro.sanchez@dentisys.com', '$2a$10$XOPbrlUPQdwdJUpSrIF6X.LbE14qsMmKGhM1A8W9E9vpo9qX9K6G', '0995556667', 4),
 ('0011223344', 'Laura', 'López', 'laura.lopez@dentisys.com', '$2a$10$XOPbrlUPQdwdJUpSrIF6X.LbE14qsMmKGhM1A8W9E9vpo9qX9K6G', '0997778889', 5),
@@ -118,22 +118,22 @@ INSERT INTO categorias (nombre, descripcion) VALUES
 ('Otros Gastos', 'Otros gastos varios');
 
 -- Insertar proformas
-INSERT INTO proformas (paciente_id, medico_id, subtotal, iva, total, estado, observaciones) VALUES
-(1, 1, 250.00, 30.00, 280.00, 'PENDIENTE', 'Tratamiento de limpieza dental'),
-(2, 2, 150.00, 18.00, 168.00, 'PAGADO', 'Blanqueamiento dental'),
-(3, 3, 2000.00, 240.00, 2240.00, 'PENDIENTE', 'Inicio de ortodoncia'),
-(4, 4, 1500.00, 180.00, 1680.00, 'PAGADO', 'Implante dental'),
-(5, 5, 100.00, 12.00, 112.00, 'PENDIENTE', 'Tratamiento de caries'),
-(6, 6, 800.00, 96.00, 896.00, 'PAGADO', 'Corona dental'),
-(7, 7, 1200.00, 144.00, 1344.00, 'PENDIENTE', 'Puente dental'),
-(8, 8, 150.00, 18.00, 168.00, 'PAGADO', 'Extracción dental'),
-(9, 9, 80.00, 9.60, 89.60, 'PENDIENTE', 'Radiografía dental'),
-(10, 10, 50.00, 6.00, 56.00, 'PAGADO', 'Consulta dental'),
-(11, 1, 250.00, 30.00, 280.00, 'PENDIENTE', 'Limpieza dental'),
-(12, 2, 150.00, 18.00, 168.00, 'PAGADO', 'Blanqueamiento dental'),
-(13, 3, 2000.00, 240.00, 2240.00, 'PENDIENTE', 'Ortodoncia'),
-(14, 4, 1500.00, 180.00, 1680.00, 'PAGADO', 'Implante dental'),
-(15, 5, 100.00, 12.00, 112.00, 'PENDIENTE', 'Tratamiento de caries');
+INSERT INTO proformas (paciente_id, medico_id, subtotal, iva, descuento, total, estado, observaciones) VALUES
+(1, 1, 250.00, 15.00, 0.00, 265.00, 'PENDIENTE', 'Tratamiento de limpieza dental'),
+(2, 2, 150.00, 0.00, 7.50, 142.50, 'PAGADO', 'Blanqueamiento dental'),
+(3, 3, 2000.00, 15.00, 0.00, 2015.00, 'PENDIENTE', 'Inicio de ortodoncia'),
+(4, 4, 1500.00, 0.00, 75.00, 1425.00, 'PAGADO', 'Implante dental'),
+(5, 5, 100.00, 15.00, 0.00, 115.00, 'PENDIENTE', 'Tratamiento de caries'),
+(6, 6, 800.00, 0.00, 40.00, 760.00, 'PAGADO', 'Corona dental'),
+(7, 7, 1200.00, 15.00, 0.00, 1215.00, 'PENDIENTE', 'Puente dental'),
+(8, 8, 150.00, 0.00, 7.50, 142.50, 'PAGADO', 'Extracción dental'),
+(9, 9, 80.00, 15.00, 0.00, 95.00, 'PENDIENTE', 'Radiografía dental'),
+(10, 10, 50.00, 0.00, 2.50, 47.50, 'PAGADO', 'Consulta dental'),
+(11, 1, 250.00, 15.00, 0.00, 265.00, 'PENDIENTE', 'Limpieza dental'),
+(12, 2, 150.00, 0.00, 7.50, 142.50, 'PAGADO', 'Blanqueamiento dental'),
+(13, 3, 2000.00, 15.00, 0.00, 2015.00, 'PENDIENTE', 'Ortodoncia'),
+(14, 4, 1500.00, 0.00, 75.00, 1425.00, 'PAGADO', 'Implante dental'),
+(15, 5, 100.00, 15.00, 0.00, 115.00, 'PENDIENTE', 'Tratamiento de caries');
 
 -- Insertar detalles de proforma
 INSERT INTO detalles_proforma (proforma_id, producto_id, cantidad, precio_unitario, subtotal) VALUES
@@ -174,22 +174,20 @@ INSERT INTO cobranzas (proforma_id, monto, fecha_pago, metodo_pago, estado, obse
 (15, 56.00, '2024-03-29', 'EFECTIVO', 'PARCIAL', 'Primer pago');
 
 -- Insertar cuentas
-INSERT INTO cuentas (tipo, categoria_id, monto, fecha_movimiento, descripcion) VALUES
-('INGRESO', 1, 168.00, '2024-03-15', 'Pago de blanqueamiento dental'),
-('INGRESO', 1, 1680.00, '2024-03-16', 'Pago de implante dental'),
-('EGRESO', 2, 500.00, '2024-03-17', 'Compra de materiales'),
-('EGRESO', 3, 3000.00, '2024-03-18', 'Pago de salarios'),
-('INGRESO', 1, 140.00, '2024-03-19', 'Pago parcial de limpieza dental'),
-('INGRESO', 1, 896.00, '2024-03-20', 'Pago de corona dental'),
-('INGRESO', 1, 168.00, '2024-03-21', 'Pago de extracción dental'),
-('INGRESO', 1, 56.00, '2024-03-22', 'Pago de consulta dental'),
-('EGRESO', 2, 800.00, '2024-03-23', 'Compra de equipos dentales'),
-('EGRESO', 3, 2500.00, '2024-03-24', 'Pago de salarios'),
-('INGRESO', 1, 168.00, '2024-03-25', 'Pago de blanqueamiento dental'),
-('EGRESO', 4, 1200.00, '2024-03-26', 'Compra de materiales dentales'),
-('INGRESO', 1, 44.80, '2024-03-27', 'Pago parcial de radiografía'),
-('EGRESO', 5, 500.00, '2024-03-28', 'Gastos varios'),
-('INGRESO', 1, 140.00, '2024-03-29', 'Pago parcial de limpieza dental');
+INSERT INTO cuentas (categoria_id, cobranza_id, monto, fecha_movimiento, descripcion) VALUES
+(1, 1, 168.00, '2024-03-15', 'Pago de blanqueamiento dental'),
+(1, 2, 1680.00, '2024-03-16', 'Pago de implante dental'),
+(2, NULL, 500.00, '2024-03-17', 'Compra de materiales'),
+(3, NULL, 3000.00, '2024-03-18', 'Pago de salarios'),
+(1, 3, 140.00, '2024-03-19', 'Pago parcial de limpieza dental'),
+(1, 6, 896.00, '2024-03-20', 'Pago de corona dental'),
+(1, 7, 168.00, '2024-03-21', 'Pago de extracción dental'),
+(1, 8, 56.00, '2024-03-22', 'Pago de consulta dental'),
+(2, NULL, 800.00, '2024-03-23', 'Compra de equipos dentales'),
+(3, NULL, 2500.00, '2024-03-24', 'Pago de salarios'),
+(1, 10, 168.00, '2024-03-25', 'Pago de blanqueamiento dental'),
+(2, NULL, 1200.00, '2024-03-26', 'Compra de materiales dentales'),
+(1, 12, 44.80, '2024-03-27', 'Pago parcial de radiografía');
 
 -- Insertar fichas médicas
 INSERT INTO fichas_medicas (paciente_id, medico_id, fecha_creacion, antecedentes, alergias, medicamentos_actuales, observaciones) VALUES
