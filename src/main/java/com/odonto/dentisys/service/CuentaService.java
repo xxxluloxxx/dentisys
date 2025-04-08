@@ -94,11 +94,4 @@ public class CuentaService {
                 .map(cuentaMapper::toDTO)
                 .toList();
     }
-
-    @Transactional(readOnly = true)
-    public List<CuentaDTO> findByEstado(Boolean estado) {
-        return cuentaRepository.findByEstado(estado).stream()
-                .map(cuentaMapper::toDTO)
-                .toList();
-    }
 }

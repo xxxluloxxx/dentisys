@@ -17,6 +17,4 @@ public interface CuentaRepository extends JpaRepository<Cuenta, Long> {
     List<Cuenta> findByCobranza(Cobranza cobranza);
 
     List<Cuenta> findByFechaMovimientoBetween(LocalDate fechaInicio, LocalDate fechaFin);
-
-    List<Cuenta> findByEstado(Boolean estado);
 }

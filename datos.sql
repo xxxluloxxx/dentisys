@@ -110,12 +110,12 @@ INSERT INTO productos (nombre, descripcion, precio, categoria) VALUES
 ('Irrigador Dental', 'Irrigador dental profesional', 150.00, 'Productos');
 
 -- Insertar categorías
-INSERT INTO categorias (nombre, descripcion) VALUES
-('Ingresos', 'Ingresos por servicios y productos'),
-('Gastos Operativos', 'Gastos de operación diaria'),
-('Gastos de Personal', 'Gastos relacionados con el personal'),
-('Gastos de Equipamiento', 'Gastos en equipos y materiales'),
-('Otros Gastos', 'Otros gastos varios');
+INSERT INTO categorias (nombre, descripcion, ingreso) VALUES
+('Ingresos', 'Ingresos por servicios y productos', true),
+('Gastos Operativos', 'Gastos de operación diaria', false),
+('Gastos de Personal', 'Gastos relacionados con el personal', false),
+('Gastos de Equipamiento', 'Gastos en equipos y materiales', false),
+('Otros Gastos', 'Otros gastos varios', false);
 
 -- Insertar proformas
 INSERT INTO proformas (paciente_id, medico_id, subtotal, iva, descuento, total, estado, observaciones) VALUES

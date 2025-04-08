@@ -40,9 +40,6 @@ public class Cuenta {
     @Column(name = "descripcion", columnDefinition = "text")
     private String descripcion;
 
-    @Column(name = "estado")
-    private Boolean estado;
-
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 

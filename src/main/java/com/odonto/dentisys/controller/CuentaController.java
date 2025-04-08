@@ -55,11 +55,6 @@ public class CuentaController {
         return ResponseEntity.ok(cuentaService.findByFechaMovimientoBetween(fechaInicio, fechaFin));
     }
 
-    @GetMapping("/estado/{estado}")
-    public ResponseEntity<List<CuentaDTO>> findByEstado(@PathVariable Boolean estado) {
-        return ResponseEntity.ok(cuentaService.findByEstado(estado));
-    }
-
     @PostMapping
     public ResponseEntity<CuentaDTO> create(@RequestBody CuentaDTO cuentaDTO) {
         return ResponseEntity.ok(cuentaService.save(cuentaDTO));

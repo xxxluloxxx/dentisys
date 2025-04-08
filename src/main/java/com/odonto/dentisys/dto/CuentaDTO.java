@@ -2,7 +2,6 @@ package com.odonto.dentisys.dto;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 
 import lombok.Data;
 
@@ -15,7 +14,6 @@ public class CuentaDTO {
     private Double monto;
     private LocalDate fechaMovimiento;
     private String descripcion;
-    private Boolean estado;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

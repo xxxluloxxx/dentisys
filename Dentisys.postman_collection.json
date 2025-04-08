@@ -747,26 +747,6 @@
                     }
                 },
                 {
-                    "name": "Obtener cuentas por estado",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "url": {
-                            "raw": "{{base_url}}/api/cuentas/estado/true",
-                            "host": [
-                                "{{base_url}}"
-                            ],
-                            "path": [
-                                "api",
-                                "cuentas",
-                                "estado",
-                                "true"
-                            ]
-                        },
-                        "description": "Obtiene las cuentas por estado específico"
-                    }
-                },
-                {
                     "name": "Crear nueva cuenta",
                     "request": {
                         "method": "POST",
@@ -778,7 +758,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"descripcion\": \"Ejemplo de cuenta\",\n    \"monto\": 1000.00,\n    \"fechaMovimiento\": \"2024-03-20\",\n    \"estado\": true,\n    \"categoriaId\": 1,\n    \"cobranzaId\": 1\n}"
+                            "raw": "{\n    \"descripcion\": \"Ejemplo de cuenta\",\n    \"monto\": 1000.00,\n    \"fechaMovimiento\": \"2024-03-20\",\n    \"categoriaId\": 1,\n    \"cobranzaId\": 1\n}"
                         },
                         "url": {
                             "raw": "{{base_url}}/api/cuentas",
@@ -805,7 +785,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"descripcion\": \"Cuenta actualizada\",\n    \"monto\": 1500.00,\n    \"fechaMovimiento\": \"2024-03-20\",\n    \"estado\": true,\n    \"categoriaId\": 1,\n    \"cobranzaId\": 1\n}"
+                            "raw": "{\n    \"descripcion\": \"Cuenta actualizada\",\n    \"monto\": 1500.00,\n    \"fechaMovimiento\": \"2024-03-20\",\n    \"categoriaId\": 1,\n    \"cobranzaId\": 1\n}"
                         },
                         "url": {
                             "raw": "{{base_url}}/api/cuentas/1",
@@ -838,6 +818,122 @@
                             ]
                         },
                         "description": "Elimina una cuenta por su ID"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Categorías",
+            "item": [
+                {
+                    "name": "Obtener todas las categorías",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/categorias",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "categorias"
+                            ]
+                        },
+                        "description": "Obtiene todas las categorías registradas"
+                    }
+                },
+                {
+                    "name": "Obtener categoría por ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/categorias/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "categorias",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene una categoría específica por su ID"
+                    }
+                },
+                {
+                    "name": "Crear nueva categoría",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nombre\": \"Nueva Categoría\",\n    \"descripcion\": \"Descripción de la categoría\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/categorias",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "categorias"
+                            ]
+                        },
+                        "description": "Crea una nueva categoría"
+                    }
+                },
+                {
+                    "name": "Actualizar categoría",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nombre\": \"Categoría Actualizada\",\n    \"descripcion\": \"Descripción actualizada de la categoría\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/categorias/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "categorias",
+                                "1"
+                            ]
+                        },
+                        "description": "Actualiza una categoría existente"
+                    }
+                },
+                {
+                    "name": "Eliminar categoría",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/categorias/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "categorias",
+                                "1"
+                            ]
+                        },
+                        "description": "Elimina una categoría por su ID"
                     }
                 }
             ]

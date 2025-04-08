@@ -1,7 +1,5 @@
 package com.odonto.dentisys.mapper;
 
-import java.time.ZoneId;
-
 import org.springframework.stereotype.Component;
 
 import com.odonto.dentisys.dto.CuentaDTO;
@@ -25,7 +23,6 @@ public class CuentaMapper {
         dto.setMonto(cuenta.getMonto());
         dto.setFechaMovimiento(cuenta.getFechaMovimiento());
         dto.setDescripcion(cuenta.getDescripcion());
-        dto.setEstado(cuenta.getEstado());
         dto.setCreatedAt(cuenta.getCreatedAt());
         dto.setUpdatedAt(cuenta.getUpdatedAt());
 
@@ -42,7 +39,6 @@ public class CuentaMapper {
         cuenta.setMonto(dto.getMonto());
         cuenta.setFechaMovimiento(dto.getFechaMovimiento());
         cuenta.setDescripcion(dto.getDescripcion());
-        cuenta.setEstado(dto.getEstado());
 
         return cuenta;
     }

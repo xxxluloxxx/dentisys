@@ -26,6 +26,9 @@ public class Categoria {
     @Column(name = "descripcion", columnDefinition = "text")
     private String descripcion;
 
+    @Column(name = "ingreso")
+    private Boolean ingreso = true;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 

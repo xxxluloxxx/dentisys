@@ -160,6 +160,7 @@ CREATE TABLE categorias (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     descripcion TEXT,
+    ingreso BOOLEAN DEFAULT true,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -185,7 +186,6 @@ CREATE TABLE cuentas (
     monto DECIMAL(10,2) NOT NULL CHECK (monto >= 0),
     fecha_movimiento DATE NOT NULL,
     descripcion TEXT,
-    estado BOOLEAN DEFAULT true,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
