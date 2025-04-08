@@ -190,22 +190,21 @@ INSERT INTO cuentas (categoria_id, cobranza_id, monto, fecha_movimiento, descrip
 (1, 12, 44.80, '2024-03-27', 'Pago parcial de radiografía');
 
 -- Insertar fichas médicas
-INSERT INTO fichas_medicas (paciente_id, medico_id, fecha_creacion, antecedentes, alergias, medicamentos_actuales, observaciones) VALUES
-(1, 1, '2024-03-15', 'Hipertensión', 'Penicilina', 'Ninguno', 'Paciente con buena salud bucal'),
-(2, 2, '2024-03-16', 'Diabetes', 'Ninguna', 'Insulina', 'Requiere control especial'),
-(3, 3, '2024-03-17', 'Asma', 'Ninguna', 'Inhalador', 'Paciente con buena respuesta al tratamiento'),
-(4, 4, '2024-03-18', 'Ninguno', 'Ninguna', 'Ninguno', 'Paciente saludable'),
-(5, 5, '2024-03-19', 'Alergias', 'Penicilina', 'Antihistamínicos', 'Requiere precaución con medicamentos'),
-(6, 6, '2024-03-20', 'Ninguno', 'Ninguna', 'Ninguno', 'Paciente saludable'),
-(7, 7, '2024-03-21', 'Hipertensión', 'Ninguna', 'Antihipertensivos', 'Requiere control de presión'),
-(8, 8, '2024-03-22', 'Diabetes', 'Penicilina', 'Insulina', 'Control especial'),
-(9, 9, '2024-03-23', 'Asma', 'Ninguna', 'Inhalador', 'Buen control'),
-(10, 10, '2024-03-24', 'Alergias', 'Penicilina', 'Antihistamínicos', 'Precaución con medicamentos'),
-(11, 1, '2024-03-25', 'Ninguno', 'Ninguna', 'Ninguno', 'Paciente saludable'),
-(12, 2, '2024-03-26', 'Hipertensión', 'Ninguna', 'Antihipertensivos', 'Control regular'),
-(13, 3, '2024-03-27', 'Diabetes', 'Ninguna', 'Insulina', 'Control adecuado'),
-(14, 4, '2024-03-28', 'Asma', 'Penicilina', 'Inhalador', 'Buen control'),
-(15, 5, '2024-03-29', 'Alergias', 'Ninguna', 'Antihistamínicos', 'Precaución con medicamentos');
+INSERT INTO fichas_medicas (paciente_id, medico_id, datos) VALUES
+(1, 1, '{"antecedentes": "Hipertensión", "alergias": "Penicilina", "medicamentos_actuales": "Ninguno", "observaciones": "Paciente con buena salud bucal"}'),
+(2, 2, '{"antecedentes": "Diabetes", "alergias": "Ninguna", "medicamentos_actuales": "Insulina", "observaciones": "Requiere control especial"}'),
+(3, 3, '{"antecedentes": "Asma", "alergias": "Ninguna", "medicamentos_actuales": "Inhalador", "observaciones": "Paciente con buena respuesta al tratamiento"}'),
+(4, 4, '{"antecedentes": "Ninguno", "alergias": "Ninguna", "medicamentos_actuales": "Ninguno", "observaciones": "Paciente saludable"}'),
+(5, 5, '{"antecedentes": "Alergias", "alergias": "Penicilina", "medicamentos_actuales": "Antihistamínicos", "observaciones": "Requiere precaución con medicamentos"}');
+
+-- Insertar procedimientos
+INSERT INTO procedimientos (ficha_id, procedimiento, observaciones) VALUES
+(1, 'Limpieza dental profunda', 'Se realizó limpieza dental completa con eliminación de sarro'),
+(1, 'Aplicación de flúor', 'Se aplicó flúor para fortalecer el esmalte dental'),
+(2, 'Tratamiento de caries', 'Se realizó obturación en molar superior derecho'),
+(3, 'Ortodoncia inicial', 'Se colocaron brackets en arcada superior'),
+(4, 'Implante dental', 'Se realizó implante en molar inferior izquierdo'),
+(5, 'Extracción dental', 'Se extrajo molar con caries profunda');
 
 -- Insertar citas
 INSERT INTO citas (paciente_id, medico_id, fecha_cita, hora_cita, estado, observaciones) VALUES

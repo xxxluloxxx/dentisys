@@ -1,10 +1,8 @@
 package com.odonto.dentisys.controller;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.odonto.dentisys.model.FichaOdontologica;
@@ -46,24 +43,6 @@ public class FichaOdontologicaController {
     @GetMapping("/medico/{medicoId}")
     public ResponseEntity<List<FichaOdontologica>> findByMedicoId(@PathVariable Integer medicoId) {
         return ResponseEntity.ok(fichaOdontologicaService.findByMedicoId(medicoId));
-    }
-
-    @GetMapping("/paciente/{pacienteId}/fecha")
-    public ResponseEntity<List<FichaOdontologica>> findByPacienteIdAndFechaCreacionBetween(
-            @PathVariable Integer pacienteId,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaInicio,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaFin) {
-        return ResponseEntity.ok(
-                fichaOdontologicaService.findByPacienteIdAndFechaCreacionBetween(pacienteId, fechaInicio, fechaFin));
-    }
-
-    @GetMapping("/medico/{medicoId}/fecha")
-    public ResponseEntity<List<FichaOdontologica>> findByMedicoIdAndFechaCreacionBetween(
-            @PathVariable Integer medicoId,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaInicio,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaFin) {
-        return ResponseEntity
-                .ok(fichaOdontologicaService.findByMedicoIdAndFechaCreacionBetween(medicoId, fechaInicio, fechaFin));
     }
 
     @PostMapping

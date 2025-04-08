@@ -937,6 +937,318 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "Procedimientos",
+            "item": [
+                {
+                    "name": "Obtener todos los procedimientos",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/procedimientos",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "procedimientos"
+                            ]
+                        },
+                        "description": "Obtiene todos los procedimientos registrados"
+                    }
+                },
+                {
+                    "name": "Obtener procedimiento por ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/procedimientos/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "procedimientos",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene un procedimiento específico por su ID"
+                    }
+                },
+                {
+                    "name": "Obtener procedimientos por ficha médica",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/procedimientos/ficha/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "procedimientos",
+                                "ficha",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene todos los procedimientos de una ficha médica específica"
+                    }
+                },
+                {
+                    "name": "Crear nuevo procedimiento",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"ficha\": {\n        \"id\": 1\n    },\n    \"procedimiento\": \"Limpieza dental\",\n    \"observaciones\": \"Procedimiento de limpieza dental completo\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/procedimientos",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "procedimientos"
+                            ]
+                        },
+                        "description": "Crea un nuevo procedimiento"
+                    }
+                },
+                {
+                    "name": "Actualizar procedimiento",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"ficha\": {\n        \"id\": 1\n    },\n    \"procedimiento\": \"Limpieza dental actualizada\",\n    \"observaciones\": \"Procedimiento de limpieza dental actualizado\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/procedimientos/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "procedimientos",
+                                "1"
+                            ]
+                        },
+                        "description": "Actualiza un procedimiento existente"
+                    }
+                },
+                {
+                    "name": "Eliminar procedimiento",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/procedimientos/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "procedimientos",
+                                "1"
+                            ]
+                        },
+                        "description": "Elimina un procedimiento por su ID"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Fichas Médicas",
+            "item": [
+                {
+                    "name": "Obtener todas las fichas médicas",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/fichas-medicas",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "fichas-medicas"
+                            ]
+                        },
+                        "description": "Obtiene todas las fichas médicas registradas"
+                    }
+                },
+                {
+                    "name": "Obtener ficha médica por ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/fichas-medicas/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "fichas-medicas",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene una ficha médica específica por su ID"
+                    }
+                },
+                {
+                    "name": "Obtener fichas médicas por paciente",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/fichas-medicas/paciente/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "fichas-medicas",
+                                "paciente",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene todas las fichas médicas de un paciente específico"
+                    }
+                },
+                {
+                    "name": "Obtener fichas médicas por médico",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/fichas-medicas/medico/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "fichas-medicas",
+                                "medico",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene todas las fichas médicas de un médico específico"
+                    }
+                },
+                {
+                    "name": "Crear nueva ficha médica",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"paciente\": {\n        \"id\": 1\n    },\n    \"medico\": {\n        \"id\": 1\n    },\n    \"datos\": {\n        \"motivoConsulta\": \"Dolor dental\",\n        \"diagnostico\": \"Caries\",\n        \"tratamiento\": \"Empaste dental\",\n        \"observaciones\": \"Paciente requiere tratamiento inmediato\"\n    }\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/fichas-medicas",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "fichas-medicas"
+                            ]
+                        },
+                        "description": "Crea una nueva ficha médica"
+                    }
+                },
+                {
+                    "name": "Actualizar ficha médica",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"paciente\": {\n        \"id\": 1\n    },\n    \"medico\": {\n        \"id\": 1\n    },\n    \"datos\": {\n        \"motivoConsulta\": \"Dolor dental actualizado\",\n        \"diagnostico\": \"Caries profunda\",\n        \"tratamiento\": \"Endodoncia\",\n        \"observaciones\": \"Paciente requiere tratamiento urgente\"\n    }\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/fichas-medicas/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "fichas-medicas",
+                                "1"
+                            ]
+                        },
+                        "description": "Actualiza una ficha médica existente"
+                    }
+                },
+                {
+                    "name": "Eliminar ficha médica",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/fichas-medicas/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "fichas-medicas",
+                                "1"
+                            ]
+                        },
+                        "description": "Elimina una ficha médica por su ID"
+                    }
+                },
+                {
+                    "name": "Obtener ficha médica con procedimientos",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/fichas-medicas/1/procedimientos",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "fichas-medicas",
+                                "1",
+                                "procedimientos"
+                            ]
+                        },
+                        "description": "Obtiene una ficha médica específica con sus procedimientos"
+                    }
+                }
+            ]
         }
     ],
     "variable": [

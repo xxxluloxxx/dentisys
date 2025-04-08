@@ -1,10 +1,6 @@
 package com.odonto.dentisys.model;
 
 import java.time.LocalDateTime;
-import java.util.List;
-
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -21,26 +16,21 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "fichas_medicas")
-public class FichaOdontologica {
+@Table(name = "procedimientos")
+public class Procedimiento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "paciente_id", nullable = false)
-    private Paciente paciente;
+    @JoinColumn(name = "ficha_id", nullable = false)
+    private FichaOdontologica ficha;
 
-    @ManyToOne
-    @JoinColumn(name = "medico_id", nullable = false)
-    private Medico medico;
+    @Column(name = "procedimiento", nullable = false, length = 255)
+    private String procedimiento;
 
-    @Column(name = "datos", columnDefinition = "jsonb")
-    @JdbcTypeCode(SqlTypes.JSON)
-    private Object datos;
-
-    @OneToMany(mappedBy = "ficha", cascade = jakarta.persistence.CascadeType.ALL)
-    private List<Procedimiento> procedimientos;
+    @Column(name = "observaciones", columnDefinition = "text")
+    private String observaciones;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

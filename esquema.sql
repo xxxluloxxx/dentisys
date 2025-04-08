@@ -96,10 +96,16 @@ CREATE TABLE fichas_medicas (
     id SERIAL PRIMARY KEY,
     paciente_id INTEGER NOT NULL REFERENCES pacientes(id) ON DELETE CASCADE,
     medico_id INTEGER NOT NULL REFERENCES medicos(id) ON DELETE CASCADE,
-    fecha_creacion DATE NOT NULL DEFAULT CURRENT_DATE,
-    antecedentes TEXT,
-    alergias TEXT,
-    medicamentos_actuales TEXT,
+    datos JSONB NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabla de Procedimientos
+CREATE TABLE procedimientos (
+    id SERIAL PRIMARY KEY,
+    ficha_id INTEGER NOT NULL REFERENCES fichas_medicas(id) ON DELETE CASCADE,
+    procedimiento VARCHAR(255) NOT NULL,
     observaciones TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -202,6 +208,8 @@ CREATE INDEX idx_cobranzas_estado ON cobranzas(estado);
 CREATE INDEX idx_cuentas_fecha ON cuentas(fecha_movimiento);
 CREATE INDEX idx_cuentas_categoria ON cuentas(categoria_id);
 CREATE INDEX idx_categorias_nombre ON categorias(nombre);
+CREATE INDEX idx_procedimientos_ficha_id ON procedimientos(ficha_id);
+CREATE INDEX idx_procedimientos_procedimiento ON procedimientos(procedimiento);
 
 -- Crear función para el trigger de updated_at
 CREATE OR REPLACE FUNCTION update_updated_at_column()
@@ -270,5 +278,10 @@ CREATE TRIGGER update_categorias_updated_at
 
 CREATE TRIGGER update_cuentas_updated_at
     BEFORE UPDATE ON cuentas
+    FOR EACH ROW
+    EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TRIGGER update_procedimientos_updated_at
+    BEFORE UPDATE ON procedimientos
     FOR EACH ROW
     EXECUTE FUNCTION update_updated_at_column();

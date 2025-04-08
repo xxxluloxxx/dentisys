@@ -1,6 +1,5 @@
 package com.odonto.dentisys.service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,17 +44,5 @@ public class FichaOdontologicaService {
     @Transactional(readOnly = true)
     public List<FichaOdontologica> findByMedicoId(Integer medicoId) {
         return fichaOdontologicaRepository.findByMedicoId(medicoId);
-    }
-
-    @Transactional(readOnly = true)
-    public List<FichaOdontologica> findByPacienteIdAndFechaCreacionBetween(Integer pacienteId, LocalDate fechaInicio,
-            LocalDate fechaFin) {
-        return fichaOdontologicaRepository.findByPacienteIdAndFechaCreacionBetween(pacienteId, fechaInicio, fechaFin);
-    }
-
-    @Transactional(readOnly = true)
-    public List<FichaOdontologica> findByMedicoIdAndFechaCreacionBetween(Integer medicoId, LocalDate fechaInicio,
-            LocalDate fechaFin) {
-        return fichaOdontologicaRepository.findByMedicoIdAndFechaCreacionBetween(medicoId, fechaInicio, fechaFin);
     }
 }
