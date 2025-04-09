@@ -5,8 +5,6 @@ import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,8 +34,7 @@ public class Paciente {
     private LocalDate fechaNacimiento;
 
     @Column(name = "genero", nullable = false, length = 10)
-    @Enumerated(EnumType.STRING)
-    private Genero genero;
+    private String genero;
 
     @Column(name = "telefono", nullable = false, length = 20)
     private String telefono;
@@ -53,10 +50,6 @@ public class Paciente {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-
-    public enum Genero {
-        M, F, O
-    }
 
     @PrePersist
     protected void onCreate() {
