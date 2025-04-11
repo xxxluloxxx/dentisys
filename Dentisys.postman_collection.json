@@ -1249,6 +1249,162 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "Fichas Odontológicas",
+            "item": [
+                {
+                    "name": "Obtener todas las fichas",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/fichas-medicas",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "fichas-medicas"
+                            ]
+                        },
+                        "description": "Obtiene todas las fichas odontológicas registradas"
+                    }
+                },
+                {
+                    "name": "Obtener ficha por ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/fichas-medicas/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "fichas-medicas",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene una ficha odontológica específica por su ID"
+                    }
+                },
+                {
+                    "name": "Obtener fichas por paciente",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/fichas-medicas/paciente/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "fichas-medicas",
+                                "paciente",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene todas las fichas odontológicas de un paciente específico"
+                    }
+                },
+                {
+                    "name": "Obtener fichas por médico",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/fichas-medicas/medico/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "fichas-medicas",
+                                "medico",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene todas las fichas odontológicas de un médico específico"
+                    }
+                },
+                {
+                    "name": "Crear nueva ficha",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"paciente\": {\n        \"id\": 1\n    },\n    \"medico\": {\n        \"id\": 1\n    },\n    \"fechaConsulta\": \"2024-03-20\",\n    \"motivoConsulta\": \"Dolor en muela\",\n    \"diagnostico\": \"Caries\",\n    \"tratamiento\": \"Empaste\",\n    \"observaciones\": \"Paciente con buena higiene dental\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/fichas-medicas",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "fichas-medicas"
+                            ]
+                        },
+                        "description": "Crea una nueva ficha odontológica"
+                    }
+                },
+                {
+                    "name": "Actualizar ficha",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"paciente\": {\n        \"id\": 1\n    },\n    \"medico\": {\n        \"id\": 1\n    },\n    \"fechaConsulta\": \"2024-03-20\",\n    \"motivoConsulta\": \"Dolor en muela\",\n    \"diagnostico\": \"Caries profunda\",\n    \"tratamiento\": \"Endodoncia\",\n    \"observaciones\": \"Paciente con buena higiene dental - Actualizado\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/fichas-medicas/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "fichas-medicas",
+                                "1"
+                            ]
+                        },
+                        "description": "Actualiza una ficha odontológica existente"
+                    }
+                },
+                {
+                    "name": "Eliminar ficha",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/fichas-medicas/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "fichas-medicas",
+                                "1"
+                            ]
+                        },
+                        "description": "Elimina una ficha odontológica por su ID"
+                    }
+                }
+            ]
         }
     ],
     "variable": [

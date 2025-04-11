@@ -2,9 +2,12 @@ package com.odonto.dentisys.model;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,11 +38,12 @@ public class FichaOdontologica {
     @JoinColumn(name = "medico_id", nullable = false)
     private Medico medico;
 
-    @Column(name = "datos", columnDefinition = "jsonb")
+    @Column(name = "datos", columnDefinition = "jsonb", nullable = false)
     @JdbcTypeCode(SqlTypes.JSON)
-    private Object datos;
+    private Map<String, Object> datos;
 
     @OneToMany(mappedBy = "ficha", cascade = jakarta.persistence.CascadeType.ALL)
+    @JsonIgnore
     private List<Procedimiento> procedimientos;
 
     @Column(name = "created_at")
