@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.odonto.dentisys.dto.ProcedimientoDTO;
+import com.odonto.dentisys.mapper.ProcedimientoMapper;
 import com.odonto.dentisys.model.Procedimiento;
 import com.odonto.dentisys.service.ProcedimientoService;
 
@@ -23,35 +25,38 @@ public class ProcedimientoController {
     @Autowired
     private ProcedimientoService procedimientoService;
 
+    @Autowired
+    private ProcedimientoMapper procedimientoMapper;
+
     @GetMapping
-    public ResponseEntity<List<Procedimiento>> findAll() {
-        return ResponseEntity.ok(procedimientoService.findAll());
+    public ResponseEntity<List<ProcedimientoDTO>> findAll() {
+        return ResponseEntity.ok(procedimientoMapper.toDTOList(procedimientoService.findAll()));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Procedimiento> findById(@PathVariable Integer id) {
+    public ResponseEntity<ProcedimientoDTO> findById(@PathVariable Integer id) {
         return procedimientoService.findById(id)
-                .map(ResponseEntity::ok)
+                .map(procedimiento -> ResponseEntity.ok(procedimientoMapper.toDTO(procedimiento)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/ficha/{fichaId}")
-    public ResponseEntity<List<Procedimiento>> findByFichaId(@PathVariable Integer fichaId) {
-        return ResponseEntity.ok(procedimientoService.findByFichaId(fichaId));
+    public ResponseEntity<List<ProcedimientoDTO>> findByFichaId(@PathVariable Integer fichaId) {
+        return ResponseEntity.ok(procedimientoMapper.toDTOList(procedimientoService.findByFichaId(fichaId)));
     }
 
     @PostMapping
-    public ResponseEntity<Procedimiento> create(@RequestBody Procedimiento procedimiento) {
-        return ResponseEntity.ok(procedimientoService.save(procedimiento));
+    public ResponseEntity<ProcedimientoDTO> create(@RequestBody Procedimiento procedimiento) {
+        return ResponseEntity.ok(procedimientoMapper.toDTO(procedimientoService.save(procedimiento)));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Procedimiento> update(@PathVariable Integer id,
+    public ResponseEntity<ProcedimientoDTO> update(@PathVariable Integer id,
             @RequestBody Procedimiento procedimiento) {
         return procedimientoService.findById(id)
                 .map(existingProcedimiento -> {
                     procedimiento.setId(id);
-                    return ResponseEntity.ok(procedimientoService.save(procedimiento));
+                    return ResponseEntity.ok(procedimientoMapper.toDTO(procedimientoService.save(procedimiento)));
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
