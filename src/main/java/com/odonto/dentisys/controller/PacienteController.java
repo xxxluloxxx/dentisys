@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.odonto.dentisys.dto.PacienteDTO;
+import com.odonto.dentisys.mapper.PacienteMapper;
 import com.odonto.dentisys.model.Paciente;
 import com.odonto.dentisys.service.PacienteService;
 
@@ -23,36 +25,39 @@ public class PacienteController {
     @Autowired
     private PacienteService pacienteService;
 
+    @Autowired
+    private PacienteMapper pacienteMapper;
+
     @GetMapping
-    public ResponseEntity<List<Paciente>> findAll() {
-        return ResponseEntity.ok(pacienteService.findAll());
+    public ResponseEntity<List<PacienteDTO>> findAll() {
+        return ResponseEntity.ok(pacienteMapper.toDTOList(pacienteService.findAll()));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Paciente> findById(@PathVariable Long id) {
+    public ResponseEntity<PacienteDTO> findById(@PathVariable Long id) {
         return pacienteService.findById(id)
-                .map(ResponseEntity::ok)
+                .map(paciente -> ResponseEntity.ok(pacienteMapper.toDTO(paciente)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/identificacion/{identificacion}")
-    public ResponseEntity<Paciente> findByIdentificacion(@PathVariable String identificacion) {
+    public ResponseEntity<PacienteDTO> findByIdentificacion(@PathVariable String identificacion) {
         return pacienteService.findByIdentificacion(identificacion)
-                .map(ResponseEntity::ok)
+                .map(paciente -> ResponseEntity.ok(pacienteMapper.toDTO(paciente)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<Paciente> create(@RequestBody Paciente paciente) {
-        return ResponseEntity.ok(pacienteService.save(paciente));
+    public ResponseEntity<PacienteDTO> create(@RequestBody Paciente paciente) {
+        return ResponseEntity.ok(pacienteMapper.toDTO(pacienteService.save(paciente)));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Paciente> update(@PathVariable Long id, @RequestBody Paciente paciente) {
+    public ResponseEntity<PacienteDTO> update(@PathVariable Long id, @RequestBody Paciente paciente) {
         return pacienteService.findById(id)
                 .map(existingPaciente -> {
                     paciente.setId(id);
-                    return ResponseEntity.ok(pacienteService.save(paciente));
+                    return ResponseEntity.ok(pacienteMapper.toDTO(pacienteService.save(paciente)));
                 })
                 .orElse(ResponseEntity.notFound().build());
     }

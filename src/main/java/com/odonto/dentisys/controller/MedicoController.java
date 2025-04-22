@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.odonto.dentisys.dto.MedicoDTO;
+import com.odonto.dentisys.mapper.MedicoMapper;
 import com.odonto.dentisys.model.Medico;
 import com.odonto.dentisys.service.MedicoService;
 
@@ -23,36 +25,39 @@ public class MedicoController {
     @Autowired
     private MedicoService medicoService;
 
+    @Autowired
+    private MedicoMapper medicoMapper;
+
     @GetMapping
-    public ResponseEntity<List<Medico>> findAll() {
-        return ResponseEntity.ok(medicoService.findAll());
+    public ResponseEntity<List<MedicoDTO>> findAll() {
+        return ResponseEntity.ok(medicoMapper.toDTOList(medicoService.findAll()));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Medico> findById(@PathVariable Long id) {
+    public ResponseEntity<MedicoDTO> findById(@PathVariable Long id) {
         return medicoService.findById(id)
-                .map(ResponseEntity::ok)
+                .map(medico -> ResponseEntity.ok(medicoMapper.toDTO(medico)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/documento/{numeroDocumento}")
-    public ResponseEntity<Medico> findByNumeroDocumento(@PathVariable String numeroDocumento) {
+    public ResponseEntity<MedicoDTO> findByNumeroDocumento(@PathVariable String numeroDocumento) {
         return medicoService.findByNumeroDocumento(numeroDocumento)
-                .map(ResponseEntity::ok)
+                .map(medico -> ResponseEntity.ok(medicoMapper.toDTO(medico)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<Medico> create(@RequestBody Medico medico) {
-        return ResponseEntity.ok(medicoService.save(medico));
+    public ResponseEntity<MedicoDTO> create(@RequestBody Medico medico) {
+        return ResponseEntity.ok(medicoMapper.toDTO(medicoService.save(medico)));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Medico> update(@PathVariable Long id, @RequestBody Medico medico) {
+    public ResponseEntity<MedicoDTO> update(@PathVariable Long id, @RequestBody Medico medico) {
         return medicoService.findById(id)
                 .map(existingMedico -> {
                     medico.setId(id);
-                    return ResponseEntity.ok(medicoService.save(medico));
+                    return ResponseEntity.ok(medicoMapper.toDTO(medicoService.save(medico)));
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
