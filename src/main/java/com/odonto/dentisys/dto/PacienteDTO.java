@@ -8,6 +8,8 @@ import lombok.Data;
 public class PacienteDTO {
     private Long id;
     private String nombreCompleto;
+    private String nombre;
+    private String apellido;
     private String identificacion;
     private LocalDate fechaNacimiento;
     private String genero;

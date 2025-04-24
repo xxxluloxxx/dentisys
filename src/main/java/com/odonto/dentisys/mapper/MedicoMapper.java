@@ -19,6 +19,8 @@ public class MedicoMapper {
         MedicoDTO dto = new MedicoDTO();
         dto.setId(medico.getId());
         dto.setNombreCompleto(medico.getNombre() + " " + medico.getApellido());
+        dto.setNombre(medico.getNombre());
+        dto.setApellido(medico.getApellido());
         dto.setEspecialidad(medico.getEspecialidad());
         dto.setNumeroDocumento(medico.getNumeroDocumento());
         dto.setEmail(medico.getEmail());

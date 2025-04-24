@@ -19,6 +19,8 @@ public class PacienteMapper {
         PacienteDTO dto = new PacienteDTO();
         dto.setId(paciente.getId());
         dto.setNombreCompleto(paciente.getNombre() + " " + paciente.getApellido());
+        dto.setNombre(paciente.getNombre());
+        dto.setApellido(paciente.getApellido());
         dto.setIdentificacion(paciente.getIdentificacion());
         dto.setFechaNacimiento(paciente.getFechaNacimiento());
         dto.setGenero(paciente.getGenero());
