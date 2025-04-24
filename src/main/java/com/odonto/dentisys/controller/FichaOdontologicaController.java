@@ -36,8 +36,9 @@ public class FichaOdontologicaController {
     }
 
     @GetMapping("/paciente/{pacienteId}")
-    public ResponseEntity<List<FichaOdontologica>> findByPacienteId(@PathVariable Integer pacienteId) {
-        return ResponseEntity.ok(fichaOdontologicaService.findByPacienteId(pacienteId));
+    public ResponseEntity<Boolean> findByPacienteId(@PathVariable Integer pacienteId) {
+        List<FichaOdontologica> fichas = fichaOdontologicaService.findByPacienteId(pacienteId);
+        return ResponseEntity.ok(!fichas.isEmpty());
     }
 
     @GetMapping("/medico/{medicoId}")

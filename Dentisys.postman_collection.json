@@ -1405,6 +1405,142 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "Pacientes",
+            "item": [
+                {
+                    "name": "Obtener todos los pacientes",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/pacientes",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "pacientes"
+                            ]
+                        },
+                        "description": "Obtiene todos los pacientes registrados"
+                    }
+                },
+                {
+                    "name": "Obtener paciente por ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/pacientes/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "pacientes",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene un paciente específico por su ID"
+                    }
+                },
+                {
+                    "name": "Obtener paciente por identificación",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/pacientes/identificacion/1234567890",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "pacientes",
+                                "identificacion",
+                                "1234567890"
+                            ]
+                        },
+                        "description": "Obtiene un paciente específico por su número de identificación"
+                    }
+                },
+                {
+                    "name": "Crear nuevo paciente",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nombre\": \"Juan Pérez\",\n    \"identificacion\": \"1234567890\",\n    \"fechaNacimiento\": \"1990-01-01\",\n    \"telefono\": \"123456789\",\n    \"email\": \"juan.perez@email.com\",\n    \"direccion\": \"Calle Principal 123\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/pacientes",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "pacientes"
+                            ]
+                        },
+                        "description": "Crea un nuevo paciente"
+                    }
+                },
+                {
+                    "name": "Actualizar paciente",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nombre\": \"Juan Pérez Actualizado\",\n    \"identificacion\": \"1234567890\",\n    \"fechaNacimiento\": \"1990-01-01\",\n    \"telefono\": \"987654321\",\n    \"email\": \"juan.perez.actualizado@email.com\",\n    \"direccion\": \"Nueva Calle 456\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/pacientes/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "pacientes",
+                                "1"
+                            ]
+                        },
+                        "description": "Actualiza un paciente existente"
+                    }
+                },
+                {
+                    "name": "Eliminar paciente",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/pacientes/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "pacientes",
+                                "1"
+                            ]
+                        },
+                        "description": "Elimina un paciente por su ID"
+                    }
+                }
+            ]
         }
     ],
     "variable": [
