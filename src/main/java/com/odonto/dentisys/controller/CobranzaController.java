@@ -16,10 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.odonto.dentisys.dto.CuentaDTO;
 import com.odonto.dentisys.model.Cobranza;
 import com.odonto.dentisys.model.Paciente;
 import com.odonto.dentisys.model.Proforma;
+import com.odonto.dentisys.service.CategoriaService;
 import com.odonto.dentisys.service.CobranzaService;
+import com.odonto.dentisys.service.CuentaService;
 
 @RestController
 @RequestMapping("/api/cobranzas")
@@ -27,6 +30,12 @@ public class CobranzaController {
 
     @Autowired
     private CobranzaService cobranzaService;
+
+    @Autowired
+    private CuentaService cuentaService;
+
+    @Autowired
+    private CategoriaService categoriaService;
 
     @GetMapping
     public ResponseEntity<List<Cobranza>> getAllCobranzas() {
@@ -75,7 +84,21 @@ public class CobranzaController {
 
     @PostMapping
     public ResponseEntity<Cobranza> createCobranza(@RequestBody Cobranza cobranza) {
-        return ResponseEntity.ok(cobranzaService.save(cobranza));
+        // Guardar la cobranza
+        Cobranza cobranzaGuardada = cobranzaService.save(cobranza);
+
+        // Crear un registro en la cuenta
+        CuentaDTO cuentaDTO = new CuentaDTO();
+        cuentaDTO.setCategoriaId(1L); // ID de la categoría "Ingresos"
+        cuentaDTO.setCobranzaId(cobranzaGuardada.getId());
+        cuentaDTO.setMonto(cobranzaGuardada.getMonto());
+        cuentaDTO.setFechaMovimiento(cobranzaGuardada.getFechaPago());
+        cuentaDTO.setDescripcion("{Pago de Proforma} " + cobranzaGuardada.getObservaciones());
+
+        // Guardar la cuenta
+        cuentaService.save(cuentaDTO);
+
+        return ResponseEntity.ok(cobranzaGuardada);
     }
 
     @PutMapping("/{id}")
