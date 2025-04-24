@@ -57,6 +57,7 @@ public class FichaOdontologicaController {
         return fichaOdontologicaService.findById(id)
                 .map(existingFicha -> {
                     fichaOdontologica.setId(id);
+                    fichaOdontologica.setCreatedAt(existingFicha.getCreatedAt());
                     return ResponseEntity.ok(fichaOdontologicaService.save(fichaOdontologica));
                 })
                 .orElse(ResponseEntity.notFound().build());
