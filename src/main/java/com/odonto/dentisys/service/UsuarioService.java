@@ -1,5 +1,6 @@
 package com.odonto.dentisys.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,6 +43,17 @@ public class UsuarioService {
     public UsuarioDTO save(UsuarioDTO usuarioDTO) {
         Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
 
+        // Si es una actualización (tiene ID), verificar si la contraseña está vacía
+        if (usuario.getId() != null) {
+            Usuario usuarioExistente = usuarioRepository.findById(usuario.getId())
+                    .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+            // Si la contraseña está vacía en el DTO, mantener la contraseña existente
+            if (usuarioDTO.getPassword() == null || usuarioDTO.getPassword().trim().isEmpty()) {
+                usuario.setPassword(usuarioExistente.getPassword());
+            }
+        }
+
         // Cargar el rol si existe
         if (usuarioDTO.getRolId() != null) {
             usuario.setRol(rolRepository.findById(usuarioDTO.getRolId())
@@ -79,8 +91,12 @@ public class UsuarioService {
         return usuarioRepository.existsByNumeroDocumento(numeroDocumento);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public Optional<Usuario> findByEmailAndPassword(String email, String password) {
-        return usuarioRepository.findByEmailAndPassword(email, password);
+        return usuarioRepository.findByEmailAndPassword(email, password)
+                .map(usuario -> {
+                    usuario.setUltimoAcceso(LocalDateTime.now());
+                    return usuarioRepository.save(usuario);
+                });
     }
 }

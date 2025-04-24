@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.odonto.dentisys.dto.UsuarioDTO;
-import com.odonto.dentisys.model.Usuario;
+import com.odonto.dentisys.mapper.UsuarioMapper;
 import com.odonto.dentisys.service.UsuarioService;
 
 @RestController
@@ -25,6 +25,9 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private UsuarioMapper usuarioMapper;
 
     @GetMapping
     public ResponseEntity<List<UsuarioDTO>> findAll() {
@@ -70,9 +73,9 @@ public class UsuarioController {
     }
 
     @GetMapping("/auth")
-    public ResponseEntity<Usuario> authenticate(@RequestParam String email, @RequestParam String password) {
+    public ResponseEntity<UsuarioDTO> authenticate(@RequestParam String email, @RequestParam String password) {
         return usuarioService.findByEmailAndPassword(email, password)
-                .map(ResponseEntity::ok)
+                .map(usuario -> ResponseEntity.ok(usuarioMapper.toDTO(usuario)))
                 .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
     }
 }

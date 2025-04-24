@@ -1541,6 +1541,327 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "Médicos",
+            "item": [
+                {
+                    "name": "Obtener todos los médicos",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/medicos",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "medicos"
+                            ]
+                        },
+                        "description": "Obtiene todos los médicos registrados en el sistema"
+                    }
+                },
+                {
+                    "name": "Obtener médico por ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/medicos/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "medicos",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene un médico específico por su ID"
+                    }
+                },
+                {
+                    "name": "Obtener médico por número de documento",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/medicos/documento/12345678",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "medicos",
+                                "documento",
+                                "12345678"
+                            ]
+                        },
+                        "description": "Obtiene un médico específico por su número de documento"
+                    }
+                },
+                {
+                    "name": "Crear nuevo médico",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"usuario\": {\n        \"nombre\": \"Juan\",\n        \"apellido\": \"Pérez\",\n        \"numeroDocumento\": \"12345678\",\n        \"email\": \"juan.perez@example.com\",\n        \"telefono\": \"123456789\"\n    },\n    \"especialidad\": \"Odontología General\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/medicos",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "medicos"
+                            ]
+                        },
+                        "description": "Crea un nuevo médico en el sistema"
+                    }
+                },
+                {
+                    "name": "Actualizar médico",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"usuario\": {\n        \"nombre\": \"Juan\",\n        \"apellido\": \"Pérez\",\n        \"numeroDocumento\": \"12345678\",\n        \"email\": \"juan.perez@example.com\",\n        \"telefono\": \"123456789\"\n    },\n    \"especialidad\": \"Ortodoncia\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/medicos/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "medicos",
+                                "1"
+                            ]
+                        },
+                        "description": "Actualiza la información de un médico existente"
+                    }
+                },
+                {
+                    "name": "Eliminar médico",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/medicos/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "medicos",
+                                "1"
+                            ]
+                        },
+                        "description": "Elimina un médico del sistema"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Usuarios",
+            "item": [
+                {
+                    "name": "Obtener todos los usuarios",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/usuarios",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "usuarios"
+                            ]
+                        },
+                        "description": "Obtiene todos los usuarios registrados"
+                    }
+                },
+                {
+                    "name": "Obtener usuario por ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/usuarios/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "usuarios",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene un usuario específico por su ID"
+                    }
+                },
+                {
+                    "name": "Obtener usuario por email",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/usuarios/email/usuario@ejemplo.com",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "usuarios",
+                                "email",
+                                "usuario@ejemplo.com"
+                            ]
+                        },
+                        "description": "Obtiene un usuario por su email"
+                    }
+                },
+                {
+                    "name": "Obtener usuario por número de documento",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/usuarios/documento/12345678",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "usuarios",
+                                "documento",
+                                "12345678"
+                            ]
+                        },
+                        "description": "Obtiene un usuario por su número de documento"
+                    }
+                },
+                {
+                    "name": "Autenticar usuario",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/usuarios/auth?email=usuario@ejemplo.com&password=contraseña",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "usuarios",
+                                "auth"
+                            ],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "usuario@ejemplo.com"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "contraseña"
+                                }
+                            ]
+                        },
+                        "description": "Autentica un usuario con email y contraseña"
+                    }
+                },
+                {
+                    "name": "Crear nuevo usuario",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nombre\": \"Usuario Ejemplo\",\n    \"email\": \"usuario@ejemplo.com\",\n    \"password\": \"contraseña\",\n    \"numeroDocumento\": \"12345678\",\n    \"tipoDocumento\": \"DNI\",\n    \"rol\": \"ADMIN\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/usuarios",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "usuarios"
+                            ]
+                        },
+                        "description": "Crea un nuevo usuario"
+                    }
+                },
+                {
+                    "name": "Actualizar usuario",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nombre\": \"Usuario Ejemplo Actualizado\",\n    \"email\": \"usuario@ejemplo.com\",\n    \"password\": \"nueva-contraseña\",\n    \"numeroDocumento\": \"12345678\",\n    \"tipoDocumento\": \"DNI\",\n    \"rol\": \"ADMIN\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/usuarios/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "usuarios",
+                                "1"
+                            ]
+                        },
+                        "description": "Actualiza un usuario existente"
+                    }
+                },
+                {
+                    "name": "Eliminar usuario",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/usuarios/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "usuarios",
+                                "1"
+                            ]
+                        },
+                        "description": "Elimina un usuario por su ID"
+                    }
+                }
+            ]
         }
     ],
     "variable": [
