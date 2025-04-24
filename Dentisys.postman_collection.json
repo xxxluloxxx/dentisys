@@ -1407,6 +1407,162 @@
             ]
         },
         {
+            "name": "Imágenes de Fichas",
+            "item": [
+                {
+                    "name": "Obtener todas las imágenes",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/imagenes-fichas",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "imagenes-fichas"
+                            ]
+                        },
+                        "description": "Obtiene todas las imágenes registradas"
+                    }
+                },
+                {
+                    "name": "Obtener imagen por ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/imagenes-fichas/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "imagenes-fichas",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene una imagen específica por su ID"
+                    }
+                },
+                {
+                    "name": "Obtener imágenes por ID de ficha",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/imagenes-fichas/ficha/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "imagenes-fichas",
+                                "ficha",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene todas las imágenes asociadas a una ficha específica"
+                    }
+                },
+                {
+                    "name": "Obtener imágenes por tipo",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/imagenes-fichas/tipo/radiografia",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "imagenes-fichas",
+                                "tipo",
+                                "radiografia"
+                            ]
+                        },
+                        "description": "Obtiene todas las imágenes de un tipo específico"
+                    }
+                },
+                {
+                    "name": "Crear nueva imagen",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"fichaId\": 1,\n  \"nombre\": \"Radiografía inicial\",\n  \"tipoImagen\": \"radiografia\",\n  \"descripcion\": \"Radiografía panorámica inicial\",\n  \"imagenBase64\": \"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAIAAgDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/imagenes-fichas",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "imagenes-fichas"
+                            ]
+                        },
+                        "description": "Crea una nueva imagen asociada a una ficha"
+                    }
+                },
+                {
+                    "name": "Actualizar imagen",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"fichaId\": 1,\n  \"nombre\": \"Radiografía actualizada\",\n  \"tipoImagen\": \"radiografia\",\n  \"descripcion\": \"Radiografía panorámica actualizada\",\n  \"imagenBase64\": \"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAIAAgDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/imagenes-fichas/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "imagenes-fichas",
+                                "1"
+                            ]
+                        },
+                        "description": "Actualiza una imagen existente"
+                    }
+                },
+                {
+                    "name": "Eliminar imagen",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/imagenes-fichas/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "imagenes-fichas",
+                                "1"
+                            ]
+                        },
+                        "description": "Elimina una imagen por su ID"
+                    }
+                }
+            ]
+        },
+        {
             "name": "Pacientes",
             "item": [
                 {
@@ -1859,6 +2015,49 @@
                             ]
                         },
                         "description": "Elimina un usuario por su ID"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Menú",
+            "item": [
+                {
+                    "name": "Obtener menú administrador",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/menu/menu1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menu",
+                                "menu1"
+                            ]
+                        },
+                        "description": "Obtiene el menú para el rol de administrador"
+                    }
+                },
+                {
+                    "name": "Obtener menú médico",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/menu/menu2",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menu",
+                                "menu2"
+                            ]
+                        },
+                        "description": "Obtiene el menú para el rol de médico"
                     }
                 }
             ]
