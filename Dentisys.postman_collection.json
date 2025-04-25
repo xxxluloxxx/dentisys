@@ -670,7 +670,26 @@
                                 "productos-frecuentes"
                             ]
                         },
-                        "description": "Obtiene los 7 productos más frecuentes en las proformas con sus porcentajes"
+                        "description": "Obtiene los productos más frecuentes"
+                    }
+                },
+                {
+                    "name": "Obtener estadísticas de citas por semana",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/graficas/estadisticas-citas-semana",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "graficas",
+                                "estadisticas-citas-semana"
+                            ]
+                        },
+                        "description": "Obtiene estadísticas de citas por semana"
                     }
                 }
             ]

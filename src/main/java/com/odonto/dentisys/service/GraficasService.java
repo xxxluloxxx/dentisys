@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.odonto.dentisys.dto.EstadisticasCitasSemanaDTO;
+import com.odonto.dentisys.dto.EstadisticasDiaSemanaDTO;
 import com.odonto.dentisys.dto.EstadisticasGeneralesDTO;
 import com.odonto.dentisys.dto.EstadisticasProformaDTO;
 import com.odonto.dentisys.dto.ProductoFrecuenteDTO;
@@ -148,6 +150,93 @@ public class GraficasService {
         List<FichaOdontologica> fichasSemanaAnterior = fichaOdontologicaRepository
                 .findByCreatedAtBetween(inicioSemanaAnterior, finSemanaAnterior);
         estadisticas.setCantidadFichasSemanaAnterior(fichasSemanaAnterior.size());
+
+        return estadisticas;
+    }
+
+    public EstadisticasCitasSemanaDTO getEstadisticasCitasSemana() {
+        EstadisticasCitasSemanaDTO estadisticas = new EstadisticasCitasSemanaDTO();
+
+        // Obtener la fecha actual
+        LocalDate hoy = LocalDate.now();
+
+        // Calcular el inicio de la semana actual (lunes)
+        LocalDate inicioSemanaActual = hoy.with(TemporalAdjusters.previousOrSame(java.time.DayOfWeek.MONDAY));
+        LocalDate finSemanaActual = inicioSemanaActual.plusDays(6);
+
+        // Calcular el inicio de la semana anterior (lunes)
+        LocalDate inicioSemanaAnterior = inicioSemanaActual.minusWeeks(1);
+        LocalDate finSemanaAnterior = inicioSemanaAnterior.plusDays(6);
+
+        // Inicializar los DTOs para cada semana
+        EstadisticasDiaSemanaDTO semanaActualDTO = new EstadisticasDiaSemanaDTO();
+        EstadisticasDiaSemanaDTO semanaAnteriorDTO = new EstadisticasDiaSemanaDTO();
+
+        // Obtener las citas para la semana actual
+        for (int i = 0; i < 7; i++) {
+            LocalDate fecha = inicioSemanaActual.plusDays(i);
+            List<Cita> citas = citaRepository.findByFechaCita(fecha);
+
+            // Asignar la cantidad de citas al día correspondiente
+            switch (fecha.getDayOfWeek()) {
+                case MONDAY:
+                    semanaActualDTO.setLunes(citas.size());
+                    break;
+                case TUESDAY:
+                    semanaActualDTO.setMartes(citas.size());
+                    break;
+                case WEDNESDAY:
+                    semanaActualDTO.setMiercoles(citas.size());
+                    break;
+                case THURSDAY:
+                    semanaActualDTO.setJueves(citas.size());
+                    break;
+                case FRIDAY:
+                    semanaActualDTO.setViernes(citas.size());
+                    break;
+                case SATURDAY:
+                    semanaActualDTO.setSabado(citas.size());
+                    break;
+                case SUNDAY:
+                    semanaActualDTO.setDomingo(citas.size());
+                    break;
+            }
+        }
+
+        // Obtener las citas para la semana anterior
+        for (int i = 0; i < 7; i++) {
+            LocalDate fecha = inicioSemanaAnterior.plusDays(i);
+            List<Cita> citas = citaRepository.findByFechaCita(fecha);
+
+            // Asignar la cantidad de citas al día correspondiente
+            switch (fecha.getDayOfWeek()) {
+                case MONDAY:
+                    semanaAnteriorDTO.setLunes(citas.size());
+                    break;
+                case TUESDAY:
+                    semanaAnteriorDTO.setMartes(citas.size());
+                    break;
+                case WEDNESDAY:
+                    semanaAnteriorDTO.setMiercoles(citas.size());
+                    break;
+                case THURSDAY:
+                    semanaAnteriorDTO.setJueves(citas.size());
+                    break;
+                case FRIDAY:
+                    semanaAnteriorDTO.setViernes(citas.size());
+                    break;
+                case SATURDAY:
+                    semanaAnteriorDTO.setSabado(citas.size());
+                    break;
+                case SUNDAY:
+                    semanaAnteriorDTO.setDomingo(citas.size());
+                    break;
+            }
+        }
+
+        // Asignar los DTOs al resultado
+        estadisticas.setSemanaActual(semanaActualDTO);
+        estadisticas.setSemanaAnterior(semanaAnteriorDTO);
 
         return estadisticas;
     }

@@ -11,7 +11,7 @@
             ]
         },
         {
-            "label": "Odontología",
+            "label": "PRISMA",
             "icon": "pi pi-fw pi-briefcase",
             "to": "/pages",
             "items": [
@@ -27,7 +27,7 @@
                 },
                 {
                     "label": "Medicos",
-                    "icon": "pi pi-fw pi-user",
+                    "icon": "pi pi-fw pi-id-card",
                     "to": "/pages/medicos"
                 },
                 {
@@ -37,7 +37,7 @@
                 },
                 {
                     "label": "Ficha medica",
-                    "icon": "pi pi-fw pi-book",
+                    "icon": "pi pi-fw pi-file-edit",
                     "items": [
                         {
                             "label": "Fichas medicas",
@@ -82,11 +82,6 @@
                             "to": "/pages/agendarCita"
                         }
                     ]
-                },
-                {
-                    "label": "Odontograma",
-                    "icon": "pi pi-fw pi-chart-bar",
-                    "to": "/pages/odontograma"
                 },
                 {
                     "label": "Categorías Financieras",
