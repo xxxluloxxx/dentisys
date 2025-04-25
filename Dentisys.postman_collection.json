@@ -634,6 +634,44 @@
                         },
                         "description": "Obtiene estadísticas generales de las proformas"
                     }
+                },
+                {
+                    "name": "Obtener estadísticas generales",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/graficas/estadisticas-generales",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "graficas",
+                                "estadisticas-generales"
+                            ]
+                        },
+                        "description": "Obtiene estadísticas generales del sistema"
+                    }
+                },
+                {
+                    "name": "Obtener productos frecuentes",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/graficas/productos-frecuentes",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "graficas",
+                                "productos-frecuentes"
+                            ]
+                        },
+                        "description": "Obtiene los 7 productos más frecuentes en las proformas con sus porcentajes"
+                    }
                 }
             ]
         },

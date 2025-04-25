@@ -19,4 +19,6 @@ public interface CitaRepository extends JpaRepository<Cita, Long> {
     List<Cita> findByMedicoIdAndFechaCitaBetween(Long medicoId, LocalDate fechaInicio, LocalDate fechaFin);
 
     List<Cita> findByEstado(String estado);
+
+    List<Cita> findByFechaCita(LocalDate fechaCita);
 }
