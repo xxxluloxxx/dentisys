@@ -22,7 +22,7 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=dev
     ports:
-      - "8081:8080"
+      - "8082:8080"
     restart: unless-stopped
     networks:
       - dentisys-network
