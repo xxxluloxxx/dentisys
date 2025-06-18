@@ -12,8 +12,8 @@ public class CorsConfig implements WebMvcConfigurer {
                 .allowedOrigins(
                         "https://jade-tulumba-fd348a.netlify.app",
                         "https://dentisysfront-production.up.railway.app",
-                        "http://localhost:5173",
-                        "http://localhost:8080")
+                        "http://93.127.217.21:5173",
+                        "http://93.127.217.21:8083")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .exposedHeaders("*")
