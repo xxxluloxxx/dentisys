@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  dentisys-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dentisys-prod
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    ports:
+      - "8080:8080"
+    depends_on:
+      - bd-postgres
+    restart: unless-stopped
+    networks:
+      - dentisys-network
+
+  dentisys-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dentisys-dev
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+    ports:
+      - "8081:8080"
+    depends_on:
+      - bd-postgres
+    restart: unless-stopped
+    networks:
+      - dentisys-network
+
+networks:
+  dentisys-network:
+    external: true 
