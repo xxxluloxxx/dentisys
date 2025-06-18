@@ -29,4 +29,4 @@ services:
 
 networks:
   dentisys-network:
-    external: true 
+    name: dentisys-network 
