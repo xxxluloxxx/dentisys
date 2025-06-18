@@ -13,8 +13,7 @@ cd "$(dirname "$0")"
 
 # Detener el contenedor de desarrollo
 echo -e "${GREEN}Deteniendo contenedor de desarrollo...${NC}"
-docker stop dentisys-dev
-docker rm dentisys-dev
+docker compose -f docker-compose.dev.yml down
 
 # Actualizar el código
 echo -e "${GREEN}Actualizando código desde main...${NC}"
@@ -23,7 +22,7 @@ git pull origin main
 
 # Reconstruir y levantar el contenedor de desarrollo
 echo -e "${GREEN}Reconstruyendo y levantando contenedor de desarrollo...${NC}"
-docker compose -f docker-compose.app.yml up -d --build dentisys-dev
+docker compose -f docker-compose.dev.yml up -d --build
 
 # Verificar que el contenedor esté corriendo
 echo -e "${GREEN}Verificando estado del contenedor...${NC}"

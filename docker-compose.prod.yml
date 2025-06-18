@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  dentisys-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dentisys-prod
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    networks:
+      - dentisys-network
+    volumes:
+      - ./src/main/resources/application-prod.properties:/app/config/application-prod.properties
+
+networks:
+  dentisys-network:
+    name: dentisys-network 
