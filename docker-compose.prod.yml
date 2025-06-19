@@ -9,7 +9,7 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=prod
     ports:
-      - "8080:8080"
+      - "8091:8080"
     restart: unless-stopped
     networks:
       - dentisys-network
