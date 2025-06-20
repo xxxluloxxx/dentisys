@@ -208,7 +208,7 @@ INSERT INTO procedimientos (ficha_id, procedimiento, observaciones) VALUES
 
 -- Insertar citas
 INSERT INTO citas (paciente_id, medico_id, fecha_cita, hora_cita, estado, observaciones) VALUES
-(1, 1, '2024-03-20', '09:00:00', 'CONFIRMADA', 'Primera consulta de rutina'),
+(1, 1, '2024-03-20', '09:00:00', 'CONFIRMADA', 'Primera consulta de rutina.'),
 (2, 2, '2024-03-20', '09:00:00', 'CONFIRMADA', 'Seguimiento de ortodoncia'),
 (3, 3, '2024-03-21', '09:00:00', 'PENDIENTE', 'Consulta de emergencia'),
 (4, 4, '2024-03-21', '10:00:00', 'CONFIRMADA', 'Revisión post-operatoria'),
