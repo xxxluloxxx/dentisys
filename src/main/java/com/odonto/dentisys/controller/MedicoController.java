@@ -56,8 +56,8 @@ public class MedicoController {
     public ResponseEntity<MedicoDTO> update(@PathVariable Long id, @RequestBody Medico medico) {
         return medicoService.findById(id)
                 .map(existingMedico -> {
-                    medico.setId(id);
-                    return ResponseEntity.ok(medicoMapper.toDTO(medicoService.save(medico)));
+                    existingMedico.setEspecialidad(medico.getEspecialidad());
+                    return ResponseEntity.ok(medicoMapper.toDTO(medicoService.save(existingMedico)));
                 })
                 .orElse(ResponseEntity.notFound().build());
     }

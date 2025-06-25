@@ -32,9 +32,6 @@ public class MedicoService {
             if (medicoRepository.existsByUsuario_NumeroDocumento(medico.getNumeroDocumento())) {
                 throw new RuntimeException("Ya existe un médico con ese número de documento");
             }
-            if (medicoRepository.existsByUsuario_Email(medico.getEmail())) {
-                throw new RuntimeException("Ya existe un médico con ese email");
-            }
         }
         return medicoRepository.save(medico);
     }
