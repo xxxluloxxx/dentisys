@@ -36,6 +36,67 @@ INSERT INTO roles_permisos (rol_id, permiso_id) VALUES
 (4, 5), (4, 6), (4, 7),  -- Contador
 (5, 2), (5, 3), (5, 7);  -- Secretaria
 
+-- Insertar menús para Administrador (rol_id = 1) basado en menuAdmin.json
+INSERT INTO menu (rol_id, label, icon, to_path, parent_id, orden, estado) VALUES
+-- Menú Home
+(1, 'Home', NULL, NULL, NULL, 1, true),
+(1, 'Dashboard', 'pi pi-fw pi-home', '/dashboard', 1, 1, true),
+
+-- Menú PRISMA
+(1, 'PRISMA', 'pi pi-fw pi-briefcase', '/pages', NULL, 2, true),
+(1, 'Productos', 'pi pi-fw pi-box', '/pages/productos', 3, 1, true),
+(1, 'Pacientes', 'pi pi-fw pi-user', '/pages/pacientes', 3, 2, true),
+(1, 'Medicos', 'pi pi-fw pi-id-card', '/pages/medicos', 3, 3, true),
+(1, 'Cuentas', 'pi pi-fw pi-money-bill', '/pages/cuentas', 3, 4, true),
+
+-- Submenú Ficha medica dentro de PRISMA
+(1, 'Ficha medica', 'pi pi-fw pi-file-edit', NULL, 3, 5, true),
+(1, 'Fichas medicas', 'pi pi-fw pi-bars', '/pages/fichasMedicas', 8, 1, true),
+(1, 'Ficha Crear', 'pi pi-fw pi-file-edit', '/pages/ficha-crear', 8, 2, true),
+
+-- Submenú Proformas dentro de PRISMA
+(1, 'Proformas', 'pi pi-fw pi-book', NULL, 3, 6, true),
+(1, 'Proformas', 'pi pi-fw pi-bars', '/pages/proformas', 11, 1, true),
+(1, 'Crear proforma', 'pi pi-fw pi-plus-circle', '/pages/proforma', 11, 2, true),
+
+-- Submenú Agenda dentro de PRISMA
+(1, 'Agenda', 'pi pi-fw pi-calendar', NULL, 3, 7, true),
+(1, 'Agenda', 'pi pi-fw pi-calendar', '/pages/agenda', 14, 1, true),
+(1, 'Citas', 'pi pi-fw pi-calendar-plus', '/pages/agendarCita', 14, 2, true),
+
+-- Menús directos en PRISMA
+(1, 'Categorías Financieras', 'pi pi-fw pi-tags', '/pages/categorias-financieras', 3, 8, true),
+(1, 'Configuración', 'pi pi-fw pi-cog', '/pages/configuracion', 3, 9, true);
+
+
+-- Insertar menús para Médico (rol_id = 2) basado en menuMedico.json
+INSERT INTO menu (rol_id, label, icon, to_path, parent_id, orden, estado) VALUES
+-- Menú Home
+(2, 'Home', NULL, NULL, NULL, 1, true),
+(2, 'Dashboard', 'pi pi-fw pi-home', '/dashboard', 19, 1, true),
+
+-- Menú PRISMA
+(2, 'PRISMA', 'pi pi-fw pi-briefcase', '/pages', NULL, 2, true),
+(2, 'Pacientes', 'pi pi-fw pi-user', '/pages/pacientes', 21, 2, true),
+
+-- Submenú Ficha medica dentro de PRISMA
+(2, 'Ficha medica', 'pi pi-fw pi-book', NULL, 21, 3, true),
+(2, 'Fichas medicas', 'pi pi-fw pi-bars', '/pages/fichasMedicas', 23, 1, true),
+(2, 'Ficha Crear', 'pi pi-fw pi-file-edit', '/pages/ficha-crear', 23, 2, true),
+
+-- Submenú Proformas dentro de PRISMA
+(2, 'Proformas', 'pi pi-fw pi-book', NULL, 21, 4, true),
+(2, 'Proformas', 'pi pi-fw pi-bars', '/pages/proformas', 26, 1, true),
+(2, 'Crear proforma', 'pi pi-fw pi-plus-circle', '/pages/proforma', 26, 2, true),
+
+-- Submenú Agenda dentro de PRISMA
+(2, 'Agenda', 'pi pi-fw pi-calendar', NULL, 21, 5, true),
+(2, 'Agenda', 'pi pi-fw pi-calendar', '/pages/agenda', 29, 1, true),
+(2, 'Citas', 'pi pi-fw pi-calendar-plus', '/pages/agendarCita', 29, 2, true),
+
+-- Menú directo en PRISMA
+(2, 'Configuración', 'pi pi-fw pi-cog', '/pages/configuracion', 21, 6, true);
+
 -- Insertar usuarios
 INSERT INTO usuarios (numero_documento, nombre, apellido, email, password, telefono, rol_id) VALUES
 ('1234567890', 'Paul', 'Arias', 'jordi.arias19@gmail.com', '123', '0991234567', 1),
@@ -218,3 +279,5 @@ INSERT INTO citas (paciente_id, medico_id, fecha_cita, hora_cita, estado, observ
 (8, 2, '2024-03-20', '09:30:00', 'CONFIRMADA', 'Limpieza dental'),
 (9, 3, '2024-03-21', '09:30:00', 'PENDIENTE', 'Consulta de rutina'),
 (10, 4, '2024-03-21', '10:30:00', 'CONFIRMADA', 'Revisión de ortodoncia');
+
+

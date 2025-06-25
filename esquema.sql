@@ -37,6 +37,20 @@ CREATE TABLE roles_permisos (
     UNIQUE(rol_id, permiso_id)
 );
 
+-- Tabla de Menú
+CREATE TABLE menu (
+    id SERIAL PRIMARY KEY,
+    rol_id INTEGER NOT NULL REFERENCES roles(id) ON DELETE CASCADE,
+    label VARCHAR(100) NOT NULL,
+    icon VARCHAR(100),
+    to_path VARCHAR(200),
+    parent_id INTEGER REFERENCES menu(id) ON DELETE CASCADE,
+    orden INTEGER DEFAULT 0,
+    estado BOOLEAN DEFAULT true,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Tabla de Usuarios
 CREATE TABLE usuarios (
     id SERIAL PRIMARY KEY,
@@ -210,6 +224,9 @@ CREATE INDEX idx_cuentas_categoria ON cuentas(categoria_id);
 CREATE INDEX idx_categorias_nombre ON categorias(nombre);
 CREATE INDEX idx_procedimientos_ficha_id ON procedimientos(ficha_id);
 CREATE INDEX idx_procedimientos_procedimiento ON procedimientos(procedimiento);
+CREATE INDEX idx_menu_rol_id ON menu(rol_id);
+CREATE INDEX idx_menu_parent_id ON menu(parent_id);
+CREATE INDEX idx_menu_orden ON menu(orden);
 
 -- Crear función para el trigger de updated_at
 CREATE OR REPLACE FUNCTION update_updated_at_column()
@@ -283,5 +300,10 @@ CREATE TRIGGER update_cuentas_updated_at
 
 CREATE TRIGGER update_procedimientos_updated_at
     BEFORE UPDATE ON procedimientos
+    FOR EACH ROW
+    EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TRIGGER update_menu_updated_at
+    BEFORE UPDATE ON menu
     FOR EACH ROW
     EXECUTE FUNCTION update_updated_at_column();
