@@ -75,7 +75,6 @@ public class CobranzaService {
 
     @Transactional
     public Cobranza update(Long id, Cobranza cobranza) {
-        Cobranza existingCobranza = findById(id);
         cobranza.setId(id);
         return cobranzaRepository.save(cobranza);
     }

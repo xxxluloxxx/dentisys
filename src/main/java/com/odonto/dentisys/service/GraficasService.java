@@ -162,11 +162,9 @@ public class GraficasService {
 
         // Calcular el inicio de la semana actual (lunes)
         LocalDate inicioSemanaActual = hoy.with(TemporalAdjusters.previousOrSame(java.time.DayOfWeek.MONDAY));
-        LocalDate finSemanaActual = inicioSemanaActual.plusDays(6);
 
         // Calcular el inicio de la semana anterior (lunes)
         LocalDate inicioSemanaAnterior = inicioSemanaActual.minusWeeks(1);
-        LocalDate finSemanaAnterior = inicioSemanaAnterior.plusDays(6);
 
         // Inicializar los DTOs para cada semana
         EstadisticasDiaSemanaDTO semanaActualDTO = new EstadisticasDiaSemanaDTO();
