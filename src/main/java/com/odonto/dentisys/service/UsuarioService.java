@@ -54,6 +54,13 @@ public class UsuarioService {
             }
         }
 
+        // Si es una actualización y no se especifica rol, mantener el rol existente
+        if (usuario.getId() != null && usuarioDTO.getRolId() == null) {
+            Usuario usuarioExistente = usuarioRepository.findById(usuario.getId())
+                    .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+            usuario.setRol(usuarioExistente.getRol());
+        }
+
         // Cargar el rol si existe
         if (usuarioDTO.getRolId() != null) {
             usuario.setRol(rolRepository.findById(usuarioDTO.getRolId())
