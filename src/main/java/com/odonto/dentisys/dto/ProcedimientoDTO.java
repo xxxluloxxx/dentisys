@@ -10,6 +10,7 @@ public class ProcedimientoDTO {
     private Integer fichaId;
     private String procedimiento;
     private String observaciones;
+    private LocalDateTime fecha;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

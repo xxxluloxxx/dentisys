@@ -259,13 +259,13 @@ INSERT INTO fichas_medicas (paciente_id, medico_id, datos) VALUES
 (5, 5, '{"antecedentes": "Alergias", "alergias": "Penicilina", "medicamentos_actuales": "Antihistamínicos", "observaciones": "Requiere precaución con medicamentos"}');
 
 -- Insertar procedimientos
-INSERT INTO procedimientos (ficha_id, procedimiento, observaciones) VALUES
-(1, 'Limpieza dental profunda', 'Se realizó limpieza dental completa con eliminación de sarro'),
-(1, 'Aplicación de flúor', 'Se aplicó flúor para fortalecer el esmalte dental'),
-(2, 'Tratamiento de caries', 'Se realizó obturación en molar superior derecho'),
-(3, 'Ortodoncia inicial', 'Se colocaron brackets en arcada superior'),
-(4, 'Implante dental', 'Se realizó implante en molar inferior izquierdo'),
-(5, 'Extracción dental', 'Se extrajo molar con caries profunda');
+INSERT INTO procedimientos (ficha_id, procedimiento, observaciones, fecha) VALUES
+(1, 'Limpieza dental profunda', 'Se realizó limpieza dental completa con eliminación de sarro', '2024-03-15'),
+(1, 'Aplicación de flúor', 'Se aplicó flúor para fortalecer el esmalte dental', '2024-03-15'),
+(2, 'Tratamiento de caries', 'Se realizó obturación en molar superior derecho', '2024-03-16'),
+(3, 'Ortodoncia inicial', 'Se colocaron brackets en arcada superior', '2024-03-17'),
+(4, 'Implante dental', 'Se realizó implante en molar inferior izquierdo', '2024-03-18'),
+(5, 'Extracción dental', 'Se extrajo molar con caries profunda', '2024-03-19');
 
 -- Insertar citas
 INSERT INTO citas (paciente_id, medico_id, fecha_cita, hora_cita, estado, observaciones) VALUES

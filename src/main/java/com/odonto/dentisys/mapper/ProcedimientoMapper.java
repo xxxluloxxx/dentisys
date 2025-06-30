@@ -21,6 +21,7 @@ public class ProcedimientoMapper {
         dto.setFichaId(procedimiento.getFicha().getId());
         dto.setProcedimiento(procedimiento.getProcedimiento());
         dto.setObservaciones(procedimiento.getObservaciones());
+        dto.setFecha(procedimiento.getFecha());
         dto.setCreatedAt(procedimiento.getCreatedAt());
         dto.setUpdatedAt(procedimiento.getUpdatedAt());
 

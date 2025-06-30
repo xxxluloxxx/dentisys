@@ -32,6 +32,9 @@ public class Procedimiento {
     @Column(name = "observaciones", columnDefinition = "text")
     private String observaciones;
 
+    @Column(name = "fecha", nullable = false)
+    private LocalDateTime fecha;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
@@ -40,6 +43,9 @@ public class Procedimiento {
 
     @PrePersist
     protected void onCreate() {
+        if (fecha == null) {
+            fecha = LocalDateTime.now();
+        }
         createdAt = LocalDateTime.now();
         updatedAt = LocalDateTime.now();
     }

@@ -121,6 +121,7 @@ CREATE TABLE procedimientos (
     ficha_id INTEGER NOT NULL REFERENCES fichas_medicas(id) ON DELETE CASCADE,
     procedimiento VARCHAR(255) NOT NULL,
     observaciones TEXT,
+    fecha DATE NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
