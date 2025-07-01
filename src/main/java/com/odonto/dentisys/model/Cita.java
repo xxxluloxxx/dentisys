@@ -38,6 +38,9 @@ public class Cita {
     @Column(name = "hora_cita", nullable = false)
     private LocalTime horaCita;
 
+    @Column(name = "hora_cita_fin", nullable = false)
+    private LocalTime horaCitaFin;
+
     @Column(name = "estado", nullable = false, length = 20)
     private String estado;
 

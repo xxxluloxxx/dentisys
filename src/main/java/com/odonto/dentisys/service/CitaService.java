@@ -99,6 +99,7 @@ public class CitaService {
         dto.setMedicoNombre(cita.getMedico().getNombre() + " " + cita.getMedico().getApellido());
         dto.setFechaCita(cita.getFechaCita());
         dto.setHoraCita(cita.getHoraCita());
+        dto.setHoraCitaFin(cita.getHoraCitaFin());
         dto.setEstado(cita.getEstado());
         dto.setObservaciones(cita.getObservaciones());
         dto.setCreatedAt(cita.getCreatedAt().toString());

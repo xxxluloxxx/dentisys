@@ -14,6 +14,7 @@ public class CitaDTO {
     private String medicoNombre;
     private LocalDate fechaCita;
     private LocalTime horaCita;
+    private LocalTime horaCitaFin;
     private String estado;
     private String observaciones;
     private String createdAt;

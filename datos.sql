@@ -268,16 +268,16 @@ INSERT INTO procedimientos (ficha_id, procedimiento, observaciones, fecha) VALUE
 (5, 'Extracción dental', 'Se extrajo molar con caries profunda', '2024-03-19');
 
 -- Insertar citas
-INSERT INTO citas (paciente_id, medico_id, fecha_cita, hora_cita, estado, observaciones) VALUES
-(1, 1, '2024-03-20', '09:00:00', 'CONFIRMADA', 'Primera consulta de rutina.'),
-(2, 2, '2024-03-20', '09:00:00', 'CONFIRMADA', 'Seguimiento de ortodoncia'),
-(3, 3, '2024-03-21', '09:00:00', 'PENDIENTE', 'Consulta de emergencia'),
-(4, 4, '2024-03-21', '10:00:00', 'CONFIRMADA', 'Revisión post-operatoria'),
-(5, 5, '2024-03-22', '09:00:00', 'PENDIENTE', 'Primera consulta'),
-(6, 6, '2024-03-22', '10:00:00', 'CONFIRMADA', 'Seguimiento de implante'),
-(7, 1, '2024-03-20', '09:30:00', 'CANCELADA', 'Paciente canceló'),
-(8, 2, '2024-03-20', '09:30:00', 'CONFIRMADA', 'Limpieza dental'),
-(9, 3, '2024-03-21', '09:30:00', 'PENDIENTE', 'Consulta de rutina'),
-(10, 4, '2024-03-21', '10:30:00', 'CONFIRMADA', 'Revisión de ortodoncia');
+INSERT INTO citas (paciente_id, medico_id, fecha_cita, hora_cita, hora_cita_fin, estado, observaciones) VALUES
+(1, 1, '2024-03-20', '09:00:00', '10:00:00', 'CONFIRMADA', 'Primera consulta de rutina.'),
+(2, 2, '2024-03-20', '09:00:00', '10:00:00', 'CONFIRMADA', 'Seguimiento de ortodoncia'),
+(3, 3, '2024-03-21', '09:00:00', '10:00:00', 'PENDIENTE', 'Consulta de emergencia'),
+(4, 4, '2024-03-21', '10:00:00', '11:00:00', 'CONFIRMADA', 'Revisión post-operatoria'),
+(5, 5, '2024-03-22', '09:00:00', '10:00:00', 'PENDIENTE', 'Primera consulta'),
+(6, 6, '2024-03-22', '10:00:00', '11:00:00', 'CONFIRMADA', 'Seguimiento de implante'),
+(7, 1, '2024-03-20', '09:30:00', '10:30:00', 'CANCELADA', 'Paciente canceló'),
+(8, 2, '2024-03-20', '09:30:00', '10:30:00', 'CONFIRMADA', 'Limpieza dental'),
+(9, 3, '2024-03-21', '09:30:00', '10:30:00', 'PENDIENTE', 'Consulta de rutina'),
+(10, 4, '2024-03-21', '10:30:00', '11:30:00', 'CONFIRMADA', 'Revisión de ortodoncia');
 
 

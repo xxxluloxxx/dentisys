@@ -74,6 +74,7 @@ public class CitaController {
     public ResponseEntity<Cita> create(@RequestBody Cita cita) {
         System.out.println("Datos recibidos en create: " + cita);
         System.out.println("Hora recibida: " + cita.getHoraCita());
+        System.out.println("Hora fin recibida: " + cita.getHoraCitaFin());
         return ResponseEntity.ok(citaService.save(cita));
     }
 
@@ -81,6 +82,7 @@ public class CitaController {
     public ResponseEntity<Cita> update(@PathVariable Long id, @RequestBody Cita cita) {
         System.out.println("Datos recibidos en update: " + cita);
         System.out.println("Hora recibida: " + cita.getHoraCita());
+        System.out.println("Hora fin recibida: " + cita.getHoraCitaFin());
         return citaService.findCitaById(id)
                 .map(existingCita -> {
                     cita.setId(id);

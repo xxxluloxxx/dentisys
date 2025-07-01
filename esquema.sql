@@ -99,6 +99,7 @@ CREATE TABLE citas (
     medico_id INTEGER NOT NULL REFERENCES medicos(id) ON DELETE CASCADE,
     fecha_cita DATE NOT NULL,
     hora_cita TIME NOT NULL,
+    hora_cita_fin TIME NOT NULL,
     estado VARCHAR(20) NOT NULL,
     observaciones TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
