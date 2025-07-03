@@ -1172,6 +1172,26 @@
                     }
                 },
                 {
+                    "name": "Obtener proformas y cobranzas por ficha",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/fichas-medicas/1/proformas-cobranzas",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "fichas-medicas",
+                                "1",
+                                "proformas-cobranzas"
+                            ]
+                        },
+                        "description": "Obtiene todas las proformas del paciente asociado a la ficha médica, junto con las cobranzas de cada proforma"
+                    }
+                },
+                {
                     "name": "Obtener fichas médicas por paciente",
                     "request": {
                         "method": "GET",

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.odonto.dentisys.dto.ProformaCobranzaDTO;
 import com.odonto.dentisys.model.FichaOdontologica;
 import com.odonto.dentisys.service.FichaOdontologicaService;
 
@@ -44,6 +45,12 @@ public class FichaOdontologicaController {
     @GetMapping("/medico/{medicoId}")
     public ResponseEntity<List<FichaOdontologica>> findByMedicoId(@PathVariable Integer medicoId) {
         return ResponseEntity.ok(fichaOdontologicaService.findByMedicoId(medicoId));
+    }
+
+    @GetMapping("/{id}/proformas-cobranzas")
+    public ResponseEntity<List<ProformaCobranzaDTO>> getProformasCobranzasByFichaId(@PathVariable Integer id) {
+        List<ProformaCobranzaDTO> result = fichaOdontologicaService.getProformasCobranzasByFichaId(id);
+        return ResponseEntity.ok(result);
     }
 
     @PostMapping

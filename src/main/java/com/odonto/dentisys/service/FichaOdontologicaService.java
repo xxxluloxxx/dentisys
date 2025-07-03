@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.odonto.dentisys.dto.ProformaCobranzaDTO;
+import com.odonto.dentisys.mapper.ProformaCobranzaMapper;
 import com.odonto.dentisys.model.FichaOdontologica;
 import com.odonto.dentisys.repository.FichaOdontologicaRepository;
 
@@ -15,6 +17,15 @@ public class FichaOdontologicaService {
 
     @Autowired
     private FichaOdontologicaRepository fichaOdontologicaRepository;
+
+    @Autowired
+    private ProformaService proformaService;
+
+    @Autowired
+    private CobranzaService cobranzaService;
+
+    @Autowired
+    private ProformaCobranzaMapper proformaCobranzaMapper;
 
     @Transactional(readOnly = true)
     public List<FichaOdontologica> findAll() {
@@ -44,5 +55,27 @@ public class FichaOdontologicaService {
     @Transactional(readOnly = true)
     public List<FichaOdontologica> findByMedicoId(Integer medicoId) {
         return fichaOdontologicaRepository.findByMedicoId(medicoId);
+    }
+
+    @Transactional(readOnly = true)
+    public List<ProformaCobranzaDTO> getProformasCobranzasByFichaId(Integer fichaId) {
+        Optional<FichaOdontologica> fichaOpt = fichaOdontologicaRepository.findById(fichaId);
+        if (fichaOpt.isEmpty()) {
+            return List.of();
+        }
+
+        FichaOdontologica ficha = fichaOpt.get();
+        var paciente = ficha.getPaciente();
+
+        // Obtener todas las proformas del paciente
+        var proformas = proformaService.findByPaciente(paciente);
+
+        return proformas.stream()
+                .map(proforma -> {
+                    // Obtener las cobranzas de cada proforma
+                    var cobranzas = cobranzaService.findByProforma(proforma);
+                    return proformaCobranzaMapper.toDTO(proforma, cobranzas);
+                })
+                .toList();
     }
 }

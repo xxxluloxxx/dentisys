@@ -1,102 +1,235 @@
-// Modelo de base de datos para sistema de restaurante
+// Esquema de Base de Datos - Sistema Odontológico Dentisys
 
 // Tabla General para Parámetros del Sistema
 Table general {
-  id serial [primary key]
-  parametro varchar(50) [not null, unique]
+  id integer [primary key, increment]
+  parametro varchar(50) [unique, not null]
   valor varchar(255) [not null]
   descripcion text
-  created_at timestamp [default: `now()`]
-  updated_at timestamp [default: `now()`]
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [default: `CURRENT_TIMESTAMP`]
 }
 
-// Tabla de Mesas
-Table mesas {
-  id_mesa integer [primary key]
-  numero_mesa integer [not null]
-  capacidad integer [not null]
-  estado varchar(20) [not null] // disponible, ocupada, reservada
-  ubicacion varchar(50)
-  created_at timestamp [default: `now()`]
-  updated_at timestamp [default: `now()`]
+// Tabla de Roles
+Table roles {
+  id integer [primary key, increment]
+  nombre varchar(50) [unique, not null]
+  descripcion text
+  estado boolean [default: true]
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [default: `CURRENT_TIMESTAMP`]
 }
 
-// Tabla de Meseros
-Table meseros {
-  id_mesero integer [primary key]
+// Tabla de Permisos
+Table permisos {
+  id integer [primary key, increment]
+  nombre varchar(50) [unique, not null]
+  descripcion text
+  estado boolean [default: true]
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [default: `CURRENT_TIMESTAMP`]
+}
+
+// Tabla para relacionar roles con permisos
+Table roles_permisos {
+  id integer [primary key, increment]
+  rol_id integer [not null, ref: > roles.id]
+  permiso_id integer [not null, ref: > permisos.id]
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+  
+  indexes {
+    (rol_id, permiso_id) [unique]
+  }
+}
+
+// Tabla de Menú
+Table menu {
+  id integer [primary key, increment]
+  rol_id integer [not null, ref: > roles.id]
+  label varchar(100) [not null]
+  icon varchar(100)
+  to_path varchar(200)
+  parent_id integer [ref: > menu.id]
+  orden integer [default: 0]
+  estado boolean [default: true]
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [default: `CURRENT_TIMESTAMP`]
+}
+
+// Tabla de Usuarios
+Table usuarios {
+  id integer [primary key, increment]
+  numero_documento varchar(20) [unique, not null]
   nombre varchar(100) [not null]
   apellido varchar(100) [not null]
-  dni varchar(20) [not null, unique]
+  email varchar(100) [unique, not null]
+  password varchar(255) [not null]
+  telefono varchar(20) [not null]
+  estado boolean [default: true]
+  ultimo_acceso timestamp
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [default: `CURRENT_TIMESTAMP`]
+  rol_id integer [ref: > roles.id]
+}
+
+// Tabla de Médicos
+Table medicos {
+  id integer [primary key, increment]
+  usuario_id integer [not null, unique, ref: > usuarios.id]
+  especialidad varchar(100) [not null]
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [default: `CURRENT_TIMESTAMP`]
+}
+
+// Tabla de Pacientes
+Table pacientes {
+  id integer [primary key, increment]
+  identificacion varchar(20) [unique, not null]
+  nombre varchar(100) [not null]
+  apellido varchar(100) [not null]
+  fecha_nacimiento date
+  genero varchar(10) [not null, note: 'M, F, O']
   telefono varchar(20)
-  estado varchar(20) [not null] // activo, inactivo
-  created_at timestamp [default: `now()`]
-  updated_at timestamp [default: `now()`]
+  email varchar(100)
+  direccion varchar(200) [not null]
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [default: `CURRENT_TIMESTAMP`]
 }
 
-// Tabla de Categorías de Productos
-Table categorias {
-  id_categoria integer [primary key]
-  nombre varchar(50) [not null]
-  descripcion text
-  created_at timestamp [default: `now()`]
-  updated_at timestamp [default: `now()`]
+// Tabla de Citas
+Table citas {
+  id integer [primary key, increment]
+  paciente_id integer [not null, ref: > pacientes.id]
+  medico_id integer [not null, ref: > medicos.id]
+  fecha_cita date [not null]
+  hora_cita time [not null]
+  hora_cita_fin time [not null]
+  estado varchar(20) [not null]
+  observaciones text
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [default: `CURRENT_TIMESTAMP`]
 }
 
-// Tabla de Productos
+// Tabla de Fichas Médicas
+Table fichas_medicas {
+  id integer [primary key, increment]
+  paciente_id integer [not null, ref: > pacientes.id]
+  medico_id integer [not null, ref: > medicos.id]
+  datos jsonb [not null]
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [default: `CURRENT_TIMESTAMP`]
+}
+
+// Tabla de Procedimientos
+Table procedimientos {
+  id integer [primary key, increment]
+  ficha_id integer [not null, ref: > fichas_medicas.id]
+  procedimiento varchar(255) [not null]
+  observaciones text
+  fecha date [not null]
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [default: `CURRENT_TIMESTAMP`]
+}
+
+// Tabla de Productos/Servicios
 Table productos {
-  id_producto integer [primary key]
-  id_categoria integer [ref: > categorias.id_categoria]
+  id integer [primary key, increment]
   nombre varchar(100) [not null]
   descripcion text
-  precio decimal(10,2) [not null]
-  disponible boolean [default: true]
-  imagen_url varchar(255)
-  created_at timestamp [default: `now()`]
-  updated_at timestamp [default: `now()`]
+  precio decimal(10,2) [not null, note: '>= 0']
+  categoria varchar(50) [not null]
+  estado boolean [default: true]
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [default: `CURRENT_TIMESTAMP`]
 }
 
-// Tabla de Pedidos
-Table pedidos {
-  id_pedido integer [primary key]
-  id_mesa integer [ref: > mesas.id_mesa]
-  id_mesero integer [ref: > meseros.id_mesero]
-  estado varchar(20) [not null] // pendiente, en_preparacion, listo, entregado, cancelado
-  fecha_pedido timestamp [default: `now()`]
-  total decimal(10,2) [not null]
+// Tabla de Proformas
+Table proformas {
+  id integer [primary key, increment]
+  paciente_id integer [not null, ref: > pacientes.id]
+  medico_id integer [not null, ref: > medicos.id]
+  subtotal decimal(10,2) [not null, note: '>= 0']
+  iva decimal(10,2) [not null, note: '>= 0']
+  descuento decimal(10,2) [not null, default: 0, note: '>= 0']
+  total decimal(10,2) [not null, note: '>= 0']
+  estado varchar(20) [not null]
   observaciones text
-  created_at timestamp [default: `now()`]
-  updated_at timestamp [default: `now()`]
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [default: `CURRENT_TIMESTAMP`]
 }
 
-// Tabla de Detalles de Pedido
-Table detalles_pedido {
-  id_detalle integer [primary key]
-  id_pedido integer [ref: > pedidos.id_pedido]
-  id_producto integer [ref: > productos.id_producto]
-  cantidad integer [not null]
-  precio_unitario decimal(10,2) [not null]
-  subtotal decimal(10,2) [not null]
-  observaciones text
-  created_at timestamp [default: `now()`]
-  updated_at timestamp [default: `now()`]
+// Tabla de Detalles de Proforma
+Table detalles_proforma {
+  id integer [primary key, increment]
+  proforma_id integer [not null, ref: > proformas.id]
+  producto_id integer [not null, ref: > productos.id]
+  cantidad integer [not null, note: '> 0']
+  precio_unitario decimal(10,2) [not null, note: '>= 0']
+  subtotal decimal(10,2) [not null, note: '>= 0']
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [default: `CURRENT_TIMESTAMP`]
 }
 
-// Tabla de Reservas
-Table reservas {
-  id_reserva integer [primary key]
-  id_mesa integer [ref: > mesas.id_mesa]
-  nombre_cliente varchar(100) [not null]
-  telefono varchar(20)
-  fecha_reserva timestamp [not null]
-  hora_reserva time [not null]
-  numero_personas integer [not null]
-  estado varchar(20) [not null] // confirmada, cancelada, completada
+// Tabla de imágenes
+Table imagenes_fichas {
+  id integer [primary key, increment]
+  ficha_id integer [not null, ref: > fichas_medicas.id]
+  nombre varchar(255) [not null]
+  imagen bytea [not null]
+  descripcion text
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [default: `CURRENT_TIMESTAMP`]
+}
+
+// Tabla de Categorías de Ingresos/Egresos
+Table categorias {
+  id integer [primary key, increment]
+  nombre varchar(100) [not null]
+  descripcion text
+  ingreso boolean [default: true]
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [default: `CURRENT_TIMESTAMP`]
+}
+
+// Tabla de Cobranzas
+Table cobranzas {
+  id integer [primary key, increment]
+  proforma_id integer [not null, ref: > proformas.id]
+  monto decimal(10,2) [not null, note: '>= 0']
+  fecha_pago date [not null]
+  metodo_pago varchar(50) [not null]
+  estado varchar(20) [not null]
   observaciones text
-  created_at timestamp [default: `now()`]
-  updated_at timestamp [default: `now()`]
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [default: `CURRENT_TIMESTAMP`]
+}
+
+// Tabla de Cuentas (Ingresos/Egresos)
+Table cuentas {
+  id integer [primary key, increment]
+  categoria_id integer [not null, ref: > categorias.id]
+  cobranza_id integer [ref: > cobranzas.id]
+  monto decimal(10,2) [not null, note: '>= 0']
+  fecha_movimiento date [not null]
+  descripcion text
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [default: `CURRENT_TIMESTAMP`]
 }
 
 // Índices para mejorar el rendimiento
-Index idx_mesas_numero ON mesas(numero_mesa);
-Index idx_pedidos_fecha ON pedidos(fecha_pedido);
-Index idx_reservas_fecha ON reservas(fecha_reserva); 
+TableIndex idx_usuarios_email on usuarios (email)
+TableIndex idx_usuarios_numero_documento on usuarios (numero_documento)
+TableIndex idx_pacientes_identificacion on pacientes (identificacion)
+TableIndex idx_citas_fecha_cita on citas (fecha_cita)
+TableIndex idx_citas_estado on citas (estado)
+TableIndex idx_proformas_estado on proformas (estado)
+TableIndex idx_cobranzas_fecha_pago on cobranzas (fecha_pago)
+TableIndex idx_cobranzas_estado on cobranzas (estado)
+TableIndex idx_cuentas_fecha on cuentas (fecha_movimiento)
+TableIndex idx_cuentas_categoria on cuentas (categoria_id)
+TableIndex idx_categorias_nombre on categorias (nombre)
+TableIndex idx_procedimientos_ficha_id on procedimientos (ficha_id)
+TableIndex idx_procedimientos_procedimiento on procedimientos (procedimiento)
+TableIndex idx_menu_rol_id on menu (rol_id)
+TableIndex idx_menu_parent_id on menu (parent_id)
+TableIndex idx_menu_orden on menu (orden) 
