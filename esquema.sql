@@ -309,3 +309,4 @@ CREATE TRIGGER update_menu_updated_at
     BEFORE UPDATE ON menu
     FOR EACH ROW
     EXECUTE FUNCTION update_updated_at_column();
+    
