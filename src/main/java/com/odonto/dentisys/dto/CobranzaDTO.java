@@ -9,6 +9,7 @@ import lombok.Data;
 public class CobranzaDTO {
     private Long id;
     private Long proformaId;
+    private Long bancoId;
     private LocalDate fechaPago;
     private Double monto;
     private String metodoPago;

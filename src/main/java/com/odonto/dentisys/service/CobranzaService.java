@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.odonto.dentisys.model.Banco;
 import com.odonto.dentisys.model.Cobranza;
 import com.odonto.dentisys.model.Paciente;
 import com.odonto.dentisys.model.Proforma;
+import com.odonto.dentisys.repository.BancoRepository;
 import com.odonto.dentisys.repository.CobranzaRepository;
 import com.odonto.dentisys.repository.ProformaRepository;
 
@@ -21,6 +23,9 @@ public class CobranzaService {
 
     @Autowired
     private ProformaRepository proformaRepository;
+
+    @Autowired
+    private BancoRepository bancoRepository;
 
     @Transactional(readOnly = true)
     public List<Cobranza> findAll() {
@@ -59,6 +64,11 @@ public class CobranzaService {
     @Transactional(readOnly = true)
     public List<Cobranza> findByEstado(String estado) {
         return cobranzaRepository.findByEstado(estado);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Cobranza> findByBanco(Banco banco) {
+        return cobranzaRepository.findByBanco(banco);
     }
 
     @Transactional(readOnly = true)

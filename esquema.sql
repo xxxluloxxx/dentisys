@@ -187,10 +187,22 @@ CREATE TABLE categorias (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Tabla de Bancos
+CREATE TABLE bancos (
+    id SERIAL PRIMARY KEY,
+    nombre_cuenta VARCHAR(100) NOT NULL,
+    banco VARCHAR(100) NOT NULL,
+    cuenta VARCHAR(50),
+    color VARCHAR(20),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Tabla de Cobranzas
 CREATE TABLE cobranzas (
     id SERIAL PRIMARY KEY,
     proforma_id INTEGER NOT NULL REFERENCES proformas(id) ON DELETE CASCADE,
+    banco_id INTEGER REFERENCES bancos(id) ON DELETE SET NULL,
     monto DECIMAL(10,2) NOT NULL CHECK (monto >= 0),
     fecha_pago DATE NOT NULL,
     metodo_pago VARCHAR(50) NOT NULL,
@@ -199,6 +211,8 @@ CREATE TABLE cobranzas (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+
 
 -- Tabla de Cuentas (Ingresos/Egresos)
 CREATE TABLE cuentas (
@@ -220,8 +234,11 @@ CREATE INDEX idx_pacientes_identificacion ON pacientes(identificacion);
 CREATE INDEX idx_citas_fecha_cita ON citas(fecha_cita);
 CREATE INDEX idx_citas_estado ON citas(estado);
 CREATE INDEX idx_proformas_estado ON proformas(estado);
+CREATE INDEX idx_bancos_nombre_cuenta ON bancos(nombre_cuenta);
+CREATE INDEX idx_bancos_banco ON bancos(banco);
 CREATE INDEX idx_cobranzas_fecha_pago ON cobranzas(fecha_pago);
 CREATE INDEX idx_cobranzas_estado ON cobranzas(estado);
+CREATE INDEX idx_cobranzas_banco_id ON cobranzas(banco_id);
 CREATE INDEX idx_cuentas_fecha ON cuentas(fecha_movimiento);
 CREATE INDEX idx_cuentas_categoria ON cuentas(categoria_id);
 CREATE INDEX idx_categorias_nombre ON categorias(nombre);
@@ -278,6 +295,11 @@ CREATE TRIGGER update_proformas_updated_at
 
 CREATE TRIGGER update_detalles_proforma_updated_at
     BEFORE UPDATE ON detalles_proforma
+    FOR EACH ROW
+    EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TRIGGER update_bancos_updated_at
+    BEFORE UPDATE ON bancos
     FOR EACH ROW
     EXECUTE FUNCTION update_updated_at_column();
 

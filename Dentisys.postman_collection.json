@@ -87,6 +87,26 @@
                     }
                 },
                 {
+                    "name": "Obtener cobranzas por banco",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/cobranzas/banco/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "cobranzas",
+                                "banco",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene todas las cobranzas de un banco específico"
+                    }
+                },
+                {
                     "name": "Obtener cobranzas por rango de fechas",
                     "request": {
                         "method": "GET",
@@ -169,7 +189,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"proforma\": {\n        \"id\": 1\n    },\n    \"fechaPago\": \"2024-03-20\",\n    \"monto\": 100.00,\n    \"metodoPago\": \"EFECTIVO\",\n    \"estado\": \"COMPLETADO\",\n    \"observaciones\": \"Pago completo realizado\"\n}"
+                            "raw": "{\n    \"proforma\": {\n        \"id\": 1\n    },\n    \"banco\": {\n        \"id\": 1\n    },\n    \"fechaPago\": \"2024-03-20\",\n    \"monto\": 100.00,\n    \"metodoPago\": \"EFECTIVO\",\n    \"estado\": \"COMPLETADO\",\n    \"observaciones\": \"Pago completo realizado\"\n}"
                         },
                         "url": {
                             "raw": "{{base_url}}/api/cobranzas",
@@ -196,7 +216,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"proforma\": {\n        \"id\": 1\n    },\n    \"fechaPago\": \"2024-03-20\",\n    \"monto\": 100.00,\n    \"metodoPago\": \"EFECTIVO\",\n    \"estado\": \"COMPLETADO\",\n    \"observaciones\": \"Pago completo realizado - Actualizado\"\n}"
+                            "raw": "{\n    \"proforma\": {\n        \"id\": 1\n    },\n    \"banco\": {\n        \"id\": 1\n    },\n    \"fechaPago\": \"2024-03-20\",\n    \"monto\": 100.00,\n    \"metodoPago\": \"EFECTIVO\",\n    \"estado\": \"COMPLETADO\",\n    \"observaciones\": \"Pago completo realizado - Actualizado\"\n}"
                         },
                         "url": {
                             "raw": "{{base_url}}/api/cobranzas/1",
@@ -2092,6 +2112,122 @@
                             ]
                         },
                         "description": "Elimina un usuario por su ID"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Bancos",
+            "item": [
+                {
+                    "name": "Obtener todos los bancos",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/bancos",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "bancos"
+                            ]
+                        },
+                        "description": "Obtiene todos los bancos registrados"
+                    }
+                },
+                {
+                    "name": "Obtener banco por ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/bancos/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "bancos",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene un banco específico por su ID"
+                    }
+                },
+                {
+                    "name": "Crear nuevo banco",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nombreCuenta\": \"Cuenta Principal\",\n    \"banco\": \"Banco del Pichincha\",\n    \"cuenta\": \"2100123456789012\",\n    \"color\": \"#007bff\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/bancos",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "bancos"
+                            ]
+                        },
+                        "description": "Crea un nuevo banco"
+                    }
+                },
+                {
+                    "name": "Actualizar banco",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nombreCuenta\": \"Cuenta Principal Actualizada\",\n    \"banco\": \"Banco del Pichincha\",\n    \"cuenta\": \"2100123456789012\",\n    \"color\": \"#28a745\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/bancos/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "bancos",
+                                "1"
+                            ]
+                        },
+                        "description": "Actualiza un banco existente"
+                    }
+                },
+                {
+                    "name": "Eliminar banco",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/bancos/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "bancos",
+                                "1"
+                            ]
+                        },
+                        "description": "Elimina un banco por su ID"
                     }
                 }
             ]

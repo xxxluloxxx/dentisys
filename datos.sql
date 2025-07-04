@@ -52,6 +52,7 @@ INSERT INTO menu (rol_id, label, icon, to_path, parent_id, orden, estado) VALUES
 (1, 'Resumen financiero', 'pi pi-fw pi-money-bill', '/pages/cuentas', 7, 1, true),
 (1, 'Pago especialista', 'pi pi-fw pi-tags', '/pages/pagos-especialistas', 7, 2, true),
 (1, 'Ver pagos', 'pi pi-fw pi-money-bill', '/pages/cuentas', 7, 3, true),
+(1, 'Bancos', 'pi pi-fw pi-money-bill', '/pages/bancos', 7, 4, true),
 
 -- Submenú Ficha medica dentro de PRISMA
 (1, 'Ficha medica', 'pi pi-fw pi-file-edit', NULL, 3, 5, true),

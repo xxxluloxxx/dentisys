@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 import com.odonto.dentisys.config.TimeZoneConfig;
+import com.odonto.dentisys.model.Banco;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,6 +30,10 @@ public class Cobranza {
     @ManyToOne
     @JoinColumn(name = "proforma_id", nullable = false, columnDefinition = "BIGINT")
     private Proforma proforma;
+
+    @ManyToOne
+    @JoinColumn(name = "banco_id", columnDefinition = "BIGINT")
+    private Banco banco;
 
     @Column(name = "fecha_pago", nullable = false)
     private LocalDate fechaPago;

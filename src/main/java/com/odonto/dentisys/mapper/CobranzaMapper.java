@@ -19,6 +19,7 @@ public class CobranzaMapper {
         CobranzaDTO dto = new CobranzaDTO();
         dto.setId(cobranza.getId());
         dto.setProformaId(cobranza.getProforma() != null ? cobranza.getProforma().getId() : null);
+        dto.setBancoId(cobranza.getBanco() != null ? cobranza.getBanco().getId() : null);
         dto.setFechaPago(cobranza.getFechaPago());
         dto.setMonto(cobranza.getMonto());
         dto.setMetodoPago(cobranza.getMetodoPago());
