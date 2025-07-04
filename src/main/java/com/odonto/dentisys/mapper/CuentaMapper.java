@@ -20,6 +20,10 @@ public class CuentaMapper {
         if (cuenta.getCobranza() != null) {
             dto.setCobranzaId(cuenta.getCobranza().getId());
         }
+        if (cuenta.getMedico() != null) {
+            dto.setMedicoId(cuenta.getMedico().getId());
+            dto.setMedicoNombre(cuenta.getMedico().getNombre() + " " + cuenta.getMedico().getApellido());
+        }
         dto.setMonto(cuenta.getMonto());
         dto.setFechaMovimiento(cuenta.getFechaMovimiento());
         dto.setDescripcion(cuenta.getDescripcion());

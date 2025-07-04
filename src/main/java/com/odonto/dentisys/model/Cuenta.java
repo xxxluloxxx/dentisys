@@ -31,6 +31,10 @@ public class Cuenta {
     @JoinColumn(name = "cobranza_id")
     private Cobranza cobranza;
 
+    @ManyToOne
+    @JoinColumn(name = "medico_id")
+    private Medico medico;
+
     @Column(name = "monto", nullable = false, columnDefinition = "numeric")
     private Double monto;
 

@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.odonto.dentisys.dto.CobranzaDTO;
 import com.odonto.dentisys.dto.CuentaDTO;
+import com.odonto.dentisys.mapper.CobranzaMapper;
 import com.odonto.dentisys.model.Cobranza;
 import com.odonto.dentisys.model.Paciente;
 import com.odonto.dentisys.model.Proforma;
@@ -37,6 +39,9 @@ public class CobranzaController {
     @Autowired
     private CategoriaService categoriaService;
 
+    @Autowired
+    private CobranzaMapper cobranzaMapper;
+
     @GetMapping
     public ResponseEntity<List<Cobranza>> getAllCobranzas() {
         return ResponseEntity.ok(cobranzaService.findAll());
@@ -55,10 +60,12 @@ public class CobranzaController {
     }
 
     @GetMapping("/proforma/{proformaId}")
-    public ResponseEntity<List<Cobranza>> getCobranzasByProforma(@PathVariable Long proformaId) {
+    public ResponseEntity<List<CobranzaDTO>> getCobranzasByProforma(@PathVariable Long proformaId) {
         Proforma proforma = new Proforma();
         proforma.setId(proformaId);
-        return ResponseEntity.ok(cobranzaService.findByProforma(proforma));
+        List<Cobranza> cobranzas = cobranzaService.findByProforma(proforma);
+        List<CobranzaDTO> cobranzasDTO = cobranzaMapper.toDTOList(cobranzas);
+        return ResponseEntity.ok(cobranzasDTO);
     }
 
     @GetMapping("/fecha")

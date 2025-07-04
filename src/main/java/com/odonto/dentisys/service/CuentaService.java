@@ -13,9 +13,11 @@ import com.odonto.dentisys.mapper.CuentaMapper;
 import com.odonto.dentisys.model.Categoria;
 import com.odonto.dentisys.model.Cobranza;
 import com.odonto.dentisys.model.Cuenta;
+import com.odonto.dentisys.model.Medico;
 import com.odonto.dentisys.repository.CategoriaRepository;
 import com.odonto.dentisys.repository.CobranzaRepository;
 import com.odonto.dentisys.repository.CuentaRepository;
+import com.odonto.dentisys.repository.MedicoRepository;
 
 @Service
 public class CuentaService {
@@ -28,6 +30,9 @@ public class CuentaService {
 
     @Autowired
     private CobranzaRepository cobranzaRepository;
+
+    @Autowired
+    private MedicoRepository medicoRepository;
 
     @Autowired
     private CuentaMapper cuentaMapper;
@@ -61,6 +66,12 @@ public class CuentaService {
                     .orElseThrow(() -> new RuntimeException("Cobranza no encontrada")));
         }
 
+        // Cargar el médico si existe
+        if (cuentaDTO.getMedicoId() != null) {
+            cuenta.setMedico(medicoRepository.findById(cuentaDTO.getMedicoId())
+                    .orElseThrow(() -> new RuntimeException("Médico no encontrado")));
+        }
+
         cuenta = cuentaRepository.save(cuenta);
         return cuentaMapper.toDTO(cuenta);
     }
@@ -84,6 +95,15 @@ public class CuentaService {
         Cobranza cobranza = cobranzaRepository.findById(cobranzaId)
                 .orElseThrow(() -> new RuntimeException("Cobranza no encontrada"));
         return cuentaRepository.findByCobranza(cobranza).stream()
+                .map(cuentaMapper::toDTO)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<CuentaDTO> findByMedico(Long medicoId) {
+        Medico medico = medicoRepository.findById(medicoId)
+                .orElseThrow(() -> new RuntimeException("Médico no encontrado"));
+        return cuentaRepository.findByMedico(medico).stream()
                 .map(cuentaMapper::toDTO)
                 .toList();
     }

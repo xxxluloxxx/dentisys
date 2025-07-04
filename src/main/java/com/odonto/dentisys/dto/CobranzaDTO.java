@@ -1,6 +1,7 @@
 package com.odonto.dentisys.dto;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import lombok.Data;
 
@@ -13,4 +14,5 @@ public class CobranzaDTO {
     private String metodoPago;
     private String estado;
     private String observaciones;
+    private LocalDateTime createdAt;
 }

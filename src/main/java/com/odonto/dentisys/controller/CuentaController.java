@@ -48,6 +48,11 @@ public class CuentaController {
         return ResponseEntity.ok(cuentaService.findByCobranza(cobranzaId));
     }
 
+    @GetMapping("/medico/{medicoId}")
+    public ResponseEntity<List<CuentaDTO>> findByMedico(@PathVariable Long medicoId) {
+        return ResponseEntity.ok(cuentaService.findByMedico(medicoId));
+    }
+
     @GetMapping("/fecha")
     public ResponseEntity<List<CuentaDTO>> findByFechaMovimientoBetween(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaInicio,

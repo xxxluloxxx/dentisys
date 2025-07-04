@@ -205,6 +205,7 @@ CREATE TABLE cuentas (
     id SERIAL PRIMARY KEY,
     categoria_id INTEGER NOT NULL REFERENCES categorias(id) ON DELETE RESTRICT,
     cobranza_id INTEGER REFERENCES cobranzas(id) ON DELETE SET NULL,
+    medico_id INTEGER REFERENCES medicos(id) ON DELETE SET NULL,
     monto DECIMAL(10,2) NOT NULL CHECK (monto >= 0),
     fecha_movimiento DATE NOT NULL,
     descripcion TEXT,

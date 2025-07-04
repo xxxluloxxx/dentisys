@@ -11,6 +11,8 @@ public class CuentaDTO {
     private Long categoriaId;
     private String categoriaNombre;
     private Long cobranzaId;
+    private Long medicoId;
+    private String medicoNombre;
     private Double monto;
     private LocalDate fechaMovimiento;
     private String descripcion;
