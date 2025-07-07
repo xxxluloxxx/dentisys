@@ -1867,7 +1867,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"usuario\": {\n        \"nombre\": \"Juan\",\n        \"apellido\": \"Pérez\",\n        \"numeroDocumento\": \"12345678\",\n        \"email\": \"juan.perez@example.com\",\n        \"telefono\": \"123456789\"\n    },\n    \"especialidad\": \"Odontología General\"\n}"
+                            "raw": "{\n    \"usuarioId\": 1,\n    \"especialidad\": \"Odontología General\"\n}"
                         },
                         "url": {
                             "raw": "{{base_url}}/api/medicos",
@@ -1894,7 +1894,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"usuario\": {\n        \"nombre\": \"Juan\",\n        \"apellido\": \"Pérez\",\n        \"numeroDocumento\": \"12345678\",\n        \"email\": \"juan.perez@example.com\",\n        \"telefono\": \"123456789\"\n    },\n    \"especialidad\": \"Ortodoncia\"\n}"
+                            "raw": "{\n    \"especialidad\": \"Ortodoncia\"\n}"
                         },
                         "url": {
                             "raw": "{{base_url}}/api/medicos/1",
@@ -2052,7 +2052,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"nombre\": \"Usuario Ejemplo\",\n    \"email\": \"usuario@ejemplo.com\",\n    \"password\": \"contraseña\",\n    \"numeroDocumento\": \"12345678\",\n    \"tipoDocumento\": \"DNI\",\n    \"rol\": \"ADMIN\"\n}"
+                            "raw": "{\n    \"numeroDocumento\": \"12345678\",\n    \"nombre\": \"Juan\",\n    \"apellido\": \"Pérez\",\n    \"email\": \"juan.perez@ejemplo.com\",\n    \"password\": \"contraseña123\",\n    \"telefono\": \"0987654321\",\n    \"estado\": true,\n    \"rolId\": 1\n}"
                         },
                         "url": {
                             "raw": "{{base_url}}/api/usuarios",
@@ -2079,7 +2079,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"nombre\": \"Usuario Ejemplo Actualizado\",\n    \"email\": \"usuario@ejemplo.com\",\n    \"password\": \"nueva-contraseña\",\n    \"numeroDocumento\": \"12345678\",\n    \"tipoDocumento\": \"DNI\",\n    \"rol\": \"ADMIN\"\n}"
+                            "raw": "{\n    \"numeroDocumento\": \"12345678\",\n    \"nombre\": \"Juan Carlos\",\n    \"apellido\": \"Pérez González\",\n    \"email\": \"juan.perez@ejemplo.com\",\n    \"password\": \"nueva-contraseña123\",\n    \"telefono\": \"0987654321\",\n    \"estado\": true,\n    \"rolId\": 1\n}"
                         },
                         "url": {
                             "raw": "{{base_url}}/api/usuarios/1",
@@ -2228,6 +2228,122 @@
                             ]
                         },
                         "description": "Elimina un banco por su ID"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Roles",
+            "item": [
+                {
+                    "name": "Obtener todos los roles",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/roles",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "roles"
+                            ]
+                        },
+                        "description": "Obtiene todos los roles registrados"
+                    }
+                },
+                {
+                    "name": "Obtener rol por ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/roles/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "roles",
+                                "1"
+                            ]
+                        },
+                        "description": "Obtiene un rol específico por su ID"
+                    }
+                },
+                {
+                    "name": "Crear nuevo rol",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nombre\": \"ADMINISTRADOR\",\n    \"descripcion\": \"Rol con permisos de administrador del sistema\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/roles",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "roles"
+                            ]
+                        },
+                        "description": "Crea un nuevo rol"
+                    }
+                },
+                {
+                    "name": "Actualizar rol",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nombre\": \"ADMINISTRADOR\",\n    \"descripcion\": \"Rol con permisos completos de administrador del sistema - Actualizado\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/roles/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "roles",
+                                "1"
+                            ]
+                        },
+                        "description": "Actualiza un rol existente"
+                    }
+                },
+                {
+                    "name": "Eliminar rol",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/roles/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "roles",
+                                "1"
+                            ]
+                        },
+                        "description": "Elimina un rol por su ID"
                     }
                 }
             ]

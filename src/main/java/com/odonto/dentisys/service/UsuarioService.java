@@ -39,6 +39,11 @@ public class UsuarioService {
                 .map(usuarioMapper::toDTO);
     }
 
+    @Transactional(readOnly = true)
+    public Optional<Usuario> findEntityById(Long id) {
+        return usuarioRepository.findById(id);
+    }
+
     @Transactional
     public UsuarioDTO save(UsuarioDTO usuarioDTO) {
         Usuario usuario = usuarioMapper.toEntity(usuarioDTO);

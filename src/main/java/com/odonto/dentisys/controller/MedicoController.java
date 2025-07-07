@@ -1,6 +1,7 @@
 package com.odonto.dentisys.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +14,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.odonto.dentisys.dto.MedicoCreateDTO;
 import com.odonto.dentisys.dto.MedicoDTO;
 import com.odonto.dentisys.mapper.MedicoMapper;
 import com.odonto.dentisys.model.Medico;
+import com.odonto.dentisys.model.Usuario;
 import com.odonto.dentisys.service.MedicoService;
+import com.odonto.dentisys.service.UsuarioService;
 
 @RestController
 @RequestMapping("/api/medicos")
@@ -24,6 +28,9 @@ public class MedicoController {
 
     @Autowired
     private MedicoService medicoService;
+
+    @Autowired
+    private UsuarioService usuarioService;
 
     @Autowired
     private MedicoMapper medicoMapper;
@@ -48,7 +55,19 @@ public class MedicoController {
     }
 
     @PostMapping
-    public ResponseEntity<MedicoDTO> create(@RequestBody Medico medico) {
+    public ResponseEntity<MedicoDTO> create(@RequestBody MedicoCreateDTO medicoCreateDTO) {
+        // Buscar el usuario por ID
+        Optional<Usuario> usuarioOpt = usuarioService.findEntityById(medicoCreateDTO.getUsuarioId());
+        if (usuarioOpt.isEmpty()) {
+            throw new RuntimeException("Usuario no encontrado con ID: " + medicoCreateDTO.getUsuarioId());
+        }
+        Usuario usuario = usuarioOpt.get();
+
+        // Crear el médico
+        Medico medico = new Medico();
+        medico.setUsuario(usuario);
+        medico.setEspecialidad(medicoCreateDTO.getEspecialidad());
+
         return ResponseEntity.ok(medicoMapper.toDTO(medicoService.save(medico)));
     }
 
