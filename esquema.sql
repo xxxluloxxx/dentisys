@@ -95,7 +95,7 @@ CREATE TABLE pacientes (
 -- Tabla de Citas
 CREATE TABLE citas (
     id SERIAL PRIMARY KEY,
-    paciente_id INTEGER NOT NULL REFERENCES pacientes(id) ON DELETE CASCADE,
+    paciente_id INTEGER REFERENCES pacientes(id) ON DELETE CASCADE,
     medico_id INTEGER NOT NULL REFERENCES medicos(id) ON DELETE CASCADE,
     fecha_cita DATE NOT NULL,
     hora_cita TIME NOT NULL,

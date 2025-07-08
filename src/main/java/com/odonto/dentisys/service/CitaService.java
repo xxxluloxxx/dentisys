@@ -93,10 +93,25 @@ public class CitaService {
     private CitaDTO convertToDTO(Cita cita) {
         CitaDTO dto = new CitaDTO();
         dto.setId(cita.getId());
-        dto.setPacienteId(cita.getPaciente().getId());
-        dto.setPacienteNombre(cita.getPaciente().getNombre() + " " + cita.getPaciente().getApellido());
-        dto.setMedicoId(cita.getMedico().getId());
-        dto.setMedicoNombre(cita.getMedico().getNombre() + " " + cita.getMedico().getApellido());
+
+        // Manejar paciente null
+        if (cita.getPaciente() != null) {
+            dto.setPacienteId(cita.getPaciente().getId());
+            dto.setPacienteNombre(cita.getPaciente().getNombre() + " " + cita.getPaciente().getApellido());
+        } else {
+            dto.setPacienteId(null);
+            dto.setPacienteNombre("Sin paciente asignado");
+        }
+
+        // Manejar médico null (aunque debería ser obligatorio según el esquema)
+        if (cita.getMedico() != null) {
+            dto.setMedicoId(cita.getMedico().getId());
+            dto.setMedicoNombre(cita.getMedico().getNombre() + " " + cita.getMedico().getApellido());
+        } else {
+            dto.setMedicoId(null);
+            dto.setMedicoNombre("Sin médico asignado");
+        }
+
         dto.setFechaCita(cita.getFechaCita());
         dto.setHoraCita(cita.getHoraCita());
         dto.setHoraCitaFin(cita.getHoraCitaFin());
