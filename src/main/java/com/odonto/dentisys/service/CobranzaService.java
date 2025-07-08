@@ -27,6 +27,9 @@ public class CobranzaService {
     @Autowired
     private BancoRepository bancoRepository;
 
+    @Autowired
+    private CuentaService cuentaService;
+
     @Transactional(readOnly = true)
     public List<Cobranza> findAll() {
         return cobranzaRepository.findAll();
@@ -48,6 +51,13 @@ public class CobranzaService {
 
     @Transactional
     public void deleteById(Long id) {
+        // Buscar las cuentas asociadas a esta cobranza y eliminarlas
+        List<com.odonto.dentisys.dto.CuentaDTO> cuentasAsociadas = cuentaService.findByCobranza(id);
+        for (com.odonto.dentisys.dto.CuentaDTO cuenta : cuentasAsociadas) {
+            cuentaService.deleteById(cuenta.getId());
+        }
+
+        // Eliminar la cobranza
         cobranzaRepository.deleteById(id);
     }
 
@@ -85,7 +95,20 @@ public class CobranzaService {
 
     @Transactional
     public Cobranza update(Long id, Cobranza cobranza) {
+        // Actualizar la cobranza
         cobranza.setId(id);
-        return cobranzaRepository.save(cobranza);
+        Cobranza cobranzaActualizada = cobranzaRepository.save(cobranza);
+
+        // Buscar las cuentas asociadas a esta cobranza y actualizar solo el monto
+        List<com.odonto.dentisys.dto.CuentaDTO> cuentasAsociadas = cuentaService.findByCobranza(id);
+        for (com.odonto.dentisys.dto.CuentaDTO cuenta : cuentasAsociadas) {
+            // Actualizar únicamente el monto de la cuenta
+            cuenta.setMonto(cobranzaActualizada.getMonto());
+
+            // Guardar la cuenta actualizada
+            cuentaService.save(cuenta);
+        }
+
+        return cobranzaActualizada;
     }
 }

@@ -96,7 +96,6 @@ public class CobranzaController {
         return ResponseEntity.ok(cobranzaService.findByEstado(estado));
     }
 
-    @GetMapping("/paciente/{pacienteId}/estado/{estado}")
     public ResponseEntity<List<Cobranza>> getCobranzasByPacienteAndEstado(
             @PathVariable Long pacienteId,
             @PathVariable String estado) {
