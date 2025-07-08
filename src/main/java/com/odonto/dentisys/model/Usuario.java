@@ -49,7 +49,7 @@ public class Usuario {
     private String email;
 
     @NotBlank(message = "La contraseña es obligatoria")
-    @Size(min = 6, max = 255, message = "La contraseña debe tener al menos 6 caracteres")
+    @Size(min = 1, max = 255, message = "La contraseña debe tener entre 1 y 255 caracteres")
     @Column(name = "password", nullable = false, length = 255)
     private String password;
 
