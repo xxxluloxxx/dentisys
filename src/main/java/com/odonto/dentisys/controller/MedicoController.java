@@ -1,7 +1,6 @@
 package com.odonto.dentisys.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -57,11 +56,7 @@ public class MedicoController {
     @PostMapping
     public ResponseEntity<MedicoDTO> create(@RequestBody MedicoCreateDTO medicoCreateDTO) {
         // Buscar el usuario por ID
-        Optional<Usuario> usuarioOpt = usuarioService.findEntityById(medicoCreateDTO.getUsuarioId());
-        if (usuarioOpt.isEmpty()) {
-            throw new RuntimeException("Usuario no encontrado con ID: " + medicoCreateDTO.getUsuarioId());
-        }
-        Usuario usuario = usuarioOpt.get();
+        Usuario usuario = usuarioService.findEntityById(medicoCreateDTO.getUsuarioId());
 
         // Crear el médico
         Medico medico = new Medico();

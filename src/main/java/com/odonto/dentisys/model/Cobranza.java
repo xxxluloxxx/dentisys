@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 import com.odonto.dentisys.config.TimeZoneConfig;
-import com.odonto.dentisys.model.Banco;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

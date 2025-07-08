@@ -18,6 +18,8 @@ import com.odonto.dentisys.mapper.PacienteMapper;
 import com.odonto.dentisys.model.Paciente;
 import com.odonto.dentisys.service.PacienteService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/pacientes")
 public class PacienteController {
@@ -35,40 +37,32 @@ public class PacienteController {
 
     @GetMapping("/{id}")
     public ResponseEntity<PacienteDTO> findById(@PathVariable Long id) {
-        return pacienteService.findById(id)
-                .map(paciente -> ResponseEntity.ok(pacienteMapper.toDTO(paciente)))
-                .orElse(ResponseEntity.notFound().build());
+        Paciente paciente = pacienteService.findById(id);
+        return ResponseEntity.ok(pacienteMapper.toDTO(paciente));
     }
 
     @GetMapping("/identificacion/{identificacion}")
     public ResponseEntity<PacienteDTO> findByIdentificacion(@PathVariable String identificacion) {
-        return pacienteService.findByIdentificacion(identificacion)
-                .map(paciente -> ResponseEntity.ok(pacienteMapper.toDTO(paciente)))
-                .orElse(ResponseEntity.notFound().build());
+        Paciente paciente = pacienteService.findByIdentificacion(identificacion);
+        return ResponseEntity.ok(pacienteMapper.toDTO(paciente));
     }
 
     @PostMapping
-    public ResponseEntity<PacienteDTO> create(@RequestBody Paciente paciente) {
-        return ResponseEntity.ok(pacienteMapper.toDTO(pacienteService.save(paciente)));
+    public ResponseEntity<PacienteDTO> create(@Valid @RequestBody Paciente paciente) {
+        Paciente savedPaciente = pacienteService.save(paciente);
+        return ResponseEntity.ok(pacienteMapper.toDTO(savedPaciente));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PacienteDTO> update(@PathVariable Long id, @RequestBody Paciente paciente) {
-        return pacienteService.findById(id)
-                .map(existingPaciente -> {
-                    paciente.setId(id);
-                    return ResponseEntity.ok(pacienteMapper.toDTO(pacienteService.save(paciente)));
-                })
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<PacienteDTO> update(@PathVariable Long id, @Valid @RequestBody Paciente paciente) {
+        paciente.setId(id);
+        Paciente updatedPaciente = pacienteService.save(paciente);
+        return ResponseEntity.ok(pacienteMapper.toDTO(updatedPaciente));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        return pacienteService.findById(id)
-                .map(paciente -> {
-                    pacienteService.deleteById(id);
-                    return ResponseEntity.ok().<Void>build();
-                })
-                .orElse(ResponseEntity.notFound().build());
+        pacienteService.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 }

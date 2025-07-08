@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.odonto.dentisys.dto.UsuarioDTO;
 import com.odonto.dentisys.mapper.UsuarioMapper;
+import com.odonto.dentisys.model.Usuario;
 import com.odonto.dentisys.service.UsuarioService;
 
 @RestController
@@ -36,9 +37,12 @@ public class UsuarioController {
 
     @GetMapping("/{id}")
     public ResponseEntity<UsuarioDTO> findById(@PathVariable Long id) {
-        return usuarioService.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        try {
+            UsuarioDTO usuario = usuarioService.findById(id);
+            return ResponseEntity.ok(usuario);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping
@@ -60,22 +64,31 @@ public class UsuarioController {
 
     @GetMapping("/email/{email}")
     public ResponseEntity<UsuarioDTO> findByEmail(@PathVariable String email) {
-        return usuarioService.findByEmail(email)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        try {
+            UsuarioDTO usuario = usuarioService.findByEmail(email);
+            return ResponseEntity.ok(usuario);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/documento/{numeroDocumento}")
     public ResponseEntity<UsuarioDTO> findByNumeroDocumento(@PathVariable String numeroDocumento) {
-        return usuarioService.findByNumeroDocumento(numeroDocumento)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        try {
+            UsuarioDTO usuario = usuarioService.findByNumeroDocumento(numeroDocumento);
+            return ResponseEntity.ok(usuario);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/auth")
     public ResponseEntity<UsuarioDTO> authenticate(@RequestParam String email, @RequestParam String password) {
-        return usuarioService.findByEmailAndPassword(email, password)
-                .map(usuario -> ResponseEntity.ok(usuarioMapper.toDTO(usuario)))
-                .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+        try {
+            Usuario usuario = usuarioService.findByEmailAndPassword(email, password);
+            return ResponseEntity.ok(usuarioMapper.toDTO(usuario));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
 }
