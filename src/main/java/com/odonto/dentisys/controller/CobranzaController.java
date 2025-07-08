@@ -27,6 +27,7 @@ import com.odonto.dentisys.service.BancoService;
 import com.odonto.dentisys.service.CategoriaService;
 import com.odonto.dentisys.service.CobranzaService;
 import com.odonto.dentisys.service.CuentaService;
+import com.odonto.dentisys.service.ProformaService;
 
 @RestController
 @RequestMapping("/api/cobranzas")
@@ -46,6 +47,9 @@ public class CobranzaController {
 
     @Autowired
     private CobranzaMapper cobranzaMapper;
+
+    @Autowired
+    private ProformaService proformaService;
 
     @GetMapping
     public ResponseEntity<List<Cobranza>> getAllCobranzas() {
@@ -106,13 +110,19 @@ public class CobranzaController {
         // Guardar la cobranza
         Cobranza cobranzaGuardada = cobranzaService.save(cobranza);
 
+        // Obtener la proforma con el paciente cargado
+        Proforma proforma = proformaService.findById(cobranzaGuardada.getProforma().getId());
+        Paciente paciente = proforma.getPaciente();
+        String nombrePaciente = paciente.getNombre() + " " + paciente.getApellido();
+
         // Crear un registro en la cuenta
         CuentaDTO cuentaDTO = new CuentaDTO();
         cuentaDTO.setCategoriaId(1L); // ID de la categoría "Ingresos"
         cuentaDTO.setCobranzaId(cobranzaGuardada.getId());
         cuentaDTO.setMonto(cobranzaGuardada.getMonto());
         cuentaDTO.setFechaMovimiento(cobranzaGuardada.getFechaPago());
-        cuentaDTO.setDescripcion("{Pago de Proforma} " + cobranzaGuardada.getObservaciones());
+        cuentaDTO.setDescripcion(
+                "Paciente: " + nombrePaciente + " - Proforma: " + cobranzaGuardada.getObservaciones());
 
         // Guardar la cuenta
         cuentaService.save(cuentaDTO);
